@@ -1,15 +1,12 @@
 import React from 'react'
-import Navbar from '../Navbar'
-import { MdPets } from 'react-icons/md'
 import * as S from './style'
-import Navlink from '../Navlink'
+import { HeaderProps } from './types'
 
-const Header = () => {
+const Header = ({ title }: HeaderProps) => {
     return (
-        <S.Container>
-            <Navlink href={'/'}><MdPets color='#000' />Your Pet</Navlink>
-            <Navbar />
-        </S.Container>
+        <S.Header>
+            <S.Title>{title}</S.Title>
+        </S.Header>
     )
 }
 

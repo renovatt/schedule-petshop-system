@@ -1,20 +1,15 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export const Container = styled.header`
-    position: fixed;
-    left: 0;
-    overflow: hidden;
+export const Header = styled.header`
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
-    width: 15rem;
-    height: 100vh;
-    background: #fff;
+    width: 100%;
+    height: 5rem;
+    background: #ed2f5a;
+`
 
-    svg{
-        width: 3.5rem;
-        height: 3.5rem;
-        margin: 1rem;
-    }
+export const Title = styled.h1`
+    color: #fff;
+    padding: 1rem;
 `

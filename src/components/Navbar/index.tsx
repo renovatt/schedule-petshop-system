@@ -9,8 +9,8 @@ const Navbar = () => {
     return (
         <S.Nav>
             <Navlink href={'/dashboard'}><MdSpaceDashboard/>Dashboard</Navlink>
-            <Navlink href={'/register'}><FaAddressCard/>Cadastro</Navlink>
             <Navlink href={'/schedules'}><AiFillSchedule/>Agendamentos</Navlink>
+            <Navlink href={'/register'}><FaAddressCard/>Cadastro</Navlink>
         </S.Nav >
     )
 }

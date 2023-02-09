@@ -11,21 +11,33 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-    color: #fff;
-    background:#101010
+    min-width: 100vw;
+    min-height: 100vh;
+    background:#f01
 }
 
-html,body,#root{
-    height:100%
-}
 
 *, input, button{
     border:0;
     outline:0;
 }
 
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+} */
+
 a{
     text-decoration: none;
+}
+
+li{
+    list-style: none;
 }
 
 button{

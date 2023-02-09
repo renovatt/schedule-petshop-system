@@ -1,6 +1,4 @@
-import { LinkProps } from "next/link";
-
-export type Navlink = {
+export type NavlinkProps = {
     href: string;
     children: any;
 }

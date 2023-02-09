@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Nav = styled.section`
+    position: fixed;
+    left: 0;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
