@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family: sans-serif;
 }
 
 body {
@@ -21,6 +22,10 @@ html,body,#root{
 *, input, button{
     border:0;
     outline:0;
+}
+
+a{
+    text-decoration: none;
 }
 
 button{
