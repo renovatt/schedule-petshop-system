@@ -11,5 +11,4 @@ export const Container = styled.header`
 export const Main = styled.main`
     min-height: 100vh;
     min-width: 100vw;
-    background: #f01;
 `

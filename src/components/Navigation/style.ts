@@ -27,7 +27,7 @@ export const Navigation = styled.nav<ContainerProps>`
         justify-content: center;
         height: 5rem;
         width: 100%;
-        border-radius: 0 0 3rem 3rem;
+        border-radius: 3rem 3rem 0 0;
     }
 `
 

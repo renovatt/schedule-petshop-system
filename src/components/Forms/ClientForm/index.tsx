@@ -43,6 +43,21 @@ const ClientForm = () => {
             </S.Label>
 
             <S.Label>
+                <S.Span>Sexo:</S.Span>
+                <S.Input type="text"
+                    {...register("sex",
+                        {
+                            required: true, minLength: {
+                                value: 1,
+                                message: "*Preencha todos os campos."
+                            }
+                        })
+                    }
+                    placeholder='Nome do cliente' />
+                <S.InputAlert>{errors.sex?.message}</S.InputAlert>
+            </S.Label>
+
+            <S.Label>
                 <S.Span>Endereço:</S.Span>
                 <S.Input type="text"
                     {...register("street",
@@ -116,6 +131,7 @@ const ClientForm = () => {
                     placeholder='(00) 00000-0000' />
                 <S.InputAlert>{errors.contact?.message}</S.InputAlert>
             </S.Label>
+            
             <S.ButtonContent>
                 <S.Button>Confirmar Registro</S.Button>
             </S.ButtonContent>

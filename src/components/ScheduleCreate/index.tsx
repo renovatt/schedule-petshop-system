@@ -1,15 +1,11 @@
 import React from 'react'
-import ScheduleForm from '../Forms/ScheduleForm'
-import SchedulesList from '../SchedulesList'
+import ClientForm from '../Forms/ClientForm'
 import * as S from './style'
 
 const ScheduleCreate = () => {
   return (
     <S.Container>
-      <ScheduleForm />
-      <div>
-        <SchedulesList />
-      </div>
+      {/* <ClientForm/> */}
     </S.Container>
   )
 }

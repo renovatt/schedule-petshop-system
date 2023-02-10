@@ -13,7 +13,8 @@ export const GlobalStyle = createGlobalStyle`
 body {
     min-width: 100vw;
     min-height: 100vh;
-    background:#f01
+    background: #fff;
+    /* background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(16,16,16,1) 0%, rgba(39,39,39,1) 100%); */
 }
 
 
@@ -42,4 +43,19 @@ li{
 
 button{
     cursor:pointer;
-}`
+}
+
+.animation-container{
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: fade .3s forwards;
+
+    @keyframes fade{
+        to{
+        opacity: 1;
+        transform: initial;
+        }
+    }
+}
+`
+

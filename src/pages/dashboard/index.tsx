@@ -11,9 +11,11 @@ const Dashboard = () => {
       </Head>
       <S.Container>
         <Header title='Dashboard' />
-        <S.Content>
-          <h1>Dashboard</h1>
-        </S.Content>
+        <S.Main className='animation-container'>
+          <S.Content>
+            <h1>Dashboard</h1>
+          </S.Content>
+        </S.Main>
       </S.Container>
     </>
   )

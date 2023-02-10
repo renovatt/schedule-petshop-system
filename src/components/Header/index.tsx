@@ -5,7 +5,7 @@ import { HeaderProps } from './types'
 const Header = ({ title }: HeaderProps) => {
     return (
         <S.Header>
-            <S.Title>{title}</S.Title>
+            <S.Title className='animation-container'>{title}</S.Title>
         </S.Header>
     )
 }

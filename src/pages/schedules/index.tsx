@@ -13,9 +13,11 @@ const Schedules = () => {
       </Head>
       <S.Container>
         <Header title='Agendamentos' />
-        <S.Content>
-          <SchedulesList />
-        </S.Content>
+        <S.Main className='animation-container'>
+          <S.Content>
+            <h1>Agendamentos</h1>
+          </S.Content>
+        </S.Main>
       </S.Container>
     </>
   )
