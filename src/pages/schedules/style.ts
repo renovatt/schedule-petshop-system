@@ -71,6 +71,7 @@ export const Section = styled.section`
 `
 
 export const LastRegister = styled.div`
+    position: relative;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
