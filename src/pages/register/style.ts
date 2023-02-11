@@ -37,7 +37,7 @@ export const Content = styled.div`
 
     @media (max-width: 70rem) {
         margin: 0;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 `
 
@@ -48,7 +48,7 @@ export const Section = styled.section`
     width: 100%;
     height: 100%;
     border-radius: .8rem;
-    margin: 2rem;
+    margin: .4rem;
     overflow-y: auto;
 
     ::-webkit-scrollbar-track{
@@ -74,7 +74,7 @@ export const ImageContainder = styled.div`
 
     @media (max-width: 70rem) {
         position: static;
-        width: 50%;
+        width: 10rem;
         height: 10rem;
     }
 
@@ -82,6 +82,5 @@ export const ImageContainder = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
-        /* filter: drop-shadow(0 6mm 4mm rgba(0, 0, 0, 0.25)); */
     }
 `

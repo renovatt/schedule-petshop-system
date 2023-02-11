@@ -53,7 +53,7 @@ export const Section = styled.section`
     width: 50%;
     height: 95%;
     border-radius: .8rem;
-    margin: 2rem;
+    margin: .4rem;
     overflow-y: auto;
 
     ::-webkit-scrollbar-track{
@@ -104,4 +104,24 @@ export const Input = styled.input``
 
 export const Title = styled.h2`
     margin: 1rem 0;
+`
+
+export const ImageContainder = styled.div`
+    position: absolute;
+    bottom: -6rem;
+    right: -4rem;
+    width: 20rem;
+    height: 20rem;
+
+    @media (max-width: 70rem) {
+        position: static;
+        width: 10rem;
+        height: 10rem;
+    }
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 `

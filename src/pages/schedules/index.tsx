@@ -1,7 +1,9 @@
+import dog from '@/aseets/dog.png'
 import ScheduleForm from '@/components/Forms/ScheduleForm'
 import Header from '@/components/Header'
 import Table from '@/components/table'
 import Head from 'next/head'
+import Image from 'next/image'
 import React from 'react'
 import * as S from './style'
 
@@ -29,6 +31,9 @@ const Schedules = () => {
             <S.Section>
               <ScheduleForm />
             </S.Section>
+            <S.ImageContainder>
+              <Image src={dog} alt="thumb-dog" />
+            </S.ImageContainder>
           </S.Content>
         </S.Main>
       </S.Container>
