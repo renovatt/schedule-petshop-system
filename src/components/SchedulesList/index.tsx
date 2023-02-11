@@ -7,136 +7,64 @@ const SchedulesList = ({ id, name, pet, sex, age, weight, breed, date, time, cli
   return (
     <S.Container>
       <S.ContentList>
-        <S.List className='animation-container'>
-          <S.ContentLeft>
+      <S.List className='animation-container'>
+          <S.ContentListLeft>
             <S.Icon color={pet}><FaDog /></S.Icon>
             <S.PetName>{pet}</S.PetName>
             <S.Span>-</S.Span>
             <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
+          </S.ContentListLeft>
+          <S.ContentListRight>
             <S.Time>{time}h</S.Time>
-          </S.ContentRight>
+          </S.ContentListRight>
         </S.List>
 
         <S.List className='animation-container'>
-          <S.ContentLeft>
+          <S.ContentListLeft>
             <S.Icon color={pet}><FaDog /></S.Icon>
             <S.PetName>{pet}</S.PetName>
             <S.Span>-</S.Span>
             <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
+          </S.ContentListLeft>
+          <S.ContentListRight>
             <S.Time>{time}h</S.Time>
-          </S.ContentRight>
+          </S.ContentListRight>
         </S.List>
 
         <S.List className='animation-container'>
-          <S.ContentLeft>
+          <S.ContentListLeft>
             <S.Icon color={pet}><FaDog /></S.Icon>
             <S.PetName>{pet}</S.PetName>
             <S.Span>-</S.Span>
             <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
+          </S.ContentListLeft>
+          <S.ContentListRight>
             <S.Time>{time}h</S.Time>
-          </S.ContentRight>
+          </S.ContentListRight>
         </S.List>
 
         <S.List className='animation-container'>
-          <S.ContentLeft>
+          <S.ContentListLeft>
             <S.Icon color={pet}><FaDog /></S.Icon>
             <S.PetName>{pet}</S.PetName>
             <S.Span>-</S.Span>
             <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
+          </S.ContentListLeft>
+          <S.ContentListRight>
             <S.Time>{time}h</S.Time>
-          </S.ContentRight>
+          </S.ContentListRight>
         </S.List>
 
         <S.List className='animation-container'>
-          <S.ContentLeft>
+          <S.ContentListLeft>
             <S.Icon color={pet}><FaDog /></S.Icon>
             <S.PetName>{pet}</S.PetName>
             <S.Span>-</S.Span>
             <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
+          </S.ContentListLeft>
+          <S.ContentListRight>
             <S.Time>{time}h</S.Time>
-          </S.ContentRight>
-        </S.List>
-
-        <S.List className='animation-container'>
-          <S.ContentLeft>
-            <S.Icon color={pet}><FaDog /></S.Icon>
-            <S.PetName>{pet}</S.PetName>
-            <S.Span>-</S.Span>
-            <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
-            <S.Time>{time}h</S.Time>
-          </S.ContentRight>
-        </S.List>
-
-        <S.List className='animation-container'>
-          <S.ContentLeft>
-            <S.Icon color={pet}><FaDog /></S.Icon>
-            <S.PetName>{pet}</S.PetName>
-            <S.Span>-</S.Span>
-            <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
-            <S.Time>{time}h</S.Time>
-          </S.ContentRight>
-        </S.List>
-
-        <S.List className='animation-container'>
-          <S.ContentLeft>
-            <S.Icon color={pet}><FaDog /></S.Icon>
-            <S.PetName>{pet}</S.PetName>
-            <S.Span>-</S.Span>
-            <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
-            <S.Time>{time}h</S.Time>
-          </S.ContentRight>
-        </S.List>
-
-        <S.List className='animation-container'>
-          <S.ContentLeft>
-            <S.Icon color={pet}><FaDog /></S.Icon>
-            <S.PetName>{pet}</S.PetName>
-            <S.Span>-</S.Span>
-            <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
-            <S.Time>{time}h</S.Time>
-          </S.ContentRight>
-        </S.List>
-
-        <S.List className='animation-container'>
-          <S.ContentLeft>
-            <S.Icon color={pet}><FaDog /></S.Icon>
-            <S.PetName>{pet}</S.PetName>
-            <S.Span>-</S.Span>
-            <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
-            <S.Time>{time}h</S.Time>
-          </S.ContentRight>
-        </S.List>
-
-        <S.List className='animation-container'>
-          <S.ContentLeft>
-            <S.Icon color={pet}><FaDog /></S.Icon>
-            <S.PetName>{pet}</S.PetName>
-            <S.Span>-</S.Span>
-            <S.Breed>{breed}</S.Breed>
-          </S.ContentLeft>
-          <S.ContentRight>
-            <S.Time>{time}h</S.Time>
-          </S.ContentRight>
+          </S.ContentListRight>
         </S.List>
       </S.ContentList>
     </S.Container>

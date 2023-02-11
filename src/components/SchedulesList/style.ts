@@ -15,10 +15,8 @@ export const ContentList = styled.ul`
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: .8rem;
     overflow-y: scroll;
     overflow-x: hidden;
-    border-radius: .8rem;
 
     ::-webkit-scrollbar{
         width: 6px;
@@ -39,7 +37,7 @@ export const List = styled.li`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 95%;
     height: 3rem;
     margin: .2rem;
     border-radius: .4rem;
@@ -51,13 +49,12 @@ export const List = styled.li`
     }
 `
 
-export const ContentLeft = styled.div`
+export const ContentListLeft = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     height: 4rem;
     width: auto;
-    padding-left: .8rem;
 `
 
 export const Icon = styled.div`
@@ -88,7 +85,7 @@ export const PetName = styled.h3`
 `
 
 export const Span = styled.span`
-    padding: .4rem;
+    margin: .2rem;
 `
 
 export const Breed = styled.p`
@@ -101,18 +98,19 @@ export const Breed = styled.p`
     }
 `
 
-export const ContentRight = styled.div`
+export const ContentListRight = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 4rem;
-    padding-right: .8rem;
 `
 
 export const Time = styled.h3`
-text-align: end;
-color: #fff;
-font-size: 1.5rem;
-width: 10rem;
+    text-align: end;
+    color: #fff;
+    font-size: 1rem;
+    padding-right: .4rem;
+
+
 `
