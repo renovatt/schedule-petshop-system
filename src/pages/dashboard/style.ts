@@ -7,6 +7,10 @@ export const Container = styled.section`
     justify-content: space-between;
     width: 100%;
     height: 100vh;    
+    
+    @media (max-width: 70rem) {
+        margin-bottom: 10rem;
+    }
 `
 
 export const Main = styled.div`

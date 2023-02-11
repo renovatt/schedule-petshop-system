@@ -9,6 +9,9 @@ export const Container = styled.header`
 `
 
 export const Main = styled.main`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
     min-width: 100vw;
 `

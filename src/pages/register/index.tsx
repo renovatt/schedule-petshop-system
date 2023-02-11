@@ -16,8 +16,9 @@ const Register = () => {
         <Header title='Cadastro de Clientes' />
         <S.Main className='animation-container'>
           <S.Content>
-            <ClientForm />
-
+            <S.Section>
+              <ClientForm />
+            </S.Section>
             <S.ImageContainder>
               <Image src={hug} alt='thumb' />
             </S.ImageContainder>

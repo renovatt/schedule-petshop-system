@@ -8,7 +8,11 @@ export const Form = styled.form`
     padding: 2rem;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(20px);
+
+    @media (max-width: 70rem) {
+        justify-content: center;
+        align-items: center;
+    }
 `
 
 export const Label = styled.label`
@@ -40,7 +44,7 @@ export const Input = styled.input`
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
-    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 5px 5px 35px rgba(0, 0, 0, 0.25); */
 
     &:focus{
         border: 1px solid #24c2ca;
@@ -60,19 +64,24 @@ export const ButtonContent = styled.div`
     justify-content: flex-start;
     width: 100%;
     height: 2rem;
+
+    @media (max-width: 70rem) {
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 0;
+    }
 `
 
 export const Button = styled.button`
     text-align: center;
     width: 15rem;
-    height: 3rem;
+    height: 2rem;
     font-weight: bold;
     border-radius: .8rem;
     transition: all .3s;
     color: #fff;
     background: #000;
     border: 1px solid transparent;
-    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.95);
 
     &:hover{

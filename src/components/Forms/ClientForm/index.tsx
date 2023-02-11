@@ -53,7 +53,7 @@ const ClientForm = () => {
                             }
                         })
                     }
-                    placeholder='Nome do cliente' />
+                    placeholder='Sexo' />
                 <S.InputAlert>{errors.sex?.message}</S.InputAlert>
             </S.Label>
 

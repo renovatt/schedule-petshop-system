@@ -17,6 +17,27 @@ body {
     /* background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(16,16,16,1) 0%, rgba(39,39,39,1) 100%); */
 }
 
+::-webkit-scrollbar{
+    width: 6px;
+}
+::-webkit-scrollbar-track{
+    background-color: #fff;
+    border-radius: .4rem;
+}
+::-webkit-scrollbar-thumb{
+    background: #ed2f5a;
+    border-radius: .4rem;
+}
+
+::selection{
+    background: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
 
 *, input, button{
     border:0;
@@ -48,6 +69,19 @@ button{
 .animation-container{
     opacity: 0;
     transform: translateX(-20px);
+    animation: fade .3s forwards;
+
+    @keyframes fade{
+        to{
+        opacity: 1;
+        transform: initial;
+        }
+    }
+}
+
+.animation-card{
+    opacity: 0;
+    transform: translateY(-20px);
     animation: fade .3s forwards;
 
     @keyframes fade{

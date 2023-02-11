@@ -1,6 +1,6 @@
+import ScheduleForm from '@/components/Forms/ScheduleForm'
 import Header from '@/components/Header'
-import ScheduleCreate from '@/components/ScheduleCreate'
-import SchedulesList from '@/components/SchedulesList'
+import Table from '@/components/table'
 import Head from 'next/head'
 import React from 'react'
 import * as S from './style'
@@ -15,7 +15,20 @@ const Schedules = () => {
         <Header title='Agendamentos' />
         <S.Main className='animation-container'>
           <S.Content>
-            <h1>Agendamentos</h1>
+            <S.Section>
+              <S.LastRegister>
+                <S.Header>
+                  <S.Title>Agendamentos do Dia</S.Title>
+                  <S.Date>
+                    <S.Span>Data:</S.Span><S.Input type="date" />
+                  </S.Date>
+                </S.Header>
+                <Table />
+              </S.LastRegister>
+            </S.Section>
+            <S.Section>
+              <ScheduleForm />
+            </S.Section>
           </S.Content>
         </S.Main>
       </S.Container>

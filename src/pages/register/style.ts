@@ -7,6 +7,10 @@ export const Container = styled.section`
     justify-content: space-between;
     width: 100%;
     height: 100vh;    
+
+    @media (max-width: 70rem) {
+        margin-bottom: 10rem;
+    }
 `
 
 export const Main = styled.div`
@@ -33,24 +37,51 @@ export const Content = styled.div`
 
     @media (max-width: 70rem) {
         margin: 0;
+        flex-direction: column;
+    }
+`
+
+export const Section = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: .8rem;
+    margin: 2rem;
+    overflow-y: auto;
+
+    ::-webkit-scrollbar-track{
+        background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb{
+        background: transparent;
+    }
+
+    @media (max-width: 70rem) {
+        width: 90%;
+        min-height: auto;
     }
 `
 
 export const ImageContainder = styled.div`
     position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: -2rem;
+    right: 0rem;
     width: 20rem;
     height: 20rem;
 
     @media (max-width: 70rem) {
-        display: none;
+        position: static;
+        width: 50%;
+        height: 10rem;
     }
 
     img{
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: drop-shadow(0 -6mm 4mm rgba(0, 0, 0, 0.25));
+        /* filter: drop-shadow(0 6mm 4mm rgba(0, 0, 0, 0.25)); */
     }
 `

@@ -28,6 +28,7 @@ export const Navigation = styled.nav<ContainerProps>`
         height: 5rem;
         width: 100%;
         border-radius: 3rem 3rem 0 0;
+        box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.95);
     }
 `
 
