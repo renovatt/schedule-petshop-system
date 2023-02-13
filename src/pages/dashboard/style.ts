@@ -46,11 +46,30 @@ export const Content = styled.div`
     }
 `
 
+export const SectionCards = styled.section`
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 70%;
+    height: 95%;
+    border-radius: .8rem;
+    margin: .4rem;
+
+    @media (max-width: 70rem) {
+        width: 90%;
+        min-height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+`
+
 export const Section = styled.section`
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: auto;
     height: 95%;
     border-radius: .8rem;
     margin: .4rem;
@@ -84,15 +103,26 @@ export const LastRegister = styled.div`
 
 export const Header = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: .8rem;
     margin-top: .4rem;
-    width: 100%;
+    width: 90%;
+`
+
+export const TitleContent = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg{
+        width: 2rem;
+        height: 2rem;
+    }
 `
 
 export const Title = styled.h3`
-    margin: .4rem 0;
+    margin: .4rem;
 `
 
 export const Form = styled.form`

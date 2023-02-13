@@ -4,6 +4,9 @@ import Head from 'next/head'
 import React from 'react'
 import * as S from './style'
 import { BiSearch } from 'react-icons/bi'
+import { FaUsers } from 'react-icons/fa'
+import SchedulesCard from '@/components/Cards/SchedulesCount'
+import Goal from '@/components/Cards/Goal'
 
 const Dashboard = () => {
   return (
@@ -16,15 +19,18 @@ const Dashboard = () => {
         <S.Main className='animation-container'>
           <S.Content>
 
-            <S.Section>
-              <h2>Contagem de todos os agendamentos do mês</h2>
-              <h2>sistema de busca de clientes</h2>
-            </S.Section>
+            <S.SectionCards>
+              <SchedulesCard />
+              <Goal />
+            </S.SectionCards>
 
             <S.Section>
               <S.LastRegister>
                 <S.Header>
-                  <S.Title>Clientes</S.Title>
+                  <S.TitleContent>
+                    <FaUsers />
+                    <S.Title>Clientes</S.Title>
+                  </S.TitleContent>
                   <S.Form>
                     <S.Search type="search" placeholder='Procurar cliente' />
                     <S.Button>
