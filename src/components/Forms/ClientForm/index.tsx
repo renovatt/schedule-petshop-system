@@ -90,7 +90,7 @@ const ClientForm = () => {
             <S.Label>
                 <S.Span>Bairro:</S.Span>
                 <S.Input type="text"
-                    {...register("district",
+                    {...register("neighborhood",
                         {
                             required: true, maxLength: {
                                 value: 20,
@@ -99,7 +99,7 @@ const ClientForm = () => {
                         })
                     }
                     placeholder='Bairro' />
-                <S.InputAlert>{errors.district?.message}</S.InputAlert>
+                <S.InputAlert>{errors.neighborhood?.message}</S.InputAlert>
             </S.Label>
 
             <S.Label>

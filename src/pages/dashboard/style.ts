@@ -20,6 +20,11 @@ export const Main = styled.div`
     width: 100%;
     height: 100%;
     padding: .4rem;
+    overflow: hidden;
+
+    @media (max-width: 70rem) {
+        overflow: initial;
+    }
 `
 
 export const Content = styled.div`
@@ -27,7 +32,7 @@ export const Content = styled.div`
     height: 95%;
     width: 90%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-radius: .8rem;
     overflow: hidden;
@@ -37,5 +42,95 @@ export const Content = styled.div`
 
     @media (max-width: 70rem) {
         margin: 0;
+        flex-direction: column-reverse;
+    }
+`
+
+export const Section = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    height: 95%;
+    border-radius: .8rem;
+    margin: .4rem;
+    overflow-y: auto;
+
+    ::-webkit-scrollbar-track{
+        background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb{
+        background: transparent;
+    }
+
+    @media (max-width: 70rem) {
+        width: 90%;
+        min-height: auto;
+    }
+`
+export const LastRegister = styled.div`
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: .4rem;
+    overflow: hidden;
+`
+
+export const Header = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: .8rem;
+    margin-top: .4rem;
+    width: 100%;
+`
+
+export const Title = styled.h3`
+    margin: .4rem 0;
+`
+
+export const Form = styled.form`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 12rem;
+`
+
+export const Search = styled.input`
+    height: 2rem;
+    width: 100%;
+    text-align: start;
+    padding-left: .4rem;
+    border-radius: .4rem;
+    border: 1px solid #ccc;
+    transition: all .3s;
+
+    &:focus{
+        border: 1px solid #24c2ca;
+    }
+`
+
+export const Button = styled.button`
+    text-align: center;
+    border-radius: .4rem;
+    height: 2rem;
+    width: 3rem;
+    border: 1px solid #ccc;
+    margin-left: .4rem;
+    transition: all .3s;
+
+    &:hover{
+        cursor: pointer;
+        border: 1px solid #24c2ca;
+    }
+
+    svg{
+        margin-top: .2rem;
     }
 `

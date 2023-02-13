@@ -36,6 +36,7 @@ body {
 html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
 }
 
 

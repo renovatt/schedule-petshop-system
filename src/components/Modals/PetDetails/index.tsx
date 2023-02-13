@@ -6,7 +6,7 @@ import pet from '@/aseets/pet.png'
 import { MdPets } from 'react-icons/md'
 import { PetModalProps } from './types'
 
-const PetDetails = ({ setPetModalOpen }: PetModalProps) => {
+const PetDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     return (
         <S.Container className='animation-container'>
             <S.Content>
@@ -19,20 +19,20 @@ const PetDetails = ({ setPetModalOpen }: PetModalProps) => {
                             <Image src={pet} alt="pet-image" />
                         </S.CardImage>
                         <S.Description>
-                            <S.Pet>Jubileu</S.Pet>
+                            <S.Pet>{petProps.pet}</S.Pet>
                             <S.Info>
-                                <S.Text>2 anos</S.Text>
+                                <S.Text>{petProps.age} anos</S.Text>
                                 <S.Icon>
                                     <MdPets />
                                 </S.Icon>
-                                <S.Text>25 kg</S.Text>
+                                <S.Text>{petProps.weight} kg</S.Text>
                             </S.Info>
                             <S.Info>
-                                <S.Text>Rusky</S.Text>
+                                <S.Text>{petProps.breed}</S.Text>
                                 <S.Icon>
                                     <MdPets />
                                 </S.Icon>
-                                <S.Text>Macho</S.Text>
+                                <S.Text>{petProps.sex}</S.Text>
                             </S.Info>
                         </S.Description>
                     </S.Header>

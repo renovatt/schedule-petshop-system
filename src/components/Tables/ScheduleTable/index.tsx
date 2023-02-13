@@ -1,26 +1,26 @@
 import React from 'react'
-import SchedulesList from '../SchedulesList'
-import * as S from './style'
+import ScheduleList from '../../Lists/SchedulesList'
+import * as S from '../ClientTable/style'
 
-const Table = () => {
+const ScheduleTable = () => {
     let appointmentDate = new Date("2023-02-11T10:00:00");
     return (
         <S.Container>
-            <SchedulesList
+            <ScheduleList
                 key={''}
                 id=''
                 svg=''
                 name='Will'
                 pet='Jubileu'
                 age='2'
-                sex='M'
+                sex='Macho'
                 breed='Rasky'
-                weight='2kg'
+                weight='2'
                 client
-                time='12:23'
+                time='12:25'
                 date={appointmentDate} />
         </S.Container>
     )
 }
 
-export default Table
+export default ScheduleTable

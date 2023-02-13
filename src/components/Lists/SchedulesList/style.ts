@@ -9,6 +9,7 @@ export const Container = styled.div`
 `
 
 export const ContentList = styled.ul`
+    position: relative;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -43,9 +44,11 @@ export const List = styled.li`
     border-radius: .4rem;
     color: #fff;
     background: #101010;
+    transition: all .3s;
     
     &:hover{
         cursor: pointer;
+        margin-left: 2rem;
     }
 `
 

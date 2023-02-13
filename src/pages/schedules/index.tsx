@@ -1,7 +1,7 @@
 import dog from '@/aseets/dog.png'
 import ScheduleForm from '@/components/Forms/ScheduleForm'
 import Header from '@/components/Header'
-import Table from '@/components/table'
+import ScheduleTable from '@/components/Tables/ScheduleTable'
 import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
@@ -25,7 +25,7 @@ const Schedules = () => {
                     <S.Span>Data:</S.Span><S.Input type="date" />
                   </S.Date>
                 </S.Header>
-                <Table />
+                <ScheduleTable />
               </S.LastRegister>
             </S.Section>
             <S.Section>

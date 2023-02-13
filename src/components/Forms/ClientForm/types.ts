@@ -5,7 +5,7 @@ export type Inputs = {
     sex: string,
     street: string,
     number: string,
-    district: string
+    neighborhood: string
     city: string
     contact: string,
 };
