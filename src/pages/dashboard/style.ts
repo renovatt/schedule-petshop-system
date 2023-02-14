@@ -6,10 +6,11 @@ export const Container = styled.section`
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    height: 100vh;    
+    height: 100vh;
     
     @media (max-width: 70rem) {
-        margin-bottom: 10rem;
+        height: 100%;
+        margin-bottom: 8rem;
     }
 `
 
@@ -21,6 +22,7 @@ export const Main = styled.div`
     height: 100%;
     padding: .4rem;
     overflow: hidden;
+    margin-top: 1rem;
 
     @media (max-width: 70rem) {
         overflow: initial;
@@ -42,6 +44,22 @@ export const Content = styled.div`
 
     @media (max-width: 70rem) {
         margin: 0;
+        flex-direction: column;
+    }
+`
+
+export const CardThumbContent = styled.div`
+    position: relative;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border-radius: .8rem;
+
+    @media (max-width: 70rem) {
+        width: 90%;
         flex-direction: column-reverse;
     }
 `
@@ -49,18 +67,34 @@ export const Content = styled.div`
 export const SectionCards = styled.section`
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 70%;
-    height: 95%;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
     border-radius: .8rem;
-    margin: .4rem;
 
     @media (max-width: 70rem) {
-        width: 90%;
         min-height: auto;
-        justify-content: center;
-        align-items: center;
+        flex-wrap: initial;
+        flex-direction: column;
+    }
+`
+
+export const Thumb = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    border-radius: .8rem;
+    margin: .4rem;
+    overflow: hidden;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.55);
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 `
 
@@ -74,6 +108,7 @@ export const Section = styled.section`
     border-radius: .8rem;
     margin: .4rem;
     overflow-y: auto;
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 
     ::-webkit-scrollbar-track{
         background-color: transparent;
@@ -85,7 +120,7 @@ export const Section = styled.section`
 
     @media (max-width: 70rem) {
         width: 90%;
-        min-height: auto;
+        max-height: 25rem;
     }
 `
 export const LastRegister = styled.div`
@@ -99,6 +134,10 @@ export const LastRegister = styled.div`
     background: #fff;
     padding: .4rem;
     overflow: hidden;
+
+    @media (max-width: 70rem) {
+        /* max-height: 25rem; */
+    }
 `
 
 export const Header = styled.div`
@@ -136,6 +175,7 @@ export const Search = styled.input`
     height: 2rem;
     width: 100%;
     text-align: start;
+    font-size: .8rem;
     padding-left: .4rem;
     border-radius: .4rem;
     border: 1px solid #ccc;

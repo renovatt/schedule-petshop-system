@@ -5,8 +5,13 @@ import React from 'react'
 import * as S from './style'
 import { BiSearch } from 'react-icons/bi'
 import { FaUsers } from 'react-icons/fa'
-import SchedulesCard from '@/components/Cards/SchedulesCount'
+import SchedulesCount from '@/components/Cards/SchedulesCount'
 import Goal from '@/components/Cards/Goal'
+import SchedulesCanceled from '@/components/Cards/SchedulesCanceled'
+import Image from 'next/image'
+import thumb from '@/aseets/thumb.jpg'
+import SchedulesCountDaily from '@/components/Cards/SchedulesCountDaily'
+
 
 const Dashboard = () => {
   return (
@@ -19,10 +24,18 @@ const Dashboard = () => {
         <S.Main className='animation-container'>
           <S.Content>
 
-            <S.SectionCards>
-              <SchedulesCard />
-              <Goal />
-            </S.SectionCards>
+            <S.CardThumbContent>
+              <S.SectionCards>
+                <SchedulesCount />
+                <SchedulesCanceled />
+                <Goal />
+                <SchedulesCountDaily />
+              </S.SectionCards>
+
+              <S.Thumb>
+                <Image src={thumb} alt="thumb" />
+              </S.Thumb>
+            </S.CardThumbContent>
 
             <S.Section>
               <S.LastRegister>

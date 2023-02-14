@@ -7,7 +7,7 @@ const Goal = () => {
         <S.Container>
             <S.Content>
                 <GiProgression />
-                <S.Title>Meta do mês</S.Title>
+                <S.Title>Meta mensal</S.Title>
             </S.Content>
             <S.ContentBar>
                 <S.ProgressBar goal={60}></S.ProgressBar>

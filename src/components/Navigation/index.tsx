@@ -1,9 +1,10 @@
 import React from 'react'
 import * as S from './style'
 import { BsGithub } from 'react-icons/bs'
-import { FaAddressCard } from 'react-icons/fa'
+import { FaAddressCard, FaBone } from 'react-icons/fa'
 import { RiLogoutCircleLine } from 'react-icons/ri'
-import { MdSpaceDashboard, MdPets } from 'react-icons/md'
+import { BiBone } from 'react-icons/bi'
+import { MdSpaceDashboard } from 'react-icons/md'
 import { AiFillSchedule, AiFillLinkedin } from 'react-icons/ai'
 
 const Navigation = () => {
@@ -13,8 +14,8 @@ const Navigation = () => {
             <S.ListContainer>
                 <S.List>
                     <S.NavLink href='/'>
-                        <S.Icon><MdPets /></S.Icon>
-                        <S.Title>YourPet</S.Title>
+                        <S.Icon><BiBone /></S.Icon>
+                        <S.Title>CutePet</S.Title>
                     </S.NavLink>
                 </S.List>
 

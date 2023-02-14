@@ -39,7 +39,7 @@ export const Input = styled.input`
     height: 2rem;
     width: 100%;
     text-align: start;
-    border-radius: .8rem;
+    border-radius: .4rem;
     margin-top: .4rem;
     padding-left: .4rem;
     transition: all .3s;
@@ -47,7 +47,7 @@ export const Input = styled.input`
     /* box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25); */
 
     &:focus{
-        border: 1px solid #24c2ca;
+        border: 1px solid #ff6b00;
     }
 `
 
@@ -96,7 +96,7 @@ export const Button = styled.button`
     width: 15rem;
     height: 2rem;
     font-weight: bold;
-    border-radius: .8rem;
+    border-radius: .4rem;
     transition: all .3s;
     color: #fff;
     background: #000;

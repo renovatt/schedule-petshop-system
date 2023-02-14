@@ -9,4 +9,13 @@ export const Container = styled.div`
     min-height: 5rem;
     border-radius: .8rem;
     overflow: hidden;
+    overflow-y: auto;
+
+    ::-webkit-scrollbar-track{
+        background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb{
+        background: transparent;
+    }
 `

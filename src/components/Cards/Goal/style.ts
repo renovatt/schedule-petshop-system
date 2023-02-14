@@ -13,9 +13,13 @@ export const Container = styled.section`
         height: 8rem;
         width: 15rem;
         border-radius: .8rem;
-        margin: .4rem;
+        margin: .8rem;
         padding: .8rem;
         box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
+
+        @media (max-width: 70rem) {
+            width: 100%;
+        }
 `
 
 export const Content = styled.div`

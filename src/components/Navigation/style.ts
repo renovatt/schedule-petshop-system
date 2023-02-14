@@ -50,12 +50,14 @@ export const List = styled.li`
     position: relative;
     width: 100%;
     transition: all .3s;
-    /* border-top-left-radius: 1.875rem; */
-    border-bottom-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
     overflow: hidden;
+    
+    margin-bottom: .4rem;
 
     &:hover{
-        background: #ed2f5a;
+        background: #ff6b00;
     }
 
     &:nth-child(1){
@@ -63,21 +65,25 @@ export const List = styled.li`
         margin-bottom: 2.5rem;
         background: none;
 
+        /* border-top-right-radius: 0; */
+        /* border-bottom-right-radius: 0; */
+
         @media (max-width: 70rem){
-        display: none;
+            display: none;
         }
+
     }
 
     &:hover:nth-child(1){
-        /* margin-left: -1rem; */
+        margin-left: -.4rem;
         
         @media (max-width: 70rem){
             margin-left: 0;
         }
 
         &:hover{
-        background: #ed2f5a;
-    }
+            background: #fff; //aqui
+        }
     }
 
     @media (max-width: 70rem){
@@ -89,23 +95,23 @@ export const List = styled.li`
         border-radius: 50%;
 
         &:hover{
-        background: none;
-    }
+            background: #ff6b00;
+        }
     }
 `
 
 export const NavLink = styled(Link)`
     display: flex;
-    color: #ed2f5a;
+    color: #ff6b00;
     width: 100%;
     transition: all .3s;
     font-weight: bold;
 
     &:hover{
         cursor: pointer;
-        margin-left: 1rem;
+        margin-left: .4rem;
         color: #fff;
-        background: #ed2f5a;
+        background: #ff6b00; //aqui
 
         @media (max-width: 70rem){
             margin-left: 0;
@@ -166,14 +172,14 @@ export const GitHubLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ed2f5a;
+    color: #101010;
     width: 100%;
     margin-left: -.4rem;
     transition: all .3s;
 
     &:hover{
         cursor: pointer;
-        color: #000;
+        color: #ff6b00;
     }
 `
 
@@ -199,14 +205,14 @@ export const LinkedinLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ed2f5a;
+    color: #101010;
     width: 100%;
     margin-left: -.4rem;
     transition: all .3s;
 
     &:hover{
         cursor: pointer;
-        color: #000;
+        color: #ff6b00;
     }
 `
 
@@ -232,7 +238,7 @@ export const LogoutLink = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ed2f5a;
+    color: #ff6b00;
     width: 100%;
     margin-left: -.4rem;
     transform: rotate(90deg);
@@ -279,7 +285,7 @@ export const Toggle = styled.div`
         border-radius: 3px;
         transform: translateY(-5px);
         transition: 1s;
-        background: #ed2f5a;
+        background: #ff6b00;
     }
 
     ::after{
@@ -290,7 +296,7 @@ export const Toggle = styled.div`
         border-radius: 3px;
         transform: translateY(5px);
         transition: 1s;
-        background: #ed2f5a;
+        background: #ff6b00;
     }
 
     @media (max-width: 70rem){

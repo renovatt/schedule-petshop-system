@@ -17,13 +17,13 @@ export const Nav = styled.section`
         justify-content: flex-start;
         width: 100%;
         height: 4rem;
-        color: #ed2f5a;
+        color: #ff6b00;
         padding: 1rem;
         transition: all .3s;
         margin: .4rem;
 
         &:hover{
-            background: #ed2f5a;
+            background: #ff6b00;
             color: #fff;
             margin-left: 2rem;
         }
