@@ -45,6 +45,7 @@ export const Content = styled.div`
     @media (max-width: 70rem) {
         margin: 0;
         flex-direction: column;
+        padding: .8rem 0;
     }
 `
 
