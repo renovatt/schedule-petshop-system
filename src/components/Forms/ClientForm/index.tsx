@@ -6,7 +6,7 @@ import { Inputs } from './types';
 const options = ["Masculino", "Feminino"]
 
 const ClientForm = () => {
-    const { register, handleSubmit, reset, control, formState: { errors } } = useForm<Inputs>();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = data => {
         console.log(data);
         reset();

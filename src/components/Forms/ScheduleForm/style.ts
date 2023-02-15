@@ -150,6 +150,11 @@ export const Button = styled.button`
         color: #000;
         background: #fff;
         border: 1px solid #000;
-        /* background: #24c2ca; */
+    }
+
+    &:disabled{
+        cursor: not-allowed;
+        background: #000;
+        color: #fff;
     }
 `

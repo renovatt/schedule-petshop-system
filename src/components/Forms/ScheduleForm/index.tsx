@@ -10,7 +10,10 @@ const ScheduleForm = () => {
     const onSubmit: SubmitHandler<Inputs> = data => {
         console.log(data);
         reset();
+        setClientCheckBox(!isClient)
     }
+
+    const [isClient, setClientCheckBox] = React.useState(false)
 
     return (
         <S.Form onSubmit={handleSubmit(onSubmit)}>
@@ -124,13 +127,19 @@ const ScheduleForm = () => {
             </S.Label>
 
             <S.CheckLabel>
-                <S.CheckInput type="checkbox" {...register("client")} />
+                <S.CheckInput
+                    type="checkbox"
+                    checked={isClient}
+                    {...register("client",
+                        { onChange: () => setClientCheckBox(!isClient) }
+                    )} />
                 <S.Span>Já é cliente?</S.Span>
                 <S.InputAlert>{errors.client?.message}</S.InputAlert>
             </S.CheckLabel>
 
             <S.ButtonContent>
-                <S.Button>Confirmar Agendamento</S.Button>
+                {!isClient ? <S.Button disabled>Confirmar Agendamento</S.Button> :
+                    <S.Button>Confirmar Agendamento</S.Button>}
             </S.ButtonContent>
         </S.Form>
     )

@@ -4,9 +4,9 @@ export type Inputs = {
     pet: string,
     breed: string,
     age: string,
-    weight?: string
+    weight: string
     sex: string,
     date: string,
     time: string,
-    client?: boolean,
+    client: boolean,
 };
