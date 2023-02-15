@@ -3,8 +3,10 @@ import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Inputs } from './types';
 
+const options = ["Masculino", "Feminino"]
+
 const ClientForm = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs>();
+    const { register, handleSubmit, reset, control, formState: { errors } } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = data => {
         console.log(data);
         reset();
@@ -15,11 +17,12 @@ const ClientForm = () => {
             <S.Label>
                 <S.Span>Nome:</S.Span>
                 <S.Input type="text"
+                    maxLength={40}
                     {...register("name",
                         {
                             required: true, maxLength: {
                                 value: 40,
-                                message: "*Capacidade máxima de 40 caracteres"
+                                message: "*Capacidade máxima de 40 caracteres."
                             }
                         })
                     }
@@ -28,33 +31,32 @@ const ClientForm = () => {
             </S.Label>
 
             <S.Label>
+                <S.Span>Sexo:</S.Span>
+                <S.Select {...register("sex", {
+                    required: true
+                })}>
+                    <S.Option value="" defaultChecked>Escolha</S.Option>
+                    {options.map((value, index) => (
+                        <S.Option key={index} value={value}>
+                            {value}
+                        </S.Option>
+                    ))}
+                </S.Select>
+            </S.Label>
+
+            <S.Label>
                 <S.Span>Idade:</S.Span>
-                <S.Input type="text"
+                <S.Input type="number"
                     {...register("age",
                         {
                             required: true, maxLength: {
                                 value: 2,
-                                message: "*Capacidade máxima de 2 caracteres"
+                                message: "*Capacidade de máxima 2 caracteres."
                             }
                         })
                     }
                     placeholder='Idade' />
                 <S.InputAlert>{errors.age?.message}</S.InputAlert>
-            </S.Label>
-
-            <S.Label>
-                <S.Span>Sexo:</S.Span>
-                <S.Input type="text"
-                    {...register("sex",
-                        {
-                            required: true, minLength: {
-                                value: 1,
-                                message: "*Preencha todos os campos."
-                            }
-                        })
-                    }
-                    placeholder='Sexo' />
-                <S.InputAlert>{errors.sex?.message}</S.InputAlert>
             </S.Label>
 
             <S.Label>
@@ -64,7 +66,7 @@ const ClientForm = () => {
                         {
                             required: true, maxLength: {
                                 value: 40,
-                                message: "*Capacidade máxima de 40 caracteres"
+                                message: "*Capacidade máxima de 40 caracteres."
                             }
                         })
                     }
@@ -74,12 +76,12 @@ const ClientForm = () => {
 
             <S.Label>
                 <S.Span>Número:</S.Span>
-                <S.Input type="text"
+                <S.Input type="number"
                     {...register("number",
                         {
                             required: true, maxLength: {
                                 value: 5,
-                                message: "*Capacidade máxima de 5 caracteres"
+                                message: "*Capacidade máxima de 5 caracteres."
                             }
                         })
                     }
@@ -94,7 +96,7 @@ const ClientForm = () => {
                         {
                             required: true, maxLength: {
                                 value: 20,
-                                message: "*Capacidade máxima de 20 caracteres"
+                                message: "*Capacidade máxima de 20 caracteres."
                             }
                         })
                     }
@@ -109,7 +111,7 @@ const ClientForm = () => {
                         {
                             required: true, maxLength: {
                                 value: 10,
-                                message: "*Capacidade máxima de 10 caracteres"
+                                message: "*Capacidade máxima de 10 caracteres."
                             }
                         })
                     }
@@ -119,21 +121,21 @@ const ClientForm = () => {
 
             <S.Label>
                 <S.Span>Contato:</S.Span>
-                <S.Input type="text"
+                <S.Input type="number"
                     {...register("contact",
                         {
                             required: true, maxLength: {
                                 value: 11,
-                                message: "*Capacidade máxima de 11 caracteres"
+                                message: "*Capacidade máxima de 12 caracteres."
                             }
                         })
                     }
                     placeholder='(00) 00000-0000' />
                 <S.InputAlert>{errors.contact?.message}</S.InputAlert>
             </S.Label>
-            
+
             <S.ButtonContent>
-                <S.Button>Confirmar Registro</S.Button>
+                <S.Button>Confirmar Cadastro</S.Button>
             </S.ButtonContent>
         </S.Form>
     )

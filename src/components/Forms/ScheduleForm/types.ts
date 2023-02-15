@@ -1,6 +1,6 @@
 export type Inputs = {
     id: string;
-    name: string,
+    tutor: string,
     pet: string,
     breed: string,
     age: string,

@@ -51,6 +51,49 @@ export const Input = styled.input`
     }
 `
 
+export const Select = styled.select`
+    padding: .4rem;
+    margin-top: .4rem;
+    font-size: .8rem;
+    line-height: 1.3;
+    color: #666;
+    width: 100%;
+    height: 2rem;
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:focus {
+        outline: none;
+        border-color: #ff6b00;
+    }
+`
+
+export const Option = styled.option`
+    padding: .4rem;
+    font-size: .8rem;
+    border-radius: .4rem;
+    color: #333;
+    background-color: #fff;
+
+    &:hover {
+        background-color: #ff6b00;
+    }
+
+    &:checked {
+        color: #fff;
+        background-color: #ff6b00;
+    }
+`
+
 export const InputAlert = styled.span`
     font-size: .6rem;
     color: #f01;

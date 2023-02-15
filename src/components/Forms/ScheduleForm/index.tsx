@@ -3,6 +3,8 @@ import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Inputs } from './types';
 
+const options = ["Macho", "Fêmea"]
+
 const ScheduleForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = data => {
@@ -13,23 +15,24 @@ const ScheduleForm = () => {
     return (
         <S.Form onSubmit={handleSubmit(onSubmit)}>
             <S.Label>
-                <S.Span>Nome:</S.Span>
+                <S.Span>Tutor:</S.Span>
                 <S.Input type="text"
-                    {...register("name",
+                    {...register("tutor",
                         {
                             required: true, maxLength: {
                                 value: 40,
-                                message: "*Capacidade máxima de 40 caracteres"
+                                message: "*Capacidade máxima de 40 caracteres."
                             }
                         })
                     }
-                    placeholder='Nome do cliente' />
-                <S.InputAlert>{errors.name?.message}</S.InputAlert>
+                    placeholder='Nome do tutor' />
+                <S.InputAlert>{errors.tutor?.message}</S.InputAlert>
             </S.Label>
 
             <S.Label>
                 <S.Span>Pet:</S.Span>
                 <S.Input type="text"
+                    maxLength={20}
                     {...register("pet",
                         {
                             required: true, minLength: {
@@ -45,11 +48,12 @@ const ScheduleForm = () => {
             <S.Label>
                 <S.Span>Raça:</S.Span>
                 <S.Input type="text"
+                    maxLength={20}
                     {...register("breed",
                         {
                             required: true, minLength: {
-                                value: 3,
-                                message: "*Preencha todos os campos."
+                                value: 5,
+                                message: "*Deve ter pelo menos 5 caracteres."
                             }
                         })
                     }
@@ -59,12 +63,12 @@ const ScheduleForm = () => {
 
             <S.Label>
                 <S.Span>Idade:</S.Span>
-                <S.Input type="text"
+                <S.Input type="number"
                     {...register("age",
                         {
                             required: true, maxLength: {
-                                value: 20,
-                                message: "*Capacidade máxima de 20 caracteres"
+                                value: 2,
+                                message: "*Capacidade máxima de 2 caracteres."
                             }
                         })
                     }
@@ -74,12 +78,12 @@ const ScheduleForm = () => {
 
             <S.Label>
                 <S.Span>Peso:</S.Span>
-                <S.Input type="text"
+                <S.Input type="number"
                     {...register("weight",
                         {
-                            required: true, minLength: {
-                                value: 1,
-                                message: "*Preencha todos os campos."
+                            required: true, maxLength: {
+                                value: 2,
+                                message: "*Capacidade máxima de 2 caracteres."
                             }
                         })
                     }
@@ -89,44 +93,33 @@ const ScheduleForm = () => {
 
             <S.Label>
                 <S.Span>Sexo:</S.Span>
-                <S.Input type="text"
-                    {...register("sex",
-                        {
-                            required: true, minLength: {
-                                value: 1,
-                                message: "*Preencha todos os campos."
-                            }
-                        })
-                    }
-                    placeholder='Sexo do pet' />
-                <S.InputAlert>{errors.sex?.message}</S.InputAlert>
+                <S.Select {...register("sex", {
+                    required: true
+                })}>
+                    <S.Option value="" defaultChecked>Escolha</S.Option>
+                    {options.map((value, index) => (
+                        <S.Option key={index} value={value}>
+                            {value}
+                        </S.Option>
+                    ))}
+                </S.Select>
             </S.Label>
 
             <S.Label>
                 <S.Span>Data:</S.Span>
                 <S.Input type="date"
-                    {...register("date",
-                        {
-                            required: true, minLength: {
-                                value: 1,
-                                message: "*Preencha todos os campos."
-                            }
-                        })
-                    } />
+                    {...register("date", {
+                        required: true
+                    })} />
                 <S.InputAlert>{errors.date?.message}</S.InputAlert>
             </S.Label>
 
             <S.Label>
                 <S.Span>Hora:</S.Span>
                 <S.Input type="time"
-                    {...register("time",
-                        {
-                            required: true, minLength: {
-                                value: 1,
-                                message: "*Preencha todos os campos."
-                            }
-                        })
-                    } />
+                    {...register("time", {
+                        required: true
+                    })} />
                 <S.InputAlert>{errors.time?.message}</S.InputAlert>
             </S.Label>
 
