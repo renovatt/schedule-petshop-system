@@ -51,6 +51,10 @@ export const Input = styled.input`
     }
 `
 
+export const DataList = styled.datalist`
+   
+`
+
 export const Select = styled.select`
     padding: .4rem;
     margin-top: .4rem;

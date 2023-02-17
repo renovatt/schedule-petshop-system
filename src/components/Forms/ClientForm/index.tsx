@@ -1,13 +1,13 @@
 import React from 'react'
 import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Inputs } from './types';
+import { ClientFormProps } from './types';
 
 const options = ["Masculino", "Feminino"]
 
 const ClientForm = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = data => {
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ClientFormProps>();
+    const onSubmit: SubmitHandler<ClientFormProps> = data => {
         console.log(data);
         reset();
     }
@@ -77,7 +77,7 @@ const ClientForm = () => {
             <S.Label>
                 <S.Span>Número:</S.Span>
                 <S.Input type="number"
-                    {...register("number",
+                    {...register("house_number",
                         {
                             required: true, maxLength: {
                                 value: 5,
@@ -86,7 +86,7 @@ const ClientForm = () => {
                         })
                     }
                     placeholder='Número da casa' />
-                <S.InputAlert>{errors.number?.message}</S.InputAlert>
+                <S.InputAlert>{errors.house_number?.message}</S.InputAlert>
             </S.Label>
 
             <S.Label>

@@ -1,25 +1,64 @@
 import React from 'react'
 import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Inputs } from './types';
+import { dogFetchProps, ScheduleFormProps } from './types';
 
 const options = ["Macho", "Fêmea"]
 
 const ScheduleForm = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = data => {
-        console.log(data);
-        reset();
-        setClientCheckBox(!isClient)
+    const base_url = `https://api.thedogapi.com/v1/breeds`
+
+    const dogFetchApi = async () => {
+        const response = await fetch(base_url)
+        const data = await response.json()
+        try {
+            const petResponse = data.map((item: dogFetchProps) => ({
+                id: item.id,
+                name: item.name,
+                image: item.image.url,
+                reference_image_id: item.reference_image_id
+            }))
+            setDogInfo(petResponse)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
+    const sendingDataToDB = async (data: ScheduleFormProps) => {
+        const response = await fetch('/api/schedules', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        const json = await response.json()
+        console.log("json", json)
+    }
+
+    const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();
     const [isClient, setClientCheckBox] = React.useState(false)
+    const [dogInfo, setDogInfo] = React.useState<dogFetchProps[]>([])
+    const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState('');
+
+    const onSubmit: SubmitHandler<ScheduleFormProps> = data => {
+        sendingDataToDB(data)
+        reset();
+        setClientCheckBox(!isClient);
+    }
+
+    React.useEffect(() => {
+        setValue("reference_image_id", selectedReferenceImageId);
+        dogFetchApi()
+    }, [selectedReferenceImageId])
 
     return (
         <S.Form onSubmit={handleSubmit(onSubmit)}>
             <S.Label>
                 <S.Span>Tutor:</S.Span>
-                <S.Input type="text"
+                <S.Input
+                    maxLength={41}
+                    type="text"
                     {...register("tutor",
                         {
                             required: true, maxLength: {
@@ -34,13 +73,14 @@ const ScheduleForm = () => {
 
             <S.Label>
                 <S.Span>Pet:</S.Span>
-                <S.Input type="text"
-                    maxLength={20}
+                <S.Input
+                    maxLength={21}
+                    type="text"
                     {...register("pet",
                         {
-                            required: true, minLength: {
-                                value: 1,
-                                message: "*Preencha todos os campos."
+                            required: true, maxLength: {
+                                value: 20,
+                                message: "*Capacidade máxima de 20 caracteres."
                             }
                         })
                     }
@@ -48,25 +88,66 @@ const ScheduleForm = () => {
                 <S.InputAlert>{errors.pet?.message}</S.InputAlert>
             </S.Label>
 
-            <S.Label>
+            {/* 
+            <S.Label htmlFor="breeds">
                 <S.Span>Raça:</S.Span>
-                <S.Input type="text"
-                    maxLength={20}
-                    {...register("breed",
-                        {
-                            required: true, minLength: {
-                                value: 5,
-                                message: "*Deve ter pelo menos 5 caracteres."
-                            }
-                        })
-                    }
+                <S.Input
+                    maxLength={22}
+                    type="text"
+                    list="alpha"
+                    id="breeds"
+                    {...register("breed", {
+                        required: true, maxLength: {
+                            value: 20,
+                            message: "*Capacidade máxima de 20 caracteres."
+                        }
+                    })}
                     placeholder='Raça' />
+
+                {breeds.map((breed) => (
+                    <S.DataList id="alpha">
+                        {breed.breeds.map((breed, index) => (
+                            <S.Option key={index} value={breed.name}></S.Option>
+                        ))}
+                    </S.DataList>
+                ))}
+                <S.InputAlert>{errors.breed?.message}</S.InputAlert>
+            </S.Label> */}
+
+            <S.Label htmlFor="breeds">
+                <S.Span>Raça:</S.Span>
+                <S.Input
+                    maxLength={42}
+                    type="text"
+                    list="alpha"
+                    id="breeds"
+                    {...register("breed", {
+                        required: true, maxLength: {
+                            value: 40,
+                            message: "*Capacidade máxima de 40 caracteres."
+                        }
+                    })}
+                    placeholder='Raça'
+                    onChange={(event) => {
+                        const selectedBreed = dogInfo.find((breed) => breed.name === event.target.value);
+                        if (selectedBreed) {
+                            setSelectedReferenceImageId(selectedBreed.reference_image_id);
+                        } else {
+                            setSelectedReferenceImageId("error")
+                        }
+                    }} />
+                <S.DataList id="alpha">
+                    {dogInfo.map((breed) => (
+                        <S.Option key={breed.id} value={breed.name}>{breed.name}</S.Option>
+                    ))}
+                </S.DataList>
                 <S.InputAlert>{errors.breed?.message}</S.InputAlert>
             </S.Label>
 
             <S.Label>
                 <S.Span>Idade:</S.Span>
-                <S.Input type="number"
+                <S.Input
+                    type="number"
                     {...register("age",
                         {
                             required: true, maxLength: {
@@ -81,7 +162,8 @@ const ScheduleForm = () => {
 
             <S.Label>
                 <S.Span>Peso:</S.Span>
-                <S.Input type="number"
+                <S.Input
+                    type="number"
                     {...register("weight",
                         {
                             required: true, maxLength: {
@@ -145,4 +227,4 @@ const ScheduleForm = () => {
     )
 }
 
-export default ScheduleForm
+export default ScheduleForm;

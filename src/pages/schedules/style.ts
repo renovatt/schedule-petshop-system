@@ -54,7 +54,7 @@ export const Section = styled.section`
     height: 95%;
     border-radius: .8rem;
     margin: .4rem;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 
     ::-webkit-scrollbar-track{
         background-color: transparent;

@@ -6,7 +6,15 @@ import pet from '@/aseets/pet.png'
 import { MdPets } from 'react-icons/md'
 import { PetModalProps } from './types'
 
+
 const PetDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
+    const petImage = `https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.jpg`
+
+    function handleLoad(event: React.SyntheticEvent<HTMLImageElement>): void {
+        const target = event.target as HTMLImageElement;
+        target.style.opacity = "1";
+    }
+
     return (
         <S.Container className='animation-container'>
             <S.Content>
@@ -16,7 +24,16 @@ const PetDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                 <S.Details>
                     <S.Header>
                         <S.CardImage>
-                            <Image src={pet} alt="pet-image" />
+                            <Image
+                                src={petImage}
+                                alt="pet-image"
+                                width="500"
+                                height="500"
+                                decoding='async'
+                                data-nimg='1'
+                                loading='lazy'
+                                // style='color: transparent'
+                                onLoad={handleLoad} />
                         </S.CardImage>
                         <S.Description>
                             <S.Pet>{petProps.pet}</S.Pet>

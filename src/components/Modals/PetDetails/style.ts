@@ -100,8 +100,10 @@ export const CardImage = styled.section`
         object-fit: cover;
         width: 100%;
         height: 100%;
+        opacity: 0;
     }
 `
+
 export const Description = styled.article`
     display: flex;
     justify-content: space-between;

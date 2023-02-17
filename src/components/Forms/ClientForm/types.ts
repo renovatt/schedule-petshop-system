@@ -1,10 +1,9 @@
-export type Inputs = {
-    id: string;
+export type ClientFormProps = {
     name: string,
     age: string,
     sex: string,
     street: string,
-    number: string,
+    house_number: string,
     neighborhood: string
     city: string
     contact: string,
