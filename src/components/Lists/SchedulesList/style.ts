@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +43,7 @@ export const List = styled.li`
     
     &:hover{
         cursor: pointer;
-        margin-left: 2rem;
+        margin-left: 1rem;
     }
 `
 
@@ -50,7 +51,7 @@ export const ContentListLeft = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 4rem;
+    height: 100%;
     width: auto;
 `
 
@@ -75,7 +76,8 @@ export const PetName = styled.h3`
     text-align: start;
     color: #fff;
     font-size: .8rem;
-    width: 100%;
+    width: auto;
+
     &::first-letter {
         text-transform: uppercase;
     }
@@ -89,9 +91,16 @@ export const Breed = styled.p`
     text-align: start;
     color: #fff;
     font-size: .8rem;
-    width: 100%;
+    width: auto;
+    overflow: hidden;
+
     &::first-letter {
         text-transform: uppercase;
+    }
+
+    @media (max-width: 70rem) {
+        max-width: 10rem;
+        font-size: .5rem;
     }
 `
 
@@ -100,7 +109,7 @@ export const ContentListRight = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 4rem;
+    height: 100%;
 `
 
 export const Time = styled.h3`
@@ -108,6 +117,4 @@ export const Time = styled.h3`
     color: #fff;
     font-size: 1rem;
     padding-right: .4rem;
-
-
 `

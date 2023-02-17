@@ -3,22 +3,31 @@ import React from 'react'
 import ScheduleList from '../../Lists/SchedulesList'
 import * as S from './style'
 
+// type ScrollRef = RefObject<HTMLDivElement>;
+// type ScrollRef<T> = React.MutableRefObject<T | null>;
+
 const ScheduleTable = () => {
+    const scrollRef = React.useRef<any>(null)
     const [dataBase, setDatabase] = React.useState<DataListProps | null>(null)
+
     const gettingDatabase = async () => {
         const response = await fetch('/api/schedules')
         const json = await response.json()
         setDatabase(json)
-        // console.log(dataBase)
+        console.log(dataBase)
     }
 
     React.useEffect(() => {
         gettingDatabase()
     }, [])
 
+    React.useEffect(() => {
+        scrollRef.current.scrollTo(0, -scrollRef.current.scrollHeight)
+    }, [dataBase])
+
     return (
         <S.Container>
-            <S.Table>
+            <S.Table ref={scrollRef}>
                 {dataBase?.schedules?.map(data => (
                     <ScheduleList
                         key={data.id}

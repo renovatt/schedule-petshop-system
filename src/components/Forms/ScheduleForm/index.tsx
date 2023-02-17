@@ -25,15 +25,13 @@ const ScheduleForm = () => {
     }
 
     const sendingDataToDB = async (data: ScheduleFormProps) => {
-        const response = await fetch('/api/schedules', {
+        await fetch('/api/schedules', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         });
-        const json = await response.json()
-        console.log("json", json)
     }
 
     const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();
@@ -87,32 +85,6 @@ const ScheduleForm = () => {
                     placeholder='Nome do pet' />
                 <S.InputAlert>{errors.pet?.message}</S.InputAlert>
             </S.Label>
-
-            {/* 
-            <S.Label htmlFor="breeds">
-                <S.Span>Raça:</S.Span>
-                <S.Input
-                    maxLength={22}
-                    type="text"
-                    list="alpha"
-                    id="breeds"
-                    {...register("breed", {
-                        required: true, maxLength: {
-                            value: 20,
-                            message: "*Capacidade máxima de 20 caracteres."
-                        }
-                    })}
-                    placeholder='Raça' />
-
-                {breeds.map((breed) => (
-                    <S.DataList id="alpha">
-                        {breed.breeds.map((breed, index) => (
-                            <S.Option key={index} value={breed.name}></S.Option>
-                        ))}
-                    </S.DataList>
-                ))}
-                <S.InputAlert>{errors.breed?.message}</S.InputAlert>
-            </S.Label> */}
 
             <S.Label htmlFor="breeds">
                 <S.Span>Raça:</S.Span>
