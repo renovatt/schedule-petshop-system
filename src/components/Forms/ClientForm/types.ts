@@ -1,4 +1,5 @@
 export type ClientFormProps = {
+    id: string
     name: string,
     age: string,
     sex: string,

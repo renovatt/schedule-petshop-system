@@ -8,8 +8,18 @@ const options = ["Masculino", "Feminino"]
 const ClientForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ClientFormProps>();
     const onSubmit: SubmitHandler<ClientFormProps> = data => {
-        console.log(data);
+        sendingDataToDB(data)
         reset();
+    }
+
+    const sendingDataToDB = async (data: ClientFormProps) => {
+        await fetch('/api/clients', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
     }
 
     return (
