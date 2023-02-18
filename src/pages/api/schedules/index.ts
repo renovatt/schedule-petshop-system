@@ -1,11 +1,13 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { createSchedule, getAllSchedules } from "@/lib/controllers/schedules";
-import { NextRequest, NextResponse } from "next/server";
 
 
-const handler = async (req: NextRequest, res: NextResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+
     if (req.method === "GET") {
         try {
-            const { schedules } = await getAllSchedules()
+            const { schedules, error } = await getAllSchedules()
+            if (error) throw new Error(`Error: ${error}`)
             return res.status(200).json({ schedules })
         } catch (err) {
             console.log(err)
@@ -15,17 +17,16 @@ const handler = async (req: NextRequest, res: NextResponse) => {
     if (req.method === 'POST') {
         try {
             const data = req.body
-            console.log(data)
             const { schedule, error } = await createSchedule(data)
-            if (error) throw new Error(error)
+            if (error) throw new Error(`Error: ${error}`)
             return res.status(200).json({ schedule })
         } catch (error) {
-            return res.status(500).json({ error: error.message })
+            return res.status(500).json({ "error": error })
         }
     }
 
-    // res.setHeader('Allow', ['GET', 'POST'])
-    // res.status(425).end(`Method ${req.method} is not allowed.`)
+    res.setHeader('Allow', ['GET', 'POST'])
+    res.status(425).end(`Method ${req.method} is not allowed.`)
 }
 
 export default handler
