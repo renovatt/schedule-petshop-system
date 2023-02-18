@@ -22,10 +22,11 @@ const ClientDetails = ({ setPetModalOpen, clientProps }: ClientModalProps) => {
                         <S.Client>{clientProps.name}</S.Client>
                         <S.Info>
                             <S.Text>Idade: {clientProps.age} anos</S.Text>
-                            <S.Text>Bairro: {clientProps.adress} - {clientProps.number}</S.Text>
+                            <S.Text>Sexo: {clientProps.sex}</S.Text>
+                            <S.Text>Rua: {clientProps.street}</S.Text>
                             <S.Text>Bairro: {clientProps.neighborhood}</S.Text>
                             <S.Text>Cidade: {clientProps.city}</S.Text>
-                            <S.Text>Contato: {clientProps.contact}</S.Text>
+                            <S.Text>Numero: {clientProps.house_number}</S.Text>
                         </S.Info>
                     </S.Description>
                 </S.Details>

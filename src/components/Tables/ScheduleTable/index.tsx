@@ -1,4 +1,4 @@
-import { DataListProps } from '@/components/Forms/ScheduleForm/types'
+import { DataListSchedulesProps } from '@/components/Forms/ScheduleForm/types'
 import React from 'react'
 import ScheduleList from '../../Lists/SchedulesList'
 import * as S from './style'
@@ -8,7 +8,7 @@ import * as S from './style'
 
 const ScheduleTable = () => {
     const scrollRef = React.useRef<any>(null)
-    const [dataBase, setDatabase] = React.useState<DataListProps | null>(null)
+    const [dataBase, setDatabase] = React.useState<DataListSchedulesProps | null>(null)
 
     const gettingDatabase = async () => {
         const response = await fetch('/api/schedules')

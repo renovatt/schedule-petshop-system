@@ -1,10 +1,10 @@
 import React from 'react'
 import * as S from './style'
-import { SchedulesListProps } from './types'
+import { ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { FaDog } from 'react-icons/fa'
 import PetDetails from '../../Modals/PetDetails'
 
-const ScheduleList = ({ ...props }: SchedulesListProps) => {
+const ScheduleList = ({ ...props }: ScheduleFormProps) => {
   const [isPetModalOpen, setPetModalOpen] = React.useState(false)
   return (
     <>

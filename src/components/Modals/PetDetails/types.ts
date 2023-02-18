@@ -1,6 +1,6 @@
-import { SchedulesListProps } from "@/components/Lists/SchedulesList/types";
+import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
 
 export type PetModalProps = {
-    petProps: SchedulesListProps
+    petProps: ScheduleFormProps
     setPetModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };

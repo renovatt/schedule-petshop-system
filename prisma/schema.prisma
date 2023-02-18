@@ -13,7 +13,7 @@ model Client {
   age          String
   sex          String
   street       String
-  number       String
+  house_number String
   neighborhood String
   city         String
   contact      String

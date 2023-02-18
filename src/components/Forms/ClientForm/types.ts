@@ -1,3 +1,7 @@
+export type DataListClientsProps = {
+    clients?: ClientFormProps[]
+}
+
 export type ClientFormProps = {
     id: string
     name: string,
@@ -9,3 +13,10 @@ export type ClientFormProps = {
     city: string
     contact: string,
 };
+
+export type Adress = {
+    street: string,
+    house_number: string,
+    neighborhood: string
+    city: string
+}

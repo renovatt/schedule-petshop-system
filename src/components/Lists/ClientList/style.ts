@@ -16,21 +16,15 @@ export const ContentList = styled.ul`
     align-items: center;
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-
-    ::-webkit-scrollbar{
-        width: 6px;
-    }
+    /* overflow-y: scroll; */
+    /* overflow-x: hidden; */
 
     ::-webkit-scrollbar-track{
         background-color: transparent;
-        border-radius: .4rem;
     }
 
     ::-webkit-scrollbar-thumb{
         background: transparent;
-        border-radius: .4rem;
     }
 `
 
