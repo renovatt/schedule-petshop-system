@@ -2,6 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ClientFormProps } from './types';
+import { toast } from 'react-toastify';
 
 const options = ["Masculino", "Feminino"]
 
@@ -13,13 +14,18 @@ const ClientForm = () => {
     }
 
     const sendingDataToDB = async (data: ClientFormProps) => {
-        await fetch('/api/clients', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
+        try {
+            await fetch('/api/clients', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            toast.success('Agendamento realizado com sucesso!')
+        } catch (error) {
+            toast.error('Lamento, aconteceu algum erro durante o cadastro!')
+        }
     }
 
     return (

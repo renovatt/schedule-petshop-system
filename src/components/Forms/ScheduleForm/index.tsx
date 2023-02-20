@@ -2,6 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { dogFetchProps, ScheduleFormProps } from './types';
+import { toast } from 'react-toastify';
 
 const options = ["Macho", "Fêmea"]
 
@@ -33,9 +34,9 @@ const ScheduleForm = () => {
                 },
                 body: JSON.stringify(data)
             })
-            console.log("Success")
+            toast.success('Agendamento realizado com sucesso!')
         } catch (error) {
-            console.log("POST error: ", error)
+            toast.error('Lamento, aconteceu algum erro durante o agendamento!')
         }
     }
 
