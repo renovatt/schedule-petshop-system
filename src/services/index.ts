@@ -7,9 +7,9 @@ export const renderScheduleList = async () => {
     try {
         const response = await fetch('/api/schedules')
         const json = await response.json()
-        return json
+        return { response: json }
     } catch (error) {
-        return error
+        return { error }
     }
 }
 
@@ -17,9 +17,9 @@ export const renderClientList = async () => {
     try {
         const response = await fetch('/api/clients')
         const json = await response.json()
-        return json
+        return { reponse: json }
     } catch (error) {
-        return error
+        return { error }
     }
 }
 
