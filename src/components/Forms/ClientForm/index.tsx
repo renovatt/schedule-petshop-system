@@ -7,7 +7,7 @@ const options = ["Masculino", "Feminino"]
 
 const ClientForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ClientFormProps>();
-    const onSubmit: SubmitHandler<ClientFormProps> = data => {
+    const onSubmit: SubmitHandler<ClientFormProps> = async data => {
         sendingDataToDB(data)
         reset();
     }
@@ -19,7 +19,7 @@ const ClientForm = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        });
+        })
     }
 
     return (

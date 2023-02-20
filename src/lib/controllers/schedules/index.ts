@@ -2,8 +2,9 @@ import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
 
 export async function createSchedule(data: ScheduleFormProps) {
+    console.log(data.time)
     try {
-        const schedule = await prisma.schedule.create({
+        const schedule = await prisma.schedules.create({
             data: {
                 tutor: data.tutor,
                 pet: data.pet,
@@ -12,7 +13,7 @@ export async function createSchedule(data: ScheduleFormProps) {
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: data.reference_image_id,
-                date: data.date,
+                date: new Date(data.date).toISOString(),
                 time: data.time,
                 client: data.client,
             },
@@ -25,7 +26,7 @@ export async function createSchedule(data: ScheduleFormProps) {
 
 export async function getAllSchedules() {
     try {
-        const schedules = await prisma.schedule.findMany()
+        const schedules = await prisma.schedules.findMany()
         return { schedules }
     } catch (error) {
         return { error }
@@ -34,7 +35,7 @@ export async function getAllSchedules() {
 
 export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
-        const schedule = await prisma.schedule.update({
+        const schedule = await prisma.schedules.update({
             where: { id: id },
             data: {
                 tutor: data.tutor,
@@ -57,7 +58,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
 
 export async function deleteSchedule(id: string) {
     try {
-        const schedule = await prisma.schedule.delete({
+        const schedule = await prisma.schedules.delete({
             where: { id: id }
         })
         return { schedule }
@@ -68,7 +69,7 @@ export async function deleteSchedule(id: string) {
 
 export async function findSchedule(id: string) {
     try {
-        const schedule = await prisma.schedule.findUnique({
+        const schedule = await prisma.schedules.findUnique({
             where: { id: id }
         })
         return { schedule }

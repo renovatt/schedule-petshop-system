@@ -25,13 +25,18 @@ const ScheduleForm = () => {
     }
 
     const sendingDataToDB = async (data: ScheduleFormProps) => {
-        await fetch('/api/schedules', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
+        try {
+            await fetch('/api/schedules', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            console.log("Success")
+        } catch (error) {
+            console.log("POST error: ", error)
+        }
     }
 
     const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();

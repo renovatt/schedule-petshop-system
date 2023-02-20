@@ -12,6 +12,7 @@ export type ClientFormProps = {
     neighborhood: string
     city: string
     contact: string,
+    created_at: Date
 };
 
 export type Adress = {

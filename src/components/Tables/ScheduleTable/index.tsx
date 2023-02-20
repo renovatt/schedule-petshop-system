@@ -14,7 +14,6 @@ const ScheduleTable = () => {
         const response = await fetch('/api/schedules')
         const json = await response.json()
         setDatabase(json)
-        console.log(dataBase)
     }
 
     React.useEffect(() => {
@@ -30,19 +29,19 @@ const ScheduleTable = () => {
             <S.Table ref={scrollRef}>
                 {dataBase?.schedules?.map(data => (
                     <ScheduleList
+                        client
                         key={data.id}
                         id={data.id}
-                        svg=''
-                        name={data.tutor}
+                        tutor={data.tutor}
                         pet={data.pet}
                         age={data.age}
                         sex={data.sex}
                         breed={data.breed}
                         reference_image_id={data.reference_image_id}
                         weight={data.weight}
-                        client
                         time={data.time}
-                        date={new Date(data.date)} />
+                        date={data.date}
+                        created_at={data.created_at} />
                 ))}
             </S.Table>
         </S.Container>

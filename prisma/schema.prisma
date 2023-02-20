@@ -7,8 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Client {
-  id           String @id @default(auto()) @map("_id") @db.ObjectId
+model Clients {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   age          String
   sex          String
@@ -17,10 +17,11 @@ model Client {
   neighborhood String
   city         String
   contact      String
+  created_at   DateTime @default(now())
 }
 
-model Schedule {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+model Schedules {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
   tutor              String
   pet                String
   breed              String
@@ -28,7 +29,8 @@ model Schedule {
   age                String
   weight             String
   sex                String
-  date               String
-  time               String
   client             Boolean
+  date               DateTime
+  time               String
+  created_at         DateTime @default(now())
 }

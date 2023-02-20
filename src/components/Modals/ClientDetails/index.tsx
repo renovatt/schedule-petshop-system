@@ -27,6 +27,13 @@ const ClientDetails = ({ setPetModalOpen, clientProps }: ClientModalProps) => {
                             <S.Text>Bairro: {clientProps.neighborhood}</S.Text>
                             <S.Text>Cidade: {clientProps.city}</S.Text>
                             <S.Text>Numero: {clientProps.house_number}</S.Text>
+                            <S.Text>Cliente desde: {new Date(clientProps.created_at)
+                                .toLocaleDateString('pt-br', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    weekday: 'long',
+                                    day: 'numeric',
+                                })}</S.Text>
                         </S.Info>
                     </S.Description>
                 </S.Details>

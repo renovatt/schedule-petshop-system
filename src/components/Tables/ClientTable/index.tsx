@@ -35,6 +35,7 @@ const ClientTable = () => {
                         city={client.city}
                         street={client.street}
                         contact={client.contact}
+                        created_at={client.created_at}
                         neighborhood={client.neighborhood}
                         house_number={client.house_number} />
                 ))}

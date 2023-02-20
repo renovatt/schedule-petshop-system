@@ -50,6 +50,23 @@ const PetDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                     <MdPets />
                                 </S.Icon>
                                 <S.Text>{petProps.sex}</S.Text>
+                                <S.Text>{petProps.time}h</S.Text>
+
+                                <S.Text>{new Date(petProps.date)
+                                    .toLocaleDateString('pt-br', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        weekday: 'long',
+                                        day: 'numeric',
+                                    })}</S.Text>
+
+                                <S.Text>{new Date(petProps.created_at)
+                                    .toLocaleDateString('pt-br', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        weekday: 'long',
+                                        day: 'numeric',
+                                    })}</S.Text>
                             </S.Info>
                         </S.Description>
                     </S.Header>
