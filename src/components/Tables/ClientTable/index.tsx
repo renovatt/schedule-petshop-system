@@ -10,8 +10,8 @@ const ClientTable = () => {
 
     React.useEffect(() => {
         async function loadClients() {
-            const clients = await renderClientList()
-            setClients(clients)
+            const { response } = await renderClientList()
+            setClients(response)
         }
         loadClients()
     }, [clients])

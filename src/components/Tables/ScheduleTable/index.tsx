@@ -14,8 +14,8 @@ const ScheduleTable = () => {
 
     React.useEffect(() => {
         async function loadSchedules() {
-            const schedules = await renderScheduleList()
-            setSchedules(schedules)
+            const { response } = await renderScheduleList()
+            setSchedules(response)
         }
         loadSchedules()
     }, [schedules])
