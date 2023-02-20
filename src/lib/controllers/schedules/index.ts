@@ -2,7 +2,6 @@ import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
 
 export async function createSchedule(data: ScheduleFormProps) {
-    console.log(data.time)
     try {
         const schedule = await prisma.schedules.create({
             data: {
