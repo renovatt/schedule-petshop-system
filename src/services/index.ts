@@ -17,7 +17,7 @@ export const renderClientList = async () => {
     try {
         const response = await fetch('/api/clients')
         const json = await response.json()
-        return { reponse: json }
+        return { response: json }
     } catch (error) {
         return { error }
     }
