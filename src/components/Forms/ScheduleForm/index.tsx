@@ -3,57 +3,34 @@ import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { dogFetchProps, ScheduleFormProps } from './types';
 import { toast } from 'react-toastify';
+import { dogsBreedsReferences, sendingScheduleFormToDatabase } from '@/services';
 
 const options = ["Macho", "Fêmea"]
 
 const ScheduleForm = () => {
-    const base_url = `https://api.thedogapi.com/v1/breeds`
-
-    const dogFetchApi = async () => {
-        const response = await fetch(base_url)
-        const data = await response.json()
-        try {
-            const petResponse = data.map((item: dogFetchProps) => ({
-                id: item.id,
-                name: item.name,
-                image: item.image.url,
-                reference_image_id: item.reference_image_id
-            }))
-            setDogInfo(petResponse)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const sendingDataToDB = async (data: ScheduleFormProps) => {
-        try {
-            await fetch('/api/schedules', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            toast.success('Agendamento realizado com sucesso!')
-        } catch (error) {
-            toast.error('Lamento, aconteceu algum erro durante o agendamento!')
-        }
-    }
-
     const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();
     const [isClient, setClientCheckBox] = React.useState(false)
-    const [dogInfo, setDogInfo] = React.useState<dogFetchProps[]>([])
+    const [dogRef, setDogRef] = React.useState<dogFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState('');
-
-    const onSubmit: SubmitHandler<ScheduleFormProps> = data => {
-        sendingDataToDB(data)
+    
+    const onSubmit: SubmitHandler<ScheduleFormProps> = async data => {
+        const { response, error } = await sendingScheduleFormToDatabase(data)
+        if (response) {
+            toast.success('Agendamento realizado com sucesso!')
+        } else if (error) {
+            toast.error('Lamento, aconteceu algum erro durante o agendamento!')
+        }
         reset();
         setClientCheckBox(!isClient);
     }
 
     React.useEffect(() => {
+        async function loadDogsReferences() {
+            const { response } = await dogsBreedsReferences()
+            setDogRef(response)
+        }
+        loadDogsReferences()
         setValue("reference_image_id", selectedReferenceImageId);
-        dogFetchApi()
     }, [selectedReferenceImageId])
 
     return (
@@ -107,7 +84,7 @@ const ScheduleForm = () => {
                     })}
                     placeholder='Raça'
                     onChange={(event) => {
-                        const selectedBreed = dogInfo.find((breed) => breed.name === event.target.value);
+                        const selectedBreed = dogRef.find((breed) => breed.name === event.target.value);
                         if (selectedBreed) {
                             setSelectedReferenceImageId(selectedBreed.reference_image_id);
                         } else {
@@ -115,7 +92,7 @@ const ScheduleForm = () => {
                         }
                     }} />
                 <S.DataList id="alpha">
-                    {dogInfo.map((breed) => (
+                    {dogRef.map((breed) => (
                         <S.Option key={breed.id} value={breed.name}>{breed.name}</S.Option>
                     ))}
                 </S.DataList>

@@ -3,31 +3,21 @@ import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ClientFormProps } from './types';
 import { toast } from 'react-toastify';
+import { sendingClientFormToDatabase } from '@/services';
 
 const options = ["Masculino", "Feminino"]
 
 const ClientForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ClientFormProps>();
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
-        sendingDataToDB(data)
-        reset();
-    }
-
-    const sendingDataToDB = async (data: ClientFormProps) => {
-        try {
-            await fetch('/api/clients', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
+        const { response, error } = await sendingClientFormToDatabase(data)
+        if (response) {
             toast.success('Agendamento realizado com sucesso!')
-        } catch (error) {
+        } else if (error) {
             toast.error('Lamento, aconteceu algum erro durante o cadastro!')
         }
+        reset();
     }
-
     return (
         <S.Form onSubmit={handleSubmit(onSubmit)}>
             <S.Label>

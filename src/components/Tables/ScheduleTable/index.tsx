@@ -1,4 +1,6 @@
 import { DataListSchedulesProps } from '@/components/Forms/ScheduleForm/types'
+import { renderScheduleList } from '@/services'
+import { GetServerSideProps } from 'next'
 import React from 'react'
 import ScheduleList from '../../Lists/SchedulesList'
 import * as S from './style'
@@ -8,26 +10,24 @@ import * as S from './style'
 
 const ScheduleTable = () => {
     const scrollRef = React.useRef<any>(null)
-    const [dataBase, setDatabase] = React.useState<DataListSchedulesProps | null>(null)
-
-    const gettingDatabase = async () => {
-        const response = await fetch('/api/schedules')
-        const json = await response.json()
-        setDatabase(json)
-    }
+    const [schedules, setSchedules] = React.useState<DataListSchedulesProps | null>(null)
 
     React.useEffect(() => {
-        gettingDatabase()
-    }, [])
+        async function loadSchedules() {
+            const schedules = await renderScheduleList()
+            setSchedules(schedules)
+        }
+        loadSchedules()
+    }, [schedules])
 
     React.useEffect(() => {
         scrollRef.current.scrollTo(0, -scrollRef.current.scrollHeight)
-    }, [dataBase])
+    }, [schedules])
 
     return (
         <S.Container>
             <S.Table ref={scrollRef}>
-                {dataBase?.schedules?.map(data => (
+                {schedules?.schedules?.map(data => (
                     <ScheduleList
                         client
                         key={data.id}

@@ -1,31 +1,29 @@
 import { DataListClientsProps } from '@/components/Forms/ClientForm/types';
 import ClientList from '@/components/Lists/ClientList';
+import { renderClientList } from '@/services';
 import React from 'react'
 import * as S from './style'
 
 const ClientTable = () => {
     const scrollRef = React.useRef<any>(null)
-    const [dataBase, setDatabase] = React.useState<DataListClientsProps | null>(null)
-
-    const gettingDatabase = async () => {
-        const response = await fetch('/api/clients')
-        const json = await response.json()
-        setDatabase(json)
-        console.log(dataBase)
-    }
+    const [clients, setClients] = React.useState<DataListClientsProps | null>(null)
 
     React.useEffect(() => {
-        gettingDatabase()
-    }, [])
+        async function loadClients() {
+            const clients = await renderClientList()
+            setClients(clients)
+        }
+        loadClients()
+    }, [clients])
 
     React.useEffect(() => {
         scrollRef.current.scrollTo(0, -scrollRef.current.scrollHeight)
-    }, [dataBase])
+    }, [clients])
 
     return (
         <S.Container>
             <S.Table ref={scrollRef}>
-                {dataBase?.clients?.map(client => (
+                {clients?.clients?.map(client => (
                     <ClientList
                         key={client.id}
                         id={client.id}
