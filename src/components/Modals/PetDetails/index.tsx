@@ -50,7 +50,7 @@ const PetDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                     <MdPets />
                                 </S.Icon>
                                 <S.Text>{petProps.sex}</S.Text>
-                                <S.Text>{petProps.time}h</S.Text>
+                                <S.Text>{new Date(petProps.date).getHours()}:{new Date(petProps.date).getMinutes()}h</S.Text>
 
                                 <S.Text>{new Date(petProps.date)
                                     .toLocaleDateString('pt-br', {
