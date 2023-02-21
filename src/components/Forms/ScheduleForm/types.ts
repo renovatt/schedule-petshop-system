@@ -12,7 +12,6 @@ export type ScheduleFormProps = {
     weight: string
     sex: string,
     date: Date,
-    time: string,
     created_at: Date
     client: boolean,
 };
