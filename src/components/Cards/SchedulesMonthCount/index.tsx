@@ -4,9 +4,8 @@ import { FaUserClock } from 'react-icons/fa'
 import { renderScheduleList } from '@/services'
 import { getSchedulesMonthQuantity } from '@/connections'
 
-const SchedulesCount = () => {
+const SchedulesMonthCount = () => {
     const [schedulesMonthQuantity, setSchedulesMonthQuantity] = React.useState<number>(0);
-
     React.useEffect(() => {
         async function loadSchedules() {
             const { response } = await renderScheduleList();
@@ -15,7 +14,6 @@ const SchedulesCount = () => {
         }
         loadSchedules();
     }, []);
-
     return (
         <S.Container>
             <S.Content>
@@ -27,4 +25,4 @@ const SchedulesCount = () => {
     )
 }
 
-export default SchedulesCount
+export default SchedulesMonthCount
