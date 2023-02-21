@@ -147,20 +147,11 @@ const ScheduleForm = () => {
 
             <S.Label>
                 <S.Span>Data:</S.Span>
-                <S.Input type="date"
+                <S.Input type="datetime-local"
                     {...register("date", {
                         required: true
                     })} />
                 <S.InputAlert>{errors.date?.message}</S.InputAlert>
-            </S.Label>
-
-            <S.Label>
-                <S.Span>Hora:</S.Span>
-                <S.Input type="time"
-                    {...register("time", {
-                        required: true
-                    })} />
-                <S.InputAlert>{errors.time?.message}</S.InputAlert>
             </S.Label>
 
             <S.CheckLabel>
