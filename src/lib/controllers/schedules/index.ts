@@ -12,7 +12,7 @@ export async function createSchedule(data: ScheduleFormProps) {
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: data.reference_image_id,
-                date: new Date(data.date).toISOString(),
+                date: new Date(data.date),
                 time: data.time,
                 client: data.client,
             },
