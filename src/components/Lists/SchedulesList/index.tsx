@@ -19,7 +19,7 @@ const ScheduleList = ({ ...props }: ScheduleFormProps) => {
               <S.Breed>{props.breed}</S.Breed>
             </S.ContentListLeft>
             <S.ContentListRight>
-              <S.Time>{props.time}h</S.Time>
+              <S.Time>{new Date(props.date).getHours()}:{new Date(props.date).getMinutes()}h</S.Time>
             </S.ContentListRight>
           </S.List>
         </S.ContentList>
