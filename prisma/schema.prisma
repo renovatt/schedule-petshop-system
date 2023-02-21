@@ -31,6 +31,5 @@ model Schedules {
   sex                String
   client             Boolean
   date               DateTime
-  time               String
   created_at         DateTime @default(now())
 }
