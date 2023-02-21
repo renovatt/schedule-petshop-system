@@ -13,7 +13,6 @@ export async function createSchedule(data: ScheduleFormProps) {
                 weight: data.weight,
                 reference_image_id: data.reference_image_id,
                 date: new Date(data.date),
-                time: data.time,
                 client: data.client,
             },
         });
@@ -45,7 +44,6 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                 weight: data.weight,
                 reference_image_id: data.reference_image_id,
                 date: data.date,
-                time: data.time,
                 client: data.client,
             }
         })
