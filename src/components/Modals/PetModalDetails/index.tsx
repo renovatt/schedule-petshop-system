@@ -7,7 +7,7 @@ import { MdPets } from 'react-icons/md'
 import { PetModalProps } from './types'
 
 
-const PetDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
+const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const petImage = `https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.jpg`
 
     function handleLoad(event: React.SyntheticEvent<HTMLImageElement>): void {
@@ -77,4 +77,4 @@ const PetDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     )
 }
 
-export default PetDetails
+export default PetModalDetails
