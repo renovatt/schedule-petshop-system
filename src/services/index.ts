@@ -39,6 +39,37 @@ export const sendingClientFormToDatabase = async (data: ClientFormProps) => {
     }
 }
 
+export const updatingClientFormToDatabase = async (id: string, data: ClientFormProps) => {
+    try {
+        const response = await fetch(`/api/clients/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        const json = await response.json()
+        return { response: json }
+    } catch (error) {
+        return { error }
+    }
+}
+
+export const deletingClientFormToDatabase = async (id: string) => {
+    try {
+        const response = await fetch(`/api/clients/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const json = await response.json()
+        return { response: json }
+    } catch (error) {
+        return { error }
+    }
+}
+
 export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps) => {
     try {
         const response = await fetch('/api/schedules', {
@@ -49,6 +80,37 @@ export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps) => 
             body: JSON.stringify(data)
         })
         const json = await response.json();
+        return { response: json }
+    } catch (error) {
+        return { error }
+    }
+}
+
+export const updatingScheduleFormToDatabase = async (id: string, data: ClientFormProps) => {
+    try {
+        const response = await fetch(`/api/schedules/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        const json = await response.json()
+        return { response: json }
+    } catch (error) {
+        return { error }
+    }
+}
+
+export const deletingScheduleFormToDatabase = async (id: string) => {
+    try {
+        const response = await fetch(`/api/clients/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const json = await response.json()
         return { response: json }
     } catch (error) {
         return { error }
