@@ -95,8 +95,8 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                             <S.Span>Sexo:</S.Span>
                                             <S.Select {...field}>
                                                 <S.Option value="" defaultChecked>Escolha</S.Option>
-                                                <S.Option value="Masculino" defaultChecked>Masculino</S.Option>
-                                                <S.Option value="Feminino" defaultChecked>Feminino</S.Option>
+                                                <S.Option value="Masculino">Masculino</S.Option>
+                                                <S.Option value="Feminino">Feminino</S.Option>
                                             </S.Select>
                                             <S.InputAlert>{errors.sex?.message}</S.InputAlert>
                                         </S.Label>
