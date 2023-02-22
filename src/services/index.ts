@@ -86,7 +86,7 @@ export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps) => 
     }
 }
 
-export const updatingScheduleFormToDatabase = async (id: string, data: ClientFormProps) => {
+export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleFormProps) => {
     try {
         const response = await fetch(`/api/schedules/${id}`, {
             method: 'PUT',
