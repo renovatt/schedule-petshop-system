@@ -43,7 +43,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: data.reference_image_id,
-                date: data.date,
+                date: new Date(data.date),
                 client: data.client,
             }
         })
