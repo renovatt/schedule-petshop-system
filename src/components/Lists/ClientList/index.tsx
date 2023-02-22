@@ -2,14 +2,14 @@ import React from 'react'
 import * as S from './style'
 import { ImUser } from 'react-icons/im'
 import { IoMdOpen } from 'react-icons/io'
-import ClientDetails from '@/components/Modals/ClientDetails'
+import ClientModalDetails from '@/components/Modals/ClientModalDetails'
 import { ClientFormProps } from '@/components/Forms/ClientForm/types'
 
 const ClientList = ({ ...props }: ClientFormProps) => {
   const [isClientModalOpen, setClientModalOpen] = React.useState(false)
   return (
     <>
-      {isClientModalOpen && <ClientDetails setPetModalOpen={setClientModalOpen} clientProps={props} />}
+      {isClientModalOpen && <ClientModalDetails setClientModalOpen={setClientModalOpen} clientProps={props} />}
       <S.Container onClick={() => setClientModalOpen(true)}>
         <S.ContentList>
           <S.List className='animation-container'>
