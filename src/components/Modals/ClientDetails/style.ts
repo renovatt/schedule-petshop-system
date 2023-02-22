@@ -29,21 +29,25 @@ export const Content = styled.div`
     background: rgba(51, 42, 42, 0.064);
 `
 
-export const CloseButton = styled.i`
-    svg{
-        top: 2rem;
-        right: 2rem;
-        width: 2rem;
-        height: 2rem;
-        border-radius: .4rem;
-        background: #fff;
-        transition: .2s;
-        position: absolute;
+export const Form = styled.form`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
 
-        &:hover{
-            cursor: pointer;
-            background: #ccc;
-        }
+    ::-webkit-scrollbar{
+        width: 0;
+    }
+
+    ::-webkit-scrollbar-track{
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background: transparent;
     }
 `
 
@@ -54,7 +58,7 @@ export const Details = styled.section`
     flex-direction: column;
     width: 100%;
     height: 100%;
-    padding: .8rem;
+    padding: .4rem;
     overflow: scroll;
 
     ::-webkit-scrollbar{
@@ -63,18 +67,10 @@ export const Details = styled.section`
 
     ::-webkit-scrollbar-track{
         background-color: transparent;
-        border-radius: .4rem;
     }
 
     ::-webkit-scrollbar-thumb{
         background: transparent;
-        border-radius: .4rem;
-    }
-`
-
-export const Icon = styled.i`
-    svg{
-        color: #fff;
     }
 `
 
@@ -83,7 +79,7 @@ export const Header = styled.header`
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    margin-top: 4rem;
+    margin-top: .8rem;
 `
 
 export const CardImage = styled.section`
@@ -92,6 +88,7 @@ export const CardImage = styled.section`
     align-items: center;
     width: 5rem;
     height: 5rem;
+    /* margin-left: .4rem; */
     border-radius: .8rem;
     background: #fff;
     overflow: hidden;
@@ -108,15 +105,9 @@ export const Description = styled.article`
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: .8rem;
     width: 100%;
     height: 100%;
-`
-export const Client = styled.h1`
-    font-size: 2em;
-    margin: .4rem;
-    color: #fff;
-    text-transform: capitalize;
 `
 
 export const Info = styled.div`
@@ -128,13 +119,120 @@ export const Info = styled.div`
     height: 100%;
 `
 
+export const Label = styled.label`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 5rem;
+    width: 100%;
+    font-weight: bold;
+    font-size: .9rem;
+    margin-top: .4rem;
+    color: #fff;
+    text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
+`
+
+export const Span = styled.span`
+    text-align: start;
+    font-size: .8rem;
+    width: 100%;
+`
+
+export const Input = styled.input`
+    height: 2rem;
+    width: 100%;
+    text-align: start;
+    border-radius: .4rem;
+    margin-top: .4rem;
+    padding-left: .4rem;
+    transition: all .3s;
+    border: 1px solid #ccc;
+
+    &:focus{
+        border-color: #ff6b00;
+    }
+`
+
+export const InputAlert = styled.span`
+    font-size: .6rem;
+    color: #f01;
+    padding: .2rem;
+    width: 100%;
+`
+
 export const Text = styled.p`
     text-align: start;
     font-size: .8rem;
     margin: .4rem;
-    color: #fff;
+    color: #ff6b00;
     font-weight: bold;
     width: 100%;
+`
+
+export const Select = styled.select`
+    padding: .4rem;
+    margin-top: .4rem;
+    font-size: .8rem;
+    line-height: 1.3;
+    color: #666;
+    width: 100%;
+    height: 2rem;
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:focus {
+        outline: none;
+        border-color: #ff6b00;
+    }
+`
+
+export const Option = styled.option`
+    padding: .4rem;
+    font-size: .8rem;
+    border-radius: .4rem;
+    color: #333;
+    background-color: #fff;
+
+    &:hover {
+        background-color: #ff6b00;
+    }
+
+    &:checked {
+        color: #fff;
+        background-color: #ff6b00;
+    }
+`
+
+export const SaveButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 3rem;
+    font-weight: bold;
+    border: none;
+    margin: .4rem;
+    outline: none;
+    transition: .2s;
+    border-radius: .4rem;
+    color: #000;
+    background: #fff;
+
+    &:hover{
+        cursor: pointer;
+        color: #fff;
+        background: #22c55e;
+    }
 `
 
 export const Button = styled.button`
@@ -155,6 +253,28 @@ export const Button = styled.button`
     &:hover{
         cursor: pointer;
         color: #fff;
-        background: #000;
+        background: #ff6b00;
+    }
+`
+
+export const DeleteButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 3rem;
+    font-weight: bold;
+    border: none;
+    margin: .4rem;
+    outline: none;
+    transition: .2s;
+    border-radius: .4rem;
+    color: #000;
+    background: #fff;
+
+    &:hover{
+        cursor: pointer;
+        color: #fff;
+        background: #f01;
     }
 `
