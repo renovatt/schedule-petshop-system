@@ -8,8 +8,6 @@ import { ClientFormProps } from '@/components/Forms/ClientForm/types'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-const options = ["Masculino", "Feminino"]
-
 const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProps) => {
     const { control, handleSubmit, formState: { errors } } = useForm<ClientFormProps>({ defaultValues: clientProps });
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
@@ -97,11 +95,8 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                             <S.Span>Sexo:</S.Span>
                                             <S.Select {...field}>
                                                 <S.Option value="" defaultChecked>Escolha</S.Option>
-                                                {options.map((value, index) => (
-                                                    <S.Option key={index} value={value}>
-                                                        {value}
-                                                    </S.Option>
-                                                ))}
+                                                <S.Option value="Masculino" defaultChecked>Masculino</S.Option>
+                                                <S.Option value="Feminino" defaultChecked>Feminino</S.Option>
                                             </S.Select>
                                             <S.InputAlert>{errors.sex?.message}</S.InputAlert>
                                         </S.Label>
