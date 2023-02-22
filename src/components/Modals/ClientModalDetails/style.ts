@@ -26,7 +26,7 @@ export const Content = styled.div`
     border-radius: .8rem;
     padding: 0 .8rem;
     backdrop-filter: blur(20px);
-    background: rgba(51, 42, 42, 0.064);
+    background-color: rgba(51, 42, 42, 0.064);
 `
 
 export const Form = styled.form`
@@ -88,7 +88,6 @@ export const CardImage = styled.section`
     align-items: center;
     width: 5rem;
     height: 5rem;
-    /* margin-left: .4rem; */
     border-radius: .8rem;
     background: #fff;
     overflow: hidden;
@@ -148,6 +147,8 @@ export const Input = styled.input`
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
+    color: #fff;
+    background-color: rgba(51, 42, 42, 0.064);
 
     &:focus{
         border-color: #ff6b00;
@@ -183,7 +184,8 @@ export const Select = styled.select`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: #fff;
+    color: #fff;
+    background-color: rgba(51, 42, 42, 0.064);
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
     background-position: right 10px center;
     background-repeat: no-repeat;
