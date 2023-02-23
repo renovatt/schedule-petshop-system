@@ -76,7 +76,7 @@ export const Details = styled.section`
 
 export const Header = styled.header`
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     margin-top: .8rem;
@@ -100,6 +100,20 @@ export const CardImage = styled.section`
         border: 2px solid #fff;
     }
 `
+
+export const Icon = styled.i`
+    svg{
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #fff;
+        margin-top: -5rem;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+`
+
 export const Description = styled.article`
     display: flex;
     justify-content: center;
@@ -234,28 +248,6 @@ export const SaveButton = styled.button`
     &:hover{
         cursor: pointer;
         color: #fff;
-        background: #22c55e;
-    }
-`
-
-export const Button = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 3rem;
-    font-weight: bold;
-    border: none;
-    margin: .4rem;
-    outline: none;
-    transition: .2s;
-    border-radius: .4rem;
-    color: #000;
-    background: #fff;
-
-    &:hover{
-        cursor: pointer;
-        color: #fff;
         background: #ff6b00;
     }
 `
@@ -278,6 +270,6 @@ export const DeleteButton = styled.button`
     &:hover{
         cursor: pointer;
         color: #fff;
-        background: #f01;
+        background: #ff0000;
     }
 `
