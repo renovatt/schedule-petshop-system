@@ -39,7 +39,6 @@ const ScheduleTable = () => {
                         breed={data.breed}
                         reference_image_id={data.reference_image_id}
                         weight={data.weight}
-                        time={data.time}
                         date={data.date}
                         created_at={data.created_at} />
                 ))}
