@@ -1,7 +1,8 @@
 import React from 'react'
 import * as S from './style'
 import Image from 'next/image'
-import client from '@/assets/client.png'
+import male from '@/assets/male-client.png'
+import female from '@/assets/female-client.png'
 import { ClientModalProps } from './types'
 import { deletingClientFormToDatabase, updatingClientFormToDatabase } from '@/services'
 import { ClientFormProps } from '@/components/Forms/ClientForm/types'
@@ -36,7 +37,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                     <S.Details>
                         <S.Header>
                             <S.CardImage>
-                                <Image src={client} alt="client-image" />
+                                <Image src={clientProps.sex === "Masculino" ? male : female} alt="client-image" />
                             </S.CardImage>
                         </S.Header>
                         <S.Description>
