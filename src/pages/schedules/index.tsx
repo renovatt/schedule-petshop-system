@@ -1,4 +1,4 @@
-import dog from '@/aseets/dog.png'
+import dog from '@/assets/dog.png'
 import ScheduleForm from '@/components/Forms/ScheduleForm'
 import Header from '@/components/Header'
 import ScheduleTable from '@/components/Tables/ScheduleTable'

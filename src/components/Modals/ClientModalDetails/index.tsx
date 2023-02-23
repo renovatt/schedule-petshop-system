@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './style'
 import Image from 'next/image'
-import client from '@/aseets/client.png'
+import client from '@/assets/client.png'
 import { ClientModalProps } from './types'
 import { deletingClientFormToDatabase, updatingClientFormToDatabase } from '@/services'
 import { ClientFormProps } from '@/components/Forms/ClientForm/types'

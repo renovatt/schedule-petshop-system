@@ -9,7 +9,7 @@ import SchedulesMonthCount from '@/components/Cards/SchedulesMonthCount'
 import Goal from '@/components/Cards/Goal'
 import SchedulesCanceled from '@/components/Cards/SchedulesCanceled'
 import Image from 'next/image'
-import thumb from '@/aseets/thumb.jpg'
+import thumb from '@/assets/thumb.jpg'
 import SchedulesCountDaily from '@/components/Cards/SchedulesDailyCount'
 
 const Dashboard = () => {

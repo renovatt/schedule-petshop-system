@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import Head from 'next/head'
 import React from 'react'
 import * as S from './style'
-import hug from '@/aseets/hug.png'
+import hug from '@/assets/hug.png'
 import Image from 'next/image'
 
 const Register = () => {
