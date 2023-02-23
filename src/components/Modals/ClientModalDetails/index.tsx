@@ -8,6 +8,7 @@ import { deletingClientFormToDatabase, updatingClientFormToDatabase } from '@/se
 import { ClientFormProps } from '@/components/Forms/ClientForm/types'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { CgCloseR } from 'react-icons/cg'
 
 const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProps) => {
     const { control, handleSubmit, formState: { errors } } = useForm<ClientFormProps>({ defaultValues: clientProps });
@@ -39,6 +40,9 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                             <S.CardImage>
                                 <Image src={clientProps.sex === "Masculino" ? male : female} alt="client-image" />
                             </S.CardImage>
+                            <S.Icon>
+                                <CgCloseR onClick={() => setClientModalOpen(false)} />
+                            </S.Icon>
                         </S.Header>
                         <S.Description>
                             <S.Info>
@@ -209,8 +213,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                         </S.Description>
                     </S.Details>
                     <S.SaveButton type="submit">Salvar</S.SaveButton>
-                    <S.Button onClick={() => setClientModalOpen(false)} className="cancel">Cancelar</S.Button>
-                    <S.DeleteButton onClick={deleteClient}>Excuir cliente</S.DeleteButton>
+                    <S.DeleteButton onClick={deleteClient}>Excuir Cliente</S.DeleteButton>
                 </S.Form>
             </S.Content>
         </S.Container>
