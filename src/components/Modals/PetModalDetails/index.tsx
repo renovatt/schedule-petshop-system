@@ -6,6 +6,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { deletingScheduleFormToDatabase, dogsBreedsReferences, updatingScheduleFormToDatabase } from '@/services'
 import { dogFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
+import { CgCloseR } from 'react-icons/cg'
 import dayjs from 'dayjs'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
@@ -82,6 +83,9 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                     onError={handleError}
                                     alt="pet-image" />
                             </S.CardImage>
+                            <S.Icon>
+                                <CgCloseR onClick={() => setPetModalOpen(false)} />
+                            </S.Icon>
                         </S.Header>
                         <S.Description>
                             <S.Info>
@@ -243,7 +247,6 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                         </S.Description>
                     </S.Details>
                     <S.SaveButton type="submit">Salvar</S.SaveButton>
-                    <S.Button onClick={() => setPetModalOpen(false)} className="cancel">Fechar</S.Button>
                     <S.DeleteButton onClick={deleteSchedule}>Cancelar Agendamento</S.DeleteButton>
                 </S.Form>
             </S.Content>
