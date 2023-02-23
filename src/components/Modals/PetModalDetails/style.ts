@@ -80,6 +80,7 @@ export const Header = styled.header`
     align-items: center;
     width: 100%;
     margin-top: .8rem;
+    position: relative;
 `
 
 export const CardImage = styled.section`
@@ -107,11 +108,20 @@ export const CardImage = styled.section`
 `
 
 export const Icon = styled.i`
-    margin-left: 5rem;
+    margin-top: -8rem;
+
     svg{
-        width: 2.5rem;
-        height: 2.5rem;
-        color:#fff;
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #fff;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 70rem) {
+        margin-top: -3rem;
     }
 `
 
@@ -169,6 +179,14 @@ export const Input = styled.input`
     &:focus{
         border-color: #ff6b00;
     }
+
+    &::-webkit-calendar-picker-indicator {
+        filter: invert(100%);
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
 `
 
 export const InputAlert = styled.span`
@@ -182,7 +200,7 @@ export const ScheduleDate = styled.p`
     text-align: start;
     font-size: .6rem;
     margin: .4rem;
-    color: #22c55e;
+    color: #ff6b00;
     font-weight: bold;
     width: 100%;
 `
@@ -191,7 +209,7 @@ export const Text = styled.p`
     text-align: start;
     font-size: .6rem;
     margin: .4rem;
-    color: #ff6b00;
+    color: #ff0000;
     font-weight: bold;
     width: 100%;
 `
@@ -259,28 +277,6 @@ export const SaveButton = styled.button`
     &:hover{
         cursor: pointer;
         color: #fff;
-        background: #22c55e;
-    }
-`
-
-export const Button = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 3rem;
-    font-weight: bold;
-    border: none;
-    margin: .4rem;
-    outline: none;
-    transition: .2s;
-    border-radius: .4rem;
-    color: #000;
-    background: #fff;
-
-    &:hover{
-        cursor: pointer;
-        color: #fff;
         background: #ff6b00;
     }
 `
@@ -303,6 +299,6 @@ export const DeleteButton = styled.button`
     &:hover{
         cursor: pointer;
         color: #fff;
-        background: #f01;
+        background: #ff0000;
     }
 `
