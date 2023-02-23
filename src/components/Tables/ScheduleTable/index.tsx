@@ -1,16 +1,13 @@
-import { DataListSchedulesProps } from '@/components/Forms/ScheduleForm/types'
-import { renderScheduleList } from '@/services'
-import { GetServerSideProps } from 'next'
 import React from 'react'
-import ScheduleList from '../../Lists/SchedulesList'
 import * as S from './style'
-
-// type ScrollRef = RefObject<HTMLDivElement>;
-// type ScrollRef<T> = React.MutableRefObject<T | null>;
+import { renderScheduleList } from '@/services'
+import ScheduleList from '../../Lists/SchedulesList'
+import { DataListSchedulesProps } from '@/components/Forms/ScheduleForm/types'
 
 const ScheduleTable = () => {
-    const scrollRef = React.useRef<any>(null)
+    const scrollRef = React.useRef<HTMLDivElement>(null)
     const [schedules, setSchedules] = React.useState<DataListSchedulesProps | null>(null)
+    const [prevSize, setPrevSize] = React.useState(0)
 
     React.useEffect(() => {
         async function loadSchedules() {
@@ -21,8 +18,14 @@ const ScheduleTable = () => {
     }, [schedules])
 
     React.useEffect(() => {
-        scrollRef.current.scrollTo(0, -scrollRef.current.scrollHeight)
-    }, [schedules])
+        if (schedules && schedules.schedules) {
+          const newSize = schedules.schedules.length
+          if (newSize > prevSize) {
+            scrollRef.current?.scrollTo(0, -scrollRef.current.scrollHeight)
+          }
+          setPrevSize(newSize)
+        }
+      }, [schedules])
 
     return (
         <S.Container>

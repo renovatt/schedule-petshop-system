@@ -1,12 +1,13 @@
-import { DataListClientsProps } from '@/components/Forms/ClientForm/types';
-import ClientList from '@/components/Lists/ClientList';
-import { renderClientList } from '@/services';
 import React from 'react'
 import * as S from './style'
+import { renderClientList } from '@/services';
+import ClientList from '@/components/Lists/ClientList';
+import { DataListClientsProps } from '@/components/Forms/ClientForm/types';
 
 const ClientTable = () => {
-    const scrollRef = React.useRef<any>(null)
+    const scrollRef = React.useRef<HTMLDivElement>(null)
     const [clients, setClients] = React.useState<DataListClientsProps | null>(null)
+    const [prevSize, setPrevSize] = React.useState(0)
 
     React.useEffect(() => {
         async function loadClients() {
@@ -17,8 +18,14 @@ const ClientTable = () => {
     }, [clients])
 
     React.useEffect(() => {
-        scrollRef.current.scrollTo(0, -scrollRef.current.scrollHeight)
-    }, [clients])
+        if (clients && clients.clients) {
+          const newSize = clients.clients.length
+          if (newSize > prevSize) {
+            scrollRef.current?.scrollTo(0, -scrollRef.current.scrollHeight)
+          }
+          setPrevSize(newSize)
+        }
+      }, [clients])
 
     return (
         <S.Container>
