@@ -88,15 +88,16 @@ export const CardImage = styled.section`
     align-items: center;
     width: 5rem;
     height: 5rem;
-    border-radius: .8rem;
-    background: #fff;
     overflow: hidden;
+    border-radius: .8rem;
 
     img{
         object-fit: cover;
         width: 100%;
         height: 100%;
-        padding: .4rem;
+        border-radius: 50%;
+        background: #ff6b00;
+        border: 2px solid #fff;
     }
 `
 export const Description = styled.article`
