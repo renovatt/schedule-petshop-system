@@ -104,7 +104,7 @@ export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleF
 
 export const deletingScheduleFormToDatabase = async (id: string) => {
     try {
-        const response = await fetch(`/api/clients/${id}`, {
+        const response = await fetch(`/api/schedules/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
