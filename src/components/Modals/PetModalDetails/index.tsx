@@ -11,7 +11,7 @@ import dayjs from 'dayjs'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const [dogRef, setDogRef] = React.useState<dogFetchProps[]>([])
-    const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState('');
+    const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState(petProps.reference_image_id);
     const [petImgUrl, setPetImgUrl] = React.useState(`https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.jpg`)
 
     const {
@@ -45,8 +45,8 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
             const { response } = await dogsBreedsReferences()
             setDogRef(response)
         }
-        loadDogsReferences()
         setValue("reference_image_id", selectedReferenceImageId);
+        loadDogsReferences()
     }, [selectedReferenceImageId])
 
     const updateBreed = (value: string) => {
