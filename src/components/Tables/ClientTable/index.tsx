@@ -4,10 +4,15 @@ import { renderClientList } from '@/services';
 import ClientList from '@/components/Lists/ClientList';
 import { DataListClientsProps } from '@/components/Forms/ClientForm/types';
 
-const ClientTable = () => {
+type InputSearchValueProps = {
+    searchValue: string
+}
+
+const ClientTable = ({ searchValue }: InputSearchValueProps) => {
     const scrollRef = React.useRef<HTMLDivElement>(null)
-    const [clients, setClients] = React.useState<DataListClientsProps | null>(null)
     const [prevSize, setPrevSize] = React.useState(0)
+    const [clients, setClients] = React.useState<DataListClientsProps | null>(null)
+    const [filteredClients, setFilteredClients] = React.useState(clients?.clients || []);
 
     React.useEffect(() => {
         async function loadClients() {
@@ -18,19 +23,26 @@ const ClientTable = () => {
     }, [clients])
 
     React.useEffect(() => {
+        const filtered = clients?.clients?.filter((client) => {
+            return client.name.toLowerCase().includes(searchValue.toLowerCase());
+        });
+        setFilteredClients(filtered || []);
+    }, [clients, searchValue]);
+
+    React.useEffect(() => {
         if (clients && clients.clients) {
-          const newSize = clients.clients.length
-          if (newSize > prevSize) {
-            scrollRef.current?.scrollTo(0, -scrollRef.current.scrollHeight)
-          }
-          setPrevSize(newSize)
+            const newSize = clients.clients.length
+            if (newSize > prevSize) {
+                scrollRef.current?.scrollTo(0, -scrollRef.current.scrollHeight)
+            }
+            setPrevSize(newSize)
         }
-      }, [clients])
+    }, [clients])
 
     return (
         <S.Container>
             <S.Table ref={scrollRef}>
-                {clients?.clients?.map(client => (
+                {filteredClients?.map(client => (
                     <ClientList
                         key={client.id}
                         id={client.id}

@@ -1,18 +1,22 @@
-import Header from '@/components/Header'
-import ClientTable from '@/components/Tables/ClientTable'
-import Head from 'next/head'
 import React from 'react'
 import * as S from './style'
-import { BiSearch } from 'react-icons/bi'
-import { FaUsers } from 'react-icons/fa'
-import SchedulesMonthCount from '@/components/Cards/SchedulesMonthCount'
-import Goal from '@/components/Cards/Goal'
-import SchedulesCanceled from '@/components/Cards/SchedulesCanceled'
+import Head from 'next/head'
 import Image from 'next/image'
+import Header from '@/components/Header'
+import { HiUsers } from 'react-icons/hi'
+import Goal from '@/components/Cards/Goal'
 import thumb from '@/assets/thumb.jpg'
+import ClientTable from '@/components/Tables/ClientTable'
+import SchedulesMonthCount from '@/components/Cards/SchedulesMonthCount'
+import SchedulesCanceled from '@/components/Cards/SchedulesCanceled'
 import SchedulesCountDaily from '@/components/Cards/SchedulesDailyCount'
 
 const Dashboard = () => {
+  const [searchValue, setSearchValue] = React.useState("");
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+
   return (
     <>
       <Head>
@@ -37,17 +41,18 @@ const Dashboard = () => {
               <S.LastRegister>
                 <S.Header>
                   <S.TitleContent>
-                    <FaUsers />
+                    <HiUsers />
                     <S.Title>Clientes</S.Title>
                   </S.TitleContent>
                   <S.Form>
-                    <S.Search type="search" placeholder='Procurar cliente' />
-                    <S.Button>
-                      <BiSearch />
-                    </S.Button>
+                    <S.Search
+                      type="search"
+                      value={searchValue}
+                      placeholder='Procurar cliente'
+                      onChange={handleSearchInputChange} />
                   </S.Form>
                 </S.Header>
-                <ClientTable />
+                <ClientTable searchValue={searchValue} />
               </S.LastRegister>
             </S.Section>
           </S.Content>
