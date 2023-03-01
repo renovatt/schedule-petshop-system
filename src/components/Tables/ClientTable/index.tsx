@@ -1,8 +1,8 @@
 import React from 'react'
 import * as S from './style'
-import { renderClientList } from '@/services';
 import ClientList from '@/components/Lists/ClientList';
-import { DataListClientsProps } from '@/components/Forms/ClientForm/types';
+import { Loader } from '@/components/Helper/Loader';
+import { GlobalContext } from '@/context';
 
 type InputSearchValueProps = {
     searchValue: string
@@ -11,23 +11,21 @@ type InputSearchValueProps = {
 const ClientTable = ({ searchValue }: InputSearchValueProps) => {
     const scrollRef = React.useRef<HTMLDivElement>(null)
     const [prevSize, setPrevSize] = React.useState(0)
-    const [clients, setClients] = React.useState<DataListClientsProps | null>(null)
-    const [filteredClients, setFilteredClients] = React.useState(clients?.clients || []);
+    const { loader, clients, loadClients } = React.useContext(GlobalContext)
 
-    React.useEffect(() => {
-        async function loadClients() {
-            const { response } = await renderClientList()
-            setClients(response)
+    const filteredClients = React.useMemo(() => {
+        if (clients && clients?.clients) {
+            const filtered = clients?.clients?.filter((client) => {
+                return client.name.toLowerCase().includes(searchValue.toLowerCase());
+            });
+            return filtered
         }
-        loadClients()
-    }, [clients])
+        return [];
+    }, [clients?.clients, searchValue]);
 
     React.useEffect(() => {
-        const filtered = clients?.clients?.filter((client) => {
-            return client.name.toLowerCase().includes(searchValue.toLowerCase());
-        });
-        setFilteredClients(filtered || []);
-    }, [clients, searchValue]);
+        loadClients()
+    }, [])
 
     React.useEffect(() => {
         if (clients && clients.clients) {
@@ -42,20 +40,8 @@ const ClientTable = ({ searchValue }: InputSearchValueProps) => {
     return (
         <S.Container>
             <S.Table ref={scrollRef}>
-                {filteredClients?.map(client => (
-                    <ClientList
-                        key={client.id}
-                        id={client.id}
-                        name={client.name}
-                        age={client.age}
-                        sex={client.sex}
-                        city={client.city}
-                        street={client.street}
-                        contact={client.contact}
-                        created_at={client.created_at}
-                        neighborhood={client.neighborhood}
-                        house_number={client.house_number} />
-                ))}
+                {loader && <Loader />}
+                {filteredClients?.map(client => (<ClientList {...client} />))}
             </S.Table>
         </S.Container>
     )

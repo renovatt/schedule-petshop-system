@@ -1,50 +1,56 @@
 import React from 'react'
 import * as S from './style'
-import { renderScheduleList } from '@/services'
+import { Loader } from '@/components/Helper/Loader'
 import ScheduleList from '../../Lists/SchedulesList'
-import { DataListSchedulesProps } from '@/components/Forms/ScheduleForm/types'
+import { GlobalContext } from '@/context'
 
 const ScheduleTable = () => {
-    const scrollRef = React.useRef<HTMLDivElement>(null)
-    const [schedules, setSchedules] = React.useState<DataListSchedulesProps | null>(null)
     const [prevSize, setPrevSize] = React.useState(0)
+    const scrollRef = React.useRef<HTMLDivElement>(null)
+    const { loader, schedules, loadSchedules } = React.useContext(GlobalContext)
+
+    const filteredSchedules = React.useMemo(() => {
+        if (schedules && schedules.schedules) {
+            return schedules.schedules.filter(schedule => schedule.status);
+        }
+        return [];
+    }, [schedules?.schedules]);
 
     React.useEffect(() => {
-        async function loadSchedules() {
-            const { response } = await renderScheduleList()
-            setSchedules(response)
-        }
         loadSchedules()
-    }, [schedules])
+    }, [])
 
     React.useEffect(() => {
         if (schedules && schedules.schedules) {
-          const newSize = schedules.schedules.length
-          if (newSize > prevSize) {
-            scrollRef.current?.scrollTo(0, -scrollRef.current.scrollHeight)
-          }
-          setPrevSize(newSize)
+            const newSize = schedules.schedules.length
+            if (newSize > prevSize) {
+                scrollRef.current?.scrollTo(0, -scrollRef.current.scrollHeight)
+            }
+            setPrevSize(newSize)
         }
-      }, [schedules])
+    }, [schedules])
 
     return (
         <S.Container>
             <S.Table ref={scrollRef}>
-                {schedules?.schedules?.map(data => (
+                {loader && <Loader />}
+                {filteredSchedules ? filteredSchedules?.map(data => (<ScheduleList {...data} />)) :
                     <ScheduleList
+                        status
                         client
-                        key={data.id}
-                        id={data.id}
-                        tutor={data.tutor}
-                        pet={data.pet}
-                        age={data.age}
-                        sex={data.sex}
-                        breed={data.breed}
-                        reference_image_id={data.reference_image_id}
-                        weight={data.weight}
-                        date={data.date}
-                        created_at={data.created_at} />
-                ))}
+                        key=""
+                        id=""
+                        tutor=""
+                        pet="Sem Agendamentos"
+                        age=""
+                        sex=""
+                        breed=""
+                        reference_image_id=""
+                        weight=""
+                        date={new Date("2023-12-06")}
+                        canceled_date={new Date("2023-12-06")}
+                        created_at={new Date("2023-12-06")} />
+                }
             </S.Table>
         </S.Container>
     )
