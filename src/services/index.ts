@@ -7,7 +7,11 @@ export const renderScheduleList = async () => {
     try {
         const response = await fetch('/api/schedules')
         const json = await response.json()
-        return { response: json }
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
     } catch (error) {
         return { error }
     }
@@ -17,7 +21,11 @@ export const renderClientList = async () => {
     try {
         const response = await fetch('/api/clients')
         const json = await response.json()
-        return { response: json }
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
     } catch (error) {
         return { error }
     }
@@ -33,7 +41,11 @@ export const sendingClientFormToDatabase = async (data: ClientFormProps) => {
             body: JSON.stringify(data)
         })
         const json = await response.json()
-        return { response: json }
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
     } catch (error) {
         return { error }
     }
@@ -49,7 +61,11 @@ export const updatingClientFormToDatabase = async (id: string, data: ClientFormP
             body: JSON.stringify(data)
         })
         const json = await response.json()
-        return { response: json }
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
     } catch (error) {
         return { error }
     }
@@ -64,7 +80,11 @@ export const deletingClientFormToDatabase = async (id: string) => {
             }
         })
         const json = await response.json()
-        return { response: json }
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
     } catch (error) {
         return { error }
     }
@@ -80,7 +100,11 @@ export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps) => 
             body: JSON.stringify(data)
         })
         const json = await response.json();
-        return { response: json }
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
     } catch (error) {
         return { error }
     }
@@ -96,7 +120,11 @@ export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleF
             body: JSON.stringify(data)
         })
         const json = await response.json()
-        return { response: json }
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
     } catch (error) {
         return { error }
     }
@@ -111,7 +139,11 @@ export const deletingScheduleFormToDatabase = async (id: string) => {
             }
         })
         const json = await response.json()
-        return { response: json }
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
     } catch (error) {
         return { error }
     }
@@ -120,6 +152,9 @@ export const deletingScheduleFormToDatabase = async (id: string) => {
 export const dogsBreedsReferences = async () => {
     try {
         const response = await fetch(base_url)
+        if (!response.ok) {
+            throw new Error(`Request failed with status ${response.status}`);
+        }
         const data = await response.json()
         const petReferences = data.map((item: dogFetchProps) => ({
             id: item.id,
