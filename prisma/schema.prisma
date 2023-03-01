@@ -30,6 +30,8 @@ model Schedules {
   weight             String
   sex                String
   client             Boolean
+  status             Boolean
   date               DateTime
+  canceled_date      DateTime
   created_at         DateTime @default(now())
 }
