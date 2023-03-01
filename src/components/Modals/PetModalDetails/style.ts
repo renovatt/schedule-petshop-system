@@ -125,6 +125,33 @@ export const Icon = styled.i`
     }
 `
 
+export const ConfirmButton = styled.button`
+    position: absolute;
+    right: 0;
+    bottom: -.4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 2rem;
+    font-weight: bold;
+    font-size: .8rem;
+    border: none;
+    margin: .4rem;
+    outline: none;
+    transition: .2s;
+    border-radius: .4rem;
+    color: #fff;
+    background: #ff6b00;
+
+    &:hover{
+        cursor: pointer;
+        color: #000;
+        background: #fff;
+    }
+`
+
 export const Description = styled.article`
     display: flex;
     justify-content: center;
