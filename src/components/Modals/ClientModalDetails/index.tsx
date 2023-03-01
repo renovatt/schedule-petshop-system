@@ -9,8 +9,10 @@ import { ClientFormProps } from '@/components/Forms/ClientForm/types'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { CgCloseR } from 'react-icons/cg'
+import { GlobalContext } from '@/context'
 
 const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProps) => {
+    const { loadClients } = React.useContext(GlobalContext)
     const { control, handleSubmit, formState: { errors } } = useForm<ClientFormProps>({ defaultValues: clientProps });
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
         const { response, error } = await updatingClientFormToDatabase(clientProps.id, data)
@@ -29,6 +31,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
         } else if (error) {
             toast.error('Lamento, aconteceu algum erro ao deletar o cliente.')
         }
+        loadClients()
         setClientModalOpen(false)
     }
     return (
@@ -213,7 +216,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                         </S.Description>
                     </S.Details>
                     <S.SaveButton type="submit">Salvar</S.SaveButton>
-                    <S.DeleteButton onClick={deleteClient}>Excuir Cliente</S.DeleteButton>
+                    <S.DeleteButton onClick={deleteClient}>Excuir</S.DeleteButton>
                 </S.Form>
             </S.Content>
         </S.Container>

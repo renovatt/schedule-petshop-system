@@ -4,12 +4,18 @@ import Image from 'next/image'
 import { PetModalProps } from './types'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import { deletingScheduleFormToDatabase, dogsBreedsReferences, updatingScheduleFormToDatabase } from '@/services'
+import {
+    deletingScheduleFormToDatabase,
+    updatingScheduleFormToDatabase,
+    dogsBreedsReferences
+} from '@/services'
 import { dogFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { CgCloseR } from 'react-icons/cg'
 import dayjs from 'dayjs'
+import { GlobalContext } from '@/context'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
+    const { loadSchedules } = React.useContext(GlobalContext)
     const [dogRef, setDogRef] = React.useState<dogFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState(petProps.reference_image_id);
     const [petImgUrl, setPetImgUrl] = React.useState(`https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.jpg`)
@@ -27,17 +33,27 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
         } else if (error) {
             toast.error('Lamento, aconteceu algum erro ao atualizar os dados.')
         }
+        loadSchedules()
         setPetModalOpen(false)
+    }
+
+    const cancelSchedule = async () => {
+        const currentDate = new Date()
+        const canceledDateFormated = dayjs(currentDate).format('YYYY-MM-DDTHH:mm')
+        setValue("status", false);
+        setValue("canceled_date", new Date(canceledDateFormated));
+        toast.success('Agendamento cancelado com sucesso!')
+        loadSchedules()
     }
 
     const deleteSchedule = async () => {
         const { response, error } = await deletingScheduleFormToDatabase(petProps.id)
         if (response) {
-            toast.success('Agendamento cancelado com sucesso!')
+            toast.success('Agendamento finalizado com sucesso!')
         } else if (error) {
-            toast.error('Lamento, aconteceu algum erro ao cancelar o agendamento.')
+            toast.error('Lamento, aconteceu algum erro ao finalizar o agendamento.')
         }
-        setPetModalOpen(false)
+        loadSchedules()
     }
 
     React.useEffect(() => {
@@ -83,6 +99,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                     onError={handleError}
                                     alt="pet-image" />
                             </S.CardImage>
+                            <S.ConfirmButton onClick={cancelSchedule}>Cancelar</S.ConfirmButton>
                             <S.Icon>
                                 <CgCloseR onClick={() => setPetModalOpen(false)} />
                             </S.Icon>
@@ -247,7 +264,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                         </S.Description>
                     </S.Details>
                     <S.SaveButton type="submit">Salvar</S.SaveButton>
-                    <S.DeleteButton onClick={deleteSchedule}>Cancelar Agendamento</S.DeleteButton>
+                    <S.DeleteButton onClick={deleteSchedule}>Finalizar</S.DeleteButton>
                 </S.Form>
             </S.Content>
         </S.Container>

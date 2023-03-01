@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { dogFetchProps, ScheduleFormProps } from './types';
 import { toast } from 'react-toastify';
 import { dogsBreedsReferences, sendingScheduleFormToDatabase } from '@/services';
+import { GlobalContext } from '@/context';
 
 const options = ["Macho", "Fêmea"]
 
@@ -12,7 +13,8 @@ const ScheduleForm = () => {
     const [isClient, setClientCheckBox] = React.useState(false)
     const [dogRef, setDogRef] = React.useState<dogFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState('');
-    
+    const { loadSchedules } = React.useContext(GlobalContext)
+
     const onSubmit: SubmitHandler<ScheduleFormProps> = async data => {
         const { response, error } = await sendingScheduleFormToDatabase(data)
         if (response) {
@@ -22,6 +24,7 @@ const ScheduleForm = () => {
         }
         reset();
         setClientCheckBox(!isClient);
+        loadSchedules()
     }
 
     React.useEffect(() => {
