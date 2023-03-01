@@ -13,6 +13,8 @@ export type ScheduleFormProps = {
     sex: string,
     date: Date,
     created_at: Date
+    canceled_date: Date,
+    status: boolean,
     client: boolean,
 };
 
