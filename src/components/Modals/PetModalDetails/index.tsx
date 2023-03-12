@@ -12,10 +12,10 @@ import {
 import { dogFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { CgCloseR } from 'react-icons/cg'
 import dayjs from 'dayjs'
-import { GlobalContext } from '@/context'
+import { ListContext } from '@/components/contexts/listContext'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
-    const { loadSchedules } = React.useContext(GlobalContext)
+    const { loadSchedules } = React.useContext(ListContext)
     const [dogRef, setDogRef] = React.useState<dogFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState(petProps.reference_image_id);
     const [petImgUrl, setPetImgUrl] = React.useState(`https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.jpg`)

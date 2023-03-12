@@ -2,12 +2,12 @@ import React from 'react'
 import * as S from './style'
 import { Loader } from '@/components/Helper/Loader'
 import ScheduleList from '../../Lists/SchedulesList'
-import { GlobalContext } from '@/context'
+import { ListContext } from '@/components/contexts/listContext'
 
 const ScheduleTable = () => {
     const [prevSize, setPrevSize] = React.useState(0)
     const scrollRef = React.useRef<HTMLDivElement>(null)
-    const { loader, schedules, loadSchedules } = React.useContext(GlobalContext)
+    const { loader, schedules, loadSchedules } = React.useContext(ListContext)
 
     const filteredSchedules = React.useMemo(() => {
         if (schedules && schedules.schedules) {
@@ -34,22 +34,8 @@ const ScheduleTable = () => {
         <S.Container>
             <S.Table ref={scrollRef}>
                 {loader && <Loader />}
-                {filteredSchedules ? filteredSchedules?.map(data => (<ScheduleList {...data} />)) :
-                    <ScheduleList
-                        status
-                        client
-                        key=""
-                        id=""
-                        tutor=""
-                        pet="Sem Agendamentos"
-                        age=""
-                        sex=""
-                        breed=""
-                        reference_image_id=""
-                        weight=""
-                        date={new Date("2023-12-06")}
-                        canceled_date={new Date("2023-12-06")}
-                        created_at={new Date("2023-12-06")} />
+                {filteredSchedules.length ? filteredSchedules?.map((schedule, index) =>
+                    (<ScheduleList key={index} {...schedule} />)) : <p>Sem agendamentos.</p>
                 }
             </S.Table>
         </S.Container>

@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './style'
 import ClientList from '@/components/Lists/ClientList';
 import { Loader } from '@/components/Helper/Loader';
-import { GlobalContext } from '@/context';
+import { ListContext } from '@/components/contexts/listContext';
 
 type InputSearchValueProps = {
     searchValue: string
@@ -11,7 +11,7 @@ type InputSearchValueProps = {
 const ClientTable = ({ searchValue }: InputSearchValueProps) => {
     const scrollRef = React.useRef<HTMLDivElement>(null)
     const [prevSize, setPrevSize] = React.useState(0)
-    const { loader, clients, loadClients } = React.useContext(GlobalContext)
+    const { loader, clients, loadClients } = React.useContext(ListContext)
 
     const filteredClients = React.useMemo(() => {
         if (clients && clients?.clients) {
@@ -41,7 +41,7 @@ const ClientTable = ({ searchValue }: InputSearchValueProps) => {
         <S.Container>
             <S.Table ref={scrollRef}>
                 {loader && <Loader />}
-                {filteredClients?.map(client => (<ClientList {...client} />))}
+                {filteredClients?.map((client, index) => (<ClientList key={index} {...client} />))}
             </S.Table>
         </S.Container>
     )

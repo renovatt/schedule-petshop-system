@@ -6,9 +6,11 @@ import { RiLogoutCircleLine } from 'react-icons/ri'
 import { BiBone } from 'react-icons/bi'
 import { MdSpaceDashboard } from 'react-icons/md'
 import { AiFillSchedule, AiFillLinkedin } from 'react-icons/ai'
+import { AuthContext } from '../contexts/authContext'
 
 const Navigation = () => {
     const [isActive, setIsActive] = React.useState(false)
+    const { signOut } = React.useContext(AuthContext)
     return (
         <S.Navigation active={isActive}>
             <S.ListContainer>
@@ -55,11 +57,11 @@ const Navigation = () => {
                 </S.LinkedinLink>
             </S.Linkedin>
 
-            {/* <S.Logout>
-                <S.LogoutLink href='/logout'>
-                    <S.Icon><RiLogoutCircleLine /></S.Icon>
+            <S.Logout>
+                <S.LogoutLink href='/'>
+                    <S.Icon onClick={() => signOut()}><RiLogoutCircleLine /></S.Icon>
                 </S.LogoutLink>
-            </S.Logout> */}
+            </S.Logout>
 
             <S.Toggle
                 className={isActive ? 'active' : ''}

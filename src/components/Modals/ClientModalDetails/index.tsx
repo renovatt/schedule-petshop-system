@@ -9,10 +9,10 @@ import { ClientFormProps } from '@/components/Forms/ClientForm/types'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { CgCloseR } from 'react-icons/cg'
-import { GlobalContext } from '@/context'
+import { ListContext } from '@/components/contexts/listContext'
 
 const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProps) => {
-    const { loadClients } = React.useContext(GlobalContext)
+    const { loadClients } = React.useContext(ListContext)
     const { control, handleSubmit, formState: { errors } } = useForm<ClientFormProps>({ defaultValues: clientProps });
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
         const { response, error } = await updatingClientFormToDatabase(clientProps.id, data)
