@@ -10,6 +10,8 @@ import ClientTable from '@/components/Tables/ClientTable'
 import SchedulesMonthCount from '@/components/Cards/SchedulesMonthCount'
 import SchedulesCanceled from '@/components/Cards/SchedulesCanceled'
 import SchedulesCountDaily from '@/components/Cards/SchedulesDailyCount'
+import { GetServerSideProps } from 'next'
+import { parseCookies } from 'nookies'
 
 const Dashboard = () => {
   const [searchValue, setSearchValue] = React.useState("");
@@ -62,4 +64,19 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Dashboard;
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { ['@nextauth-token']: token } = parseCookies(ctx)
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+  return {
+    props: {}
+  }
+}

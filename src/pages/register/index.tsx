@@ -5,6 +5,8 @@ import React from 'react'
 import * as S from './style'
 import hug from '@/assets/hug.png'
 import Image from 'next/image'
+import { GetServerSideProps } from 'next'
+import { parseCookies } from 'nookies'
 
 const Register = () => {
   return (
@@ -30,3 +32,18 @@ const Register = () => {
 }
 
 export default Register
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { ['@nextauth-token']: token } = parseCookies(ctx)
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+  return {
+    props: {}
+  }
+}

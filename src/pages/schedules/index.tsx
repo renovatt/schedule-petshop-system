@@ -2,8 +2,10 @@ import dog from '@/assets/dog.png'
 import ScheduleForm from '@/components/Forms/ScheduleForm'
 import Header from '@/components/Header'
 import ScheduleTable from '@/components/Tables/ScheduleTable'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { parseCookies } from 'nookies'
 import React from 'react'
 import * as S from './style'
 
@@ -42,3 +44,18 @@ const Schedules = () => {
 }
 
 export default Schedules
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { ['@nextauth-token']: token } = parseCookies(ctx)
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+  return {
+    props: {}
+  }
+}
