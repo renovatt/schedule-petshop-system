@@ -1,7 +1,7 @@
 import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
 
-export async function createSchedule(data: ScheduleFormProps) {
+export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
         const schedule = await prisma.schedules.create({
             data: {
@@ -16,6 +16,9 @@ export async function createSchedule(data: ScheduleFormProps) {
                 canceled_date: new Date(data.date),
                 status: data.client,
                 client: data.client,
+                user: {
+                    connect: { id: userId },
+                }
             },
         });
         return { schedule };
@@ -24,9 +27,13 @@ export async function createSchedule(data: ScheduleFormProps) {
     }
 }
 
-export async function getAllSchedules() {
+export async function getAllSchedules(userId: string | undefined) {
     try {
-        const schedules = await prisma.schedules.findMany()
+        const schedules = await prisma.schedules.findMany({
+            where: {
+                userId: userId
+            }
+        })
         return { schedules }
     } catch (error) {
         return { error }

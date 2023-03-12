@@ -1,7 +1,7 @@
 import prisma from "../../prisma";
 import { ClientFormProps } from "@/components/Forms/ClientForm/types";
 
-export async function createClient(data: ClientFormProps) {
+export async function createClient(data: ClientFormProps, userId: string | undefined) {
   try {
     const client = await prisma.clients.create({
       data: {
@@ -13,6 +13,9 @@ export async function createClient(data: ClientFormProps) {
         neighborhood: data.neighborhood,
         city: data.city,
         contact: data.contact,
+        user: {
+          connect: { id: userId },
+        }
       },
     });
     return { client };
@@ -21,9 +24,13 @@ export async function createClient(data: ClientFormProps) {
   }
 }
 
-export async function getAllClients() {
+export async function getAllClients(userId: string | undefined) {
   try {
-    const clients = await prisma.clients.findMany()
+    const clients = await prisma.clients.findMany({
+      where: {
+        userId: userId
+      }
+    })
     return { clients }
   } catch (error) {
     return { error }
