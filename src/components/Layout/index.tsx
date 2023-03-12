@@ -1,11 +1,17 @@
 import React from 'react'
-import Navigation from '../Navigation'
 import * as S from './style'
+import { parseCookies } from 'nookies';
+import Navigation from '../Navigation'
 
-const Layout = ({ children }: any) => {
+export type LayoutProps = {
+    children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
+    const { ['@nextauth-token']: token } = parseCookies();
     return (
         <S.Container>
-            <Navigation />
+            {token && <Navigation />}
             <S.Main>{children}</S.Main>
         </S.Container>
     )
