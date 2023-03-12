@@ -2,7 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { deleteClient, findClient, updateClient } from '@/lib/controllers/clients'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    const { authorization } = req.headers
 
+    if (!authorization) {
+        return res.status(401).json({ error: 'Authorization header is missing.' })
+    }
+    
     if (req.method === 'PUT') {
         try {
             const { id } = req.query
