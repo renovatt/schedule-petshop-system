@@ -1,11 +1,20 @@
 import { ClientFormProps } from "@/components/Forms/ClientForm/types"
+import { UserFormProps } from "@/components/Forms/LoginForm/type"
 import { dogFetchProps, ScheduleFormProps } from "@/components/Forms/ScheduleForm/types"
+import { parseCookies } from "nookies";
+import jwt from 'jsonwebtoken';
+import { SignInData, SignInResponse } from "@/components/contexts/authContext/types";
 
 const base_url = `https://api.thedogapi.com/v1/breeds`
+const { ['@nextauth-token']: token } = parseCookies();
 
 export const renderScheduleList = async () => {
     try {
-        const response = await fetch('/api/schedules')
+        const response = await fetch('/api/schedules', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
         const json = await response.json()
         if (response.ok) {
             return { response: json }
@@ -19,7 +28,51 @@ export const renderScheduleList = async () => {
 
 export const renderClientList = async () => {
     try {
-        const response = await fetch('/api/clients')
+        const response = await fetch('/api/clients', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        const json = await response.json()
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.message)
+        }
+    } catch (error) {
+        return { error }
+    }
+}
+
+export const sendingLoginFormToDatabase = async (data: SignInData) => {
+    try {
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        const json = await response.json()
+        if (response.ok) {
+            return { response: json as SignInResponse }
+        } else {
+            throw new Error(json.message)
+        }
+    } catch (error) {
+        return { error: error as Error }
+    }
+}
+
+export const sendingUserFormToDatabase = async (data: UserFormProps) => {
+    try {
+        const response = await fetch('/api/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
         const json = await response.json()
         if (response.ok) {
             return { response: json }
@@ -36,7 +89,8 @@ export const sendingClientFormToDatabase = async (data: ClientFormProps) => {
         const response = await fetch('/api/clients', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(data)
         })
@@ -56,7 +110,9 @@ export const updatingClientFormToDatabase = async (id: string, data: ClientFormP
         const response = await fetch(`/api/clients/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+
             },
             body: JSON.stringify(data)
         })
@@ -76,7 +132,8 @@ export const deletingClientFormToDatabase = async (id: string) => {
         const response = await fetch(`/api/clients/${id}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         })
         const json = await response.json()
@@ -95,7 +152,8 @@ export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps) => 
         const response = await fetch('/api/schedules', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(data)
         })
@@ -115,7 +173,8 @@ export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleF
         const response = await fetch(`/api/schedules/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(data)
         })
@@ -135,7 +194,8 @@ export const deletingScheduleFormToDatabase = async (id: string) => {
         const response = await fetch(`/api/schedules/${id}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         })
         const json = await response.json()
@@ -167,3 +227,13 @@ export const dogsBreedsReferences = async () => {
         return { error }
     }
 }
+
+export const getUserIdFromToken = (token: string): string | undefined => {
+    try {
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET ?? "");
+        if (typeof decodedToken === 'string') return undefined;
+        return decodedToken.userId;
+    } catch (error) {
+        return undefined;
+    }
+};
