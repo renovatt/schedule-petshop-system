@@ -17,6 +17,11 @@ body {
     /* background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(16,16,16,1) 0%, rgba(39,39,39,1) 100%); */
 }
 
+main{
+    display: flex;
+    justify-content: space-around;
+}
+
 ::-webkit-scrollbar{
     width: 6px;
 }
