@@ -2,11 +2,12 @@ import React from 'react'
 import * as S from './style'
 import { HeaderProps } from './types'
 import { MdPets } from 'react-icons/md'
-import { FaBone } from 'react-icons/fa'
+import Navigation from '../Navigation'
 
 const Header = ({ title }: HeaderProps) => {
     return (
         <S.Header>
+            <Navigation />
             <S.Icon>
                 <MdPets />
             </S.Icon>
