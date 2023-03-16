@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 return res.status(200).json({ user })
             }
         } catch (error) {
-            return res.status(500).json({ "error": error })
+            return res.status(400).json({ error: "Erro ao atualizar os dados do usuário." })
         }
     }
 
@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 return res.status(200).json({ user })
             }
         } catch (error) {
-            return res.status(500).json({ "error": error })
+            return res.status(400).json({ error: "Erro ao buscar usuário." })
         }
     }
 
@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 return res.status(200).json({ user })
             }
         } catch (error) {
-            return res.status(500).json({ "error": error })
+            return res.status(400).json({ error: "Erro ao deletar usuário." })
         }
     }
 }

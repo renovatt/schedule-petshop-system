@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if (error) throw new Error(`Error: ${error}`)
             return res.status(200).json({ schedules })
         } catch (err) {
-            console.log(err)
+            return res.status(400).json({ error: "Erro ao buscar dados." })
         }
     }
 
@@ -30,12 +30,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             if (error) throw new Error(`Error: ${error}`)
             return res.status(200).json({ schedule })
         } catch (error) {
-            return res.status(500).json({ "error": error })
+            return res.status(400).json({ error: "Erro na criação do agendamento." })
         }
     }
-
-    res.setHeader('Allow', ['GET', 'POST'])
-    res.status(425).end(`Method ${req.method} is not allowed.`)
+    res.status(501).end(`Method ${req.method} is not allowed.`)
 }
 
 export default handler
