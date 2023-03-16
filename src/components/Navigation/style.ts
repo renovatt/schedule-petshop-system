@@ -50,14 +50,13 @@ export const List = styled.li`
     position: relative;
     width: 100%;
     transition: all .3s;
-    border-top-right-radius: 1.875rem;
-    border-bottom-right-radius: 1.875rem;
+    border-top-left-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem;
     overflow: hidden;
-    
     margin-bottom: .4rem;
 
     &:hover{
-        background: #ff6b00;
+        background-color: #ff6b00;
     }
 
     &:nth-child(1){
@@ -75,10 +74,10 @@ export const List = styled.li`
     }
 
     &:hover:nth-child(1){
-        margin-left: -.4rem;
+        margin-right: -.4rem;
         
         @media (max-width: 70rem){
-            margin-left: 0;
+            margin-right: 0;
         }
 
         &:hover{
@@ -221,16 +220,20 @@ export const Logout = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    bottom: 75px;
+    bottom: 85px;
     right: 15px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     transition: all .3s;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.55);
 
     @media (max-width: 70rem){
         display: none;
+    }
+
+    &:hover{
+        background-color: #ff6b00;
     }
 `
 
@@ -246,7 +249,7 @@ export const LogoutLink = styled(Link)`
 
     &:hover{
         cursor: pointer;
-        color: #000;
+        color: #fff;
     }
 `
 
