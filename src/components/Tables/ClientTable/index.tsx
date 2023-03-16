@@ -40,8 +40,10 @@ const ClientTable = ({ searchValue }: InputSearchValueProps) => {
     return (
         <S.Container>
             <S.Table ref={scrollRef}>
-                {loader && <Loader />}
-                {filteredClients?.map((client, index) => (<ClientList key={index} {...client} />))}
+                {loader ? <Loader /> :
+                    filteredClients.length ? filteredClients?.map((client, index) =>
+                        (<ClientList key={index} {...client} />)) : <p>Sem clientes.</p>
+                }
             </S.Table>
         </S.Container>
     )

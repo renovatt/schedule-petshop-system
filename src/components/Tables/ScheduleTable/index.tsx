@@ -33,9 +33,9 @@ const ScheduleTable = () => {
     return (
         <S.Container>
             <S.Table ref={scrollRef}>
-                {loader && <Loader />}
-                {filteredSchedules.length ? filteredSchedules?.map((schedule, index) =>
-                    (<ScheduleList key={index} {...schedule} />)) : <p>Sem agendamentos.</p>
+                {loader ? <Loader /> :
+                    filteredSchedules.length ? filteredSchedules?.map((schedule, index) =>
+                        (<ScheduleList key={index} {...schedule} />)) : <p>Sem agendamentos.</p>
                 }
             </S.Table>
         </S.Container>
