@@ -19,7 +19,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
         if (response) {
             toast.success('Dados atualizado com sucesso!')
         } else if (error) {
-            toast.error('Lamento, aconteceu algum erro ao atualizar os dados.')
+            toast.error(error.toString())
         }
         setClientModalOpen(false)
     }
@@ -29,7 +29,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
         if (response) {
             toast.success('Cliente deletado com sucesso!')
         } else if (error) {
-            toast.error('Lamento, aconteceu algum erro ao deletar o cliente.')
+            toast.error(error.toString())
         }
         loadClients()
         setClientModalOpen(false)

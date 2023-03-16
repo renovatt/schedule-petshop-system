@@ -12,9 +12,9 @@ const ClientForm = () => {
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
         const { response, error } = await sendingClientFormToDatabase(data)
         if (response) {
-            toast.success('Agendamento realizado com sucesso!')
+            toast.success('Cliente cadastrado realizado com sucesso!')
         } else if (error) {
-            toast.error('Lamento, aconteceu algum erro durante o cadastro!')
+            toast.error(error.toString())
         }
         reset();
     }

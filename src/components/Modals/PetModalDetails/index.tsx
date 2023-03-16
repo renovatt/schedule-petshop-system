@@ -31,7 +31,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
         if (response) {
             toast.success('Dados atualizado com sucesso!')
         } else if (error) {
-            toast.error('Lamento, aconteceu algum erro ao atualizar os dados.')
+            toast.error(error.toString())
         }
         loadSchedules()
         setPetModalOpen(false)
@@ -51,7 +51,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
         if (response) {
             toast.success('Agendamento finalizado com sucesso!')
         } else if (error) {
-            toast.error('Lamento, aconteceu algum erro ao finalizar o agendamento.')
+            toast.error(error.toString())
         }
         loadSchedules()
     }

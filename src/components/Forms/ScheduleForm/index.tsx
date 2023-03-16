@@ -20,7 +20,7 @@ const ScheduleForm = () => {
         if (response) {
             toast.success('Agendamento realizado com sucesso!')
         } else if (error) {
-            toast.error('Lamento, aconteceu algum erro durante o agendamento!')
+            toast.error(error.toString())
         }
         reset();
         setClientCheckBox(!isClient);

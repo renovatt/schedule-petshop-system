@@ -13,7 +13,7 @@ const RegisterForm = () => {
         if (response) {
             toast.success('Cadastro realizado com sucesso!')
         } else if (error) {
-            toast.error('Lamento, aconteceu algum erro durante o cadastro!')
+            toast.error(error.toString())
         }
         reset();
     }

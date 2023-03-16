@@ -14,7 +14,7 @@ const LoginForm = () => {
         if (response) {
             toast.success('Seja bem vindo!')
         } else if (error) {
-            toast.error('E-mail ou senha incorretos.')
+            toast.error(error.toString())
         }
         reset();
     }
