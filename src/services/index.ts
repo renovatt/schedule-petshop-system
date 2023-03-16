@@ -19,10 +19,10 @@ export const renderScheduleList = async () => {
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.error }
     }
 }
 
@@ -37,10 +37,10 @@ export const renderClientList = async () => {
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.error }
     }
 }
 
@@ -57,10 +57,10 @@ export const sendingLoginFormToDatabase = async (data: SignInData) => {
         if (response.ok) {
             return { response: json as SignInResponse }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error: error as Error }
+    } catch (error: any) {
+        return { error: error.message }
     }
 }
 
@@ -77,10 +77,10 @@ export const sendingUserFormToDatabase = async (data: UserFormProps) => {
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.message }
     }
 }
 
@@ -98,10 +98,10 @@ export const sendingClientFormToDatabase = async (data: ClientFormProps) => {
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.message }
     }
 }
 
@@ -120,10 +120,10 @@ export const updatingClientFormToDatabase = async (id: string, data: ClientFormP
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.message }
     }
 }
 
@@ -140,10 +140,10 @@ export const deletingClientFormToDatabase = async (id: string) => {
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.message }
     }
 }
 
@@ -161,10 +161,10 @@ export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps) => 
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.message }
     }
 }
 
@@ -182,10 +182,10 @@ export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleF
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.message }
     }
 }
 
@@ -202,10 +202,10 @@ export const deletingScheduleFormToDatabase = async (id: string) => {
         if (response.ok) {
             return { response: json }
         } else {
-            throw new Error(json.message)
+            throw new Error(json.error)
         }
-    } catch (error) {
-        return { error }
+    } catch (error: any) {
+        return { error: error.message }
     }
 }
 
