@@ -5,8 +5,6 @@ import { ClientFormProps } from './types';
 import { toast } from 'react-toastify';
 import { sendingClientFormToDatabase } from '@/services';
 
-const options = ["Masculino", "Feminino"]
-
 const ClientForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ClientFormProps>();
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
@@ -42,11 +40,8 @@ const ClientForm = () => {
                     required: true
                 })}>
                     <S.Option value="" defaultChecked>Escolha</S.Option>
-                    {options.map((value, index) => (
-                        <S.Option key={index} value={value}>
-                            {value}
-                        </S.Option>
-                    ))}
+                    <S.Option value="Masculino">Masculino</S.Option>
+                    <S.Option value="Feminino">Feminino</S.Option>
                 </S.Select>
             </S.Label>
 

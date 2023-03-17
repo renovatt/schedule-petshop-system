@@ -6,8 +6,6 @@ import { toast } from 'react-toastify';
 import { dogsBreedsReferences, sendingScheduleFormToDatabase } from '@/services';
 import { ListContext } from '@/components/contexts/listContext';
 
-const options = ["Macho", "Fêmea"]
-
 const ScheduleForm = () => {
     const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();
     const [isClient, setClientCheckBox] = React.useState(false)
@@ -140,11 +138,8 @@ const ScheduleForm = () => {
                     required: true
                 })}>
                     <S.Option value="" defaultChecked>Escolha</S.Option>
-                    {options.map((value, index) => (
-                        <S.Option key={index} value={value}>
-                            {value}
-                        </S.Option>
-                    ))}
+                    <S.Option value="Macho">Macho</S.Option>
+                    <S.Option value="Fêmea">Fêmea</S.Option>
                 </S.Select>
             </S.Label>
 
