@@ -10,7 +10,7 @@ export const Container = styled.section`
         width: 15rem;
         margin: .8rem;
         padding: .8rem;
-        border-radius: .8rem;
+        border-radius: .4rem;
         box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 
         @media (max-width: 70rem) {

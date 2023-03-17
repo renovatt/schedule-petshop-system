@@ -15,8 +15,8 @@ export const Navigation = styled.nav<ContainerProps>`
     box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25);
     border-left: 0.625rem solid #fff;
     width: ${(props) => props.active ? '18rem' : '5rem'};
-    border-bottom-right-radius: ${(props) => props.active ? '3rem' : '0'};
-    border-top-right-radius: ${(props) => props.active ? '3rem' : '0'};
+    border-bottom-right-radius: ${(props) => props.active ? '.4rem' : '0'};
+    border-top-right-radius: ${(props) => props.active ? '.4rem' : '0'};
 
     @media (max-width: 70rem) {
         inset: initial;

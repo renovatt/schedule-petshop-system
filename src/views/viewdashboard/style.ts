@@ -36,7 +36,7 @@ export const Content = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: .8rem;
+    border-radius: .4rem;
     overflow: hidden;
     margin-left: 4rem;
     background: #fb1;
@@ -51,13 +51,13 @@ export const Content = styled.div`
 
 export const CardThumbContent = styled.div`
     position: relative;
-    width: 70%;
+    width: 50%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    border-radius: .8rem;
+    border-radius: .4rem;
 
     @media (max-width: 70rem) {
         width: 90%;
@@ -72,7 +72,7 @@ export const SectionCards = styled.section`
     flex-wrap: wrap;
     width: 100%;
     height: auto;
-    border-radius: .8rem;
+    border-radius: .4rem;
 
     @media (max-width: 70rem) {
         min-height: auto;
@@ -82,12 +82,12 @@ export const SectionCards = styled.section`
 `
 
 export const Thumb = styled.section`
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 95%;
     height: 100%;
-    border-radius: .8rem;
+    border-radius: .4rem;
     margin: .4rem;
     overflow: hidden;
     box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.55);
@@ -104,9 +104,9 @@ export const Section = styled.section`
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    width: auto;
+    width: 40%;
     height: 95%;
-    border-radius: .8rem;
+    border-radius: .4rem;
     margin: .4rem;
     overflow-y: auto;
     box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);

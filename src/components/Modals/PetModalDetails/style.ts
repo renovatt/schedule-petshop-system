@@ -10,7 +10,7 @@ export const Container = styled.section`
     width: 100%;
     height: 100%;
     z-index: 1;
-    border-radius: .8rem;
+    border-radius: .4rem;
     background: rgba(0, 0, 0, .8);
 `
 
@@ -23,7 +23,7 @@ export const Content = styled.div`
     width: 100%;
     margin: 0;
     padding: .4rem;
-    border-radius: .8rem;
+    border-radius: .4rem;
     padding: 0 .8rem;
     backdrop-filter: blur(20px);
     background: rgba(51, 42, 42, 0.064);
@@ -89,7 +89,7 @@ export const CardImage = styled.section`
     align-items: center;
     width: 10rem;
     height: 10rem;
-    border-radius: .8rem;
+    border-radius: .4rem;
     background: #fff;
     overflow: hidden;
 
@@ -103,7 +103,7 @@ export const CardImage = styled.section`
         width: 100%;
         height: 100%;
         padding: .1rem;
-        border-radius: .8rem;
+        border-radius: .4rem;
     }
 `
 

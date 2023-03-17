@@ -8,7 +8,7 @@ export const Container = styled.div`
     width: 100%;
     /* height: 100%; */
     min-height: 5rem;
-    border-radius: .8rem;
+    border-radius: .4rem;
     overflow: hidden;
     overflow-y: auto;
 
@@ -28,7 +28,7 @@ export const Table = styled.div`
     overflow-y: scroll;
     overflow-x: hidden;
     width: 95%;
-    border-radius: .8rem;
+    border-radius: .4rem;
     
     ::-webkit-scrollbar-track{
         background-color: transparent;

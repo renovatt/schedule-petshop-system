@@ -29,7 +29,7 @@ export const Content = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: .8rem;
+    border-radius: .4rem;
     overflow: hidden;
     margin-left: 4rem;
     background: #fb1;
@@ -47,7 +47,7 @@ export const Section = styled.section`
     align-items: center;
     width: 100%;
     height: 100%;
-    border-radius: .8rem;
+    border-radius: .4rem;
     margin: .4rem;
     overflow-y: auto;
 
