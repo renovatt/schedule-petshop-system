@@ -3,16 +3,16 @@ import * as S from './style'
 import Image from 'next/image'
 import { PetModalProps } from './types'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import dayjs from 'dayjs'
 import { toast } from 'react-toastify'
+import { CgCloseR } from 'react-icons/cg'
+import { ListContext } from '@/components/contexts/listContext'
+import { dogFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import {
     deletingScheduleFormToDatabase,
     updatingScheduleFormToDatabase,
     dogsBreedsReferences
 } from '@/services'
-import { dogFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
-import { CgCloseR } from 'react-icons/cg'
-import dayjs from 'dayjs'
-import { ListContext } from '@/components/contexts/listContext'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const { loadSchedules } = React.useContext(ListContext)
@@ -43,7 +43,6 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
         setValue("status", false);
         setValue("canceled_date", new Date(canceledDateFormated));
         toast.success('Agendamento cancelado com sucesso!')
-        loadSchedules()
     }
 
     const deleteSchedule = async () => {
