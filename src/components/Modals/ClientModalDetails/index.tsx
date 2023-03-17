@@ -21,6 +21,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
         } else if (error) {
             toast.error(error.toString())
         }
+        loadClients()
         setClientModalOpen(false)
     }
 
