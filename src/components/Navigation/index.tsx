@@ -3,10 +3,10 @@ import * as S from './style'
 import { BsGithub } from 'react-icons/bs'
 import { FaAddressCard, FaBone } from 'react-icons/fa'
 import { RiLogoutCircleLine } from 'react-icons/ri'
-import { BiBone } from 'react-icons/bi'
 import { MdSpaceDashboard } from 'react-icons/md'
-import { AiFillSchedule, AiFillLinkedin } from 'react-icons/ai'
+import { AiFillSchedule, AiFillLinkedin, AiFillSetting } from 'react-icons/ai'
 import { AuthContext } from '../contexts/authContext'
+import Navlink from '../Navlink'
 
 const Navigation = () => {
     const [isActive, setIsActive] = React.useState(false)
@@ -14,33 +14,11 @@ const Navigation = () => {
     return (
         <S.Navigation active={isActive}>
             <S.ListContainer>
-                <S.List>
-                    <S.NavLink href='/'>
-                        <S.Icon><BiBone /></S.Icon>
-                        <S.Title>CutePet</S.Title>
-                    </S.NavLink>
-                </S.List>
-
-                <S.List>
-                    <S.NavLink href='/dashboard'>
-                        <S.Icon><MdSpaceDashboard /></S.Icon>
-                        <S.Title>Dashboard</S.Title>
-                    </S.NavLink>
-                </S.List>
-
-                <S.List>
-                    <S.NavLink href='/schedules'>
-                        <S.Icon><AiFillSchedule /></S.Icon>
-                        <S.Title>Agendamentos</S.Title>
-                    </S.NavLink>
-                </S.List>
-
-                <S.List>
-                    <S.NavLink href='/register'>
-                        <S.Icon><FaAddressCard /></S.Icon>
-                        <S.Title>Cadastro</S.Title>
-                    </S.NavLink>
-                </S.List>
+                <Navlink href={'/'} svg={<FaBone />} text={"Cute Pet"} />
+                <Navlink href={'/dashboard'} svg={<MdSpaceDashboard />} text={"Dashboard"} />
+                <Navlink href={'/schedules'} svg={<AiFillSchedule />} text={"Agendamentos"} />
+                <Navlink href={'/register'} svg={<FaAddressCard />} text={"Cadastro"} />
+                <Navlink href={'/preferences'} svg={<AiFillSetting />} text={"Configuração"} />
             </S.ListContainer>
 
             <S.GitHub>
@@ -63,10 +41,7 @@ const Navigation = () => {
                 </S.LogoutLink>
             </S.Logout>
 
-            <S.Toggle
-                className={isActive ? 'active' : ''}
-                onClick={() => setIsActive(!isActive)}>
-            </S.Toggle>
+            <S.Toggle className={isActive ? 'active' : ''} onClick={() => setIsActive(!isActive)}></S.Toggle>
         </S.Navigation>
     )
 }
