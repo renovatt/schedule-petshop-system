@@ -20,7 +20,7 @@ const ViewDashboard = () => {
   return (
     <>
       <Head>
-        <title>Dashboard | Your Pet</title>
+        <title>Dashboard | Cute Pet</title>
       </Head>
       <S.Container>
         <Header title='Dashboard' />

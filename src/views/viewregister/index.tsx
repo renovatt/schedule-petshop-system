@@ -10,10 +10,10 @@ const ViewRegister = () => {
   return (
     <>
       <Head>
-        <title>Cadastro | Your Pet</title>
+        <title>Cadastro | Cute Pet</title>
       </Head>
       <S.Container>
-        <Header title='Cadastro de Clientes' />
+        <Header title='Cadastro' />
         <S.Main className='animation-container'>
           <S.Content>
             <S.Section>

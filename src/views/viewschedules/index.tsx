@@ -11,7 +11,7 @@ const ViewSchedules = () => {
   return (
     <>
       <Head>
-        <title>Agendamentos | Your Pet</title>
+        <title>Agendamentos | Cute Pet</title>
       </Head>
       <S.Container>
         <Header title='Agendamentos' />
