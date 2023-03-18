@@ -1,4 +1,5 @@
 export type NavlinkProps = {
     href: string;
-    children: any;
+    text: string;
+    svg: React.ReactElement;
 }
