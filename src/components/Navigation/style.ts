@@ -3,21 +3,24 @@ import Link from 'next/link'
 
 type ContainerProps = {
     active: boolean;
-  } 
+}
 
 export const Navigation = styled.nav<ContainerProps>`
     z-index: 999;
     position: fixed;
     inset: 0;
+    height: 100%;
     overflow: hidden;
     transition: all .5s;
-    background: #fff;
+    background-color: #fff;
     box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25);
-    border-left: 0.625rem solid #fff;
-    width: ${(props) => props.active ? '18rem' : '5rem'};
-    border-bottom-right-radius: ${(props) => props.active ? '.4rem' : '0'};
-    border-top-right-radius: ${(props) => props.active ? '.4rem' : '0'};
-
+    width: ${(props) => props.active ? '15rem' : '3rem'};
+    /* border-left: 0.625rem solid transparent; */
+    /* background-color: ${(props) => props.active ? '#fff' : 'transparent'}; */
+    /* border-top-right-radius: ${(props) => props.active ? '.4rem' : '0'}; */
+    /* border-bottom-right-radius: ${(props) => props.active ? '.4rem' : '0'}; */
+    /* box-shadow: ${(props) => props.active ? "15px 15px 25px rgba(0, 0, 0, 0.25)" : "none"}; */
+    
     @media (max-width: 70rem) {
         inset: initial;
         bottom: 0;
@@ -27,99 +30,27 @@ export const Navigation = styled.nav<ContainerProps>`
         justify-content: center;
         height: 5rem;
         width: 100%;
+        background: #fff;
         border-radius: 3rem 3rem 0 0;
-        box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.95);
+        box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
     }
 `
 
 export const ListContainer = styled.ul`
     position: absolute;
-    top: 0;
+    top: 5rem;
     left: 0;
     width: 100%;
+
+    svg{
+        margin-left: -0.75rem;
+    }
 
     @media (max-width: 70rem){
         position: static;
         display: flex;
         align-items: center;
-        justify-content: space-around;
-    }
-`
-
-export const List = styled.li`
-    position: relative;
-    width: 100%;
-    transition: all .3s;
-    border-top-left-radius: 1.875rem;
-    border-bottom-left-radius: 1.875rem;
-    overflow: hidden;
-    margin-bottom: .4rem;
-
-    &:hover{
-        background-color: #ff6b00;
-    }
-
-    &:nth-child(1){
-        top: 1.25rem;
-        margin-bottom: 2.5rem;
-        background: none;
-
-        /* border-top-right-radius: 0; */
-        /* border-bottom-right-radius: 0; */
-
-        @media (max-width: 70rem){
-            display: none;
-        }
-
-    }
-
-    &:hover:nth-child(1){
-        margin-right: -.4rem;
-        
-        @media (max-width: 70rem){
-            margin-right: 0;
-        }
-
-        &:hover{
-            background: #fff; //aqui
-        }
-    }
-
-    @media (max-width: 70rem){
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-
-        &:hover{
-            background: #ff6b00;
-        }
-    }
-`
-
-export const NavLink = styled(Link)`
-    display: flex;
-    color: #ff6b00;
-    width: 100%;
-    transition: all .3s;
-    font-weight: bold;
-
-    &:hover{
-        cursor: pointer;
-        margin-left: .4rem;
-        color: #fff;
-        background: #ff6b00; //aqui
-
-        @media (max-width: 70rem){
-            margin-left: 0;
-        }
-    }
-
-    @media (max-width: 70rem){
-        align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
     }
 `
 
@@ -132,20 +63,7 @@ export const Icon = styled.span`
     text-align: center;
 
     svg{
-        font-size: 1.75rem;
-    }
-`
-export const Title = styled.span`
-    position: relative;
-    display: block;
-    padding: 0 .9rem;
-    height: 3.75rem;
-    line-height: 3.75rem;
-    text-align: start;
-    white-space: nowrap;
-
-    @media (max-width: 70rem){
-        display: none;
+        font-size: 1.50rem;
     }
 `
 
@@ -155,7 +73,7 @@ export const GitHub = styled.div`
     align-items: center;
     justify-content: center;
     bottom: 15px;
-    right: 220px;
+    right: 190px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -188,7 +106,7 @@ export const Linkedin = styled.div`
     align-items: center;
     justify-content: center;
     bottom: 15px;
-    right: 180px;
+    right: 150px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -221,12 +139,12 @@ export const Logout = styled.div`
     align-items: center;
     justify-content: center;
     bottom: 85px;
-    right: 15px;
-    width: 50px;
-    height: 50px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     transition: all .3s;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.55);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.45);
 
     @media (max-width: 70rem){
         display: none;
@@ -243,9 +161,14 @@ export const LogoutLink = styled(Link)`
     justify-content: center;
     color: #ff6b00;
     width: 100%;
-    margin-left: -.4rem;
-    transform: rotate(90deg);
+    margin-left: -.3rem;
     transition: all .3s;
+    transform: rotate(90deg);
+
+    svg{
+        width: 1.50rem;
+        height: 1.50rem;
+    }
 
     &:hover{
         cursor: pointer;
@@ -258,13 +181,13 @@ export const Toggle = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    bottom: 15px;
-    right: 15px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    bottom: 30px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
     background: #fff;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.55);
+    border-radius: 50%;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.45);
 
     &:hover{
         cursor: pointer;
@@ -283,7 +206,7 @@ export const Toggle = styled.div`
     ::before{
         content: '';
         position: absolute;
-        width: 26px;
+        width: 20px;
         height: 3px;
         border-radius: 3px;
         transform: translateY(-5px);
@@ -294,7 +217,7 @@ export const Toggle = styled.div`
     ::after{
         content: '';
         position: absolute;
-        width: 26px;
+        width: 20px;
         height: 3px;
         border-radius: 3px;
         transform: translateY(5px);

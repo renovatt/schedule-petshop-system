@@ -20,12 +20,11 @@ export const Main = styled.div`
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: .4rem;
     overflow: hidden;
-    margin-top: 1rem;
 
     @media (max-width: 70rem) {
         overflow: initial;
+        margin-top: 1rem;
     }
 `
 
@@ -38,14 +37,15 @@ export const Content = styled.div`
     align-items: center;
     border-radius: .4rem;
     overflow: hidden;
-    margin-left: 4rem;
     background: #fb1;
-    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25);
+    /* margin-left: 4rem; */
+    /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25); */
 
     @media (max-width: 70rem) {
         margin: 0;
         flex-direction: column;
         padding: .8rem 0;
+        width: 95%;
     }
 `
 
