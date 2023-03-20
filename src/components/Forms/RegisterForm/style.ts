@@ -15,7 +15,6 @@ export const Label = styled.label`
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
     height: 5rem;
     width: 15rem;
     font-weight: bold;
@@ -51,6 +50,7 @@ export const InputAlert = styled.span`
     font-size: .6rem;
     color: #f01;
     padding: .2rem;
+    width: 100%;
 `
 
 export const Button = styled.button`

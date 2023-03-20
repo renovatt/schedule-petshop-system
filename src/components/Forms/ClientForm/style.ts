@@ -98,6 +98,7 @@ export const InputAlert = styled.span`
     font-size: .6rem;
     color: #f01;
     padding: .2rem;
+    width: 100%;
 `
 
 export const ButtonContent = styled.div`
