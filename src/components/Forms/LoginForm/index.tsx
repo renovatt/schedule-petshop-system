@@ -20,7 +20,6 @@ const LoginForm = () => {
     }
     return (
         <S.Form action='login' onSubmit={handleSubmit(onSubmit)}>
-            <input type="hidden" name='action' value="login" />
             <S.Label>
                 <S.Span>E-mail:</S.Span>
                 <S.Input type="email"
@@ -51,9 +50,7 @@ const LoginForm = () => {
                 <S.InputAlert>{errors.password?.message}</S.InputAlert>
             </S.Label>
 
-            <S.ButtonContent>
-                <S.Button>Fazer Login</S.Button>
-            </S.ButtonContent>
+            <S.Button>Fazer Login</S.Button>
         </S.Form>
     )
 }

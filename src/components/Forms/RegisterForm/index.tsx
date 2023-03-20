@@ -7,7 +7,7 @@ import { UserFormProps } from '../LoginForm/type';
 
 const RegisterForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormProps>();
-
+    
     const onSubmit: SubmitHandler<UserFormProps> = async data => {
         const { response, error } = await sendingUserFormToDatabase(data)
         if (response) {
@@ -65,9 +65,7 @@ const RegisterForm = () => {
                 <S.InputAlert>{errors.password?.message}</S.InputAlert>
             </S.Label>
 
-            <S.ButtonContent>
-                <S.Button>Confirmar Cadastro</S.Button>
-            </S.ButtonContent>
+            <S.Button>Confirmar Cadastro</S.Button>
         </S.Form>
     )
 }
