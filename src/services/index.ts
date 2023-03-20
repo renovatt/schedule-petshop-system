@@ -2,8 +2,12 @@ import { ClientFormProps } from "@/components/Forms/ClientForm/types"
 import { UserFormProps } from "@/components/Forms/LoginForm/type"
 import { dogFetchProps, ScheduleFormProps } from "@/components/Forms/ScheduleForm/types"
 import { parseCookies } from "nookies";
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import { SignInData, SignInResponse } from "@/components/contexts/authContext/types";
+
+interface DecodedToken extends JwtPayload {
+    userId: string;
+}
 
 const base_url = `https://api.thedogapi.com/v1/breeds`
 const { ['@nextauth-token']: token } = parseCookies();
@@ -72,6 +76,48 @@ export const sendingUserFormToDatabase = async (data: UserFormProps) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
+        })
+        const json = await response.json()
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.error)
+        }
+    } catch (error: any) {
+        return { error: error.message }
+    }
+}
+
+export const updatingUserFormToDatabase = async (id: string, data: UserFormProps) => {
+    try {
+        const response = await fetch(`/api/user/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+
+            },
+            body: JSON.stringify(data)
+        })
+        const json = await response.json()
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.error)
+        }
+    } catch (error: any) {
+        return { error: error.message }
+    }
+}
+
+export const deletingUserFormToDatabase = async (id: string) => {
+    try {
+        const response = await fetch(`/api/user/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
         })
         const json = await response.json()
         if (response.ok) {
@@ -227,11 +273,9 @@ export const dogsBreedsReferences = async () => {
         return { error }
     }
 }
-
 export const getUserIdFromToken = (token: string): string | undefined => {
     try {
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET ?? "");
-        if (typeof decodedToken === 'string') return undefined;
+        const decodedToken = jwt.decode(token) as DecodedToken;
         return decodedToken.userId;
     } catch (error) {
         return undefined;
