@@ -1,0 +1,99 @@
+import styled from "styled-components";
+
+export const Container = styled.section`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;    
+
+    @media (max-width: 70rem) {
+        margin-bottom: 5rem;
+    }
+`
+
+export const Main = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+`
+
+export const Content = styled.div`
+    position: relative;
+    height: 95%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .4rem;
+    overflow: hidden;
+    background: #fb1;
+    /* margin-left: 4rem; */
+    /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25); */
+
+    @media (max-width: 70rem) {
+        margin: 0;
+        width: 95%;
+        flex-direction: column-reverse;
+    }
+`
+
+export const Section = styled.section`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-radius: .4rem;
+    margin: .4rem;
+    overflow-y: auto;
+
+    ::-webkit-scrollbar-track{
+        background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb{
+        background: transparent;
+    }
+
+    @media (max-width: 70rem) {
+        width: 90%;
+        min-height: auto;
+    }
+`
+
+export const ImageContainder = styled.div`
+    position: absolute;
+    bottom: -2rem;
+    right: 0rem;
+    width: 20rem;
+    height: 20rem;
+
+    @media (max-width: 70rem) {
+        position: static;
+        width: 10rem;
+        height: 10rem;
+    }
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`
+
+export const Header = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .8rem;
+`
+
+export const Title = styled.h2`
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+`
