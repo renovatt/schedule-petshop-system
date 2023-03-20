@@ -18,7 +18,7 @@ const Navigation = () => {
                 <Navlink href={'/dashboard'} svg={<MdSpaceDashboard />} text={"Dashboard"} />
                 <Navlink href={'/schedules'} svg={<AiFillSchedule />} text={"Agendamentos"} />
                 <Navlink href={'/client-register'} svg={<FaAddressCard />} text={"Cadastro"} />
-                <Navlink href={'/preferences'} svg={<AiFillSetting />} text={"Configuração"} />
+                <Navlink href={'/preferences'} svg={<AiFillSetting />} text={"Preferências"} />
             </S.ListContainer>
 
             <S.GitHub>
