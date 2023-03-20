@@ -2,21 +2,12 @@ import styled from "styled-components"
 
 export const Form = styled.form`
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    flex-wrap: wrap;
-    padding: 2rem;
     width: 100%;
-    height: 100%;
-
-    border-radius: .4rem;
-    border: 1px solid #000;
-
-    @media (max-width: 70rem) {
-        justify-content: center;
-        align-items: center;
-    }
+    margin-top: .8rem;
+    margin-bottom: .4rem;
 `
 
 export const Label = styled.label`
@@ -24,6 +15,7 @@ export const Label = styled.label`
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
     height: 5rem;
     width: 15rem;
     font-weight: bold;
@@ -48,7 +40,7 @@ export const Input = styled.input`
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
-    /* box-shadow: 5px 5px 35px rgba(0, 0, 0, 0.25); */
+    /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15); */
 
     &:focus{
         border-color: #ff6b00;
@@ -61,21 +53,6 @@ export const InputAlert = styled.span`
     padding: .2rem;
 `
 
-export const ButtonContent = styled.div`
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 2rem;
-
-    @media (max-width: 70rem) {
-        justify-content: center;
-        align-items: center;
-        padding: 2rem 0;
-    }
-`
-
 export const Button = styled.button`
     text-align: center;
     width: 15rem;
@@ -86,11 +63,10 @@ export const Button = styled.button`
     color: #fff;
     background: #000;
     border: 1px solid transparent;
-    text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.95);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 
     &:hover{
         color: #000;
         background: #fff;
-        border: 1px solid #000;
     }
 `
