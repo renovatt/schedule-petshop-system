@@ -18,7 +18,7 @@ const Register = () => {
                 <RegisterForm />
                 <S.Info>
                     <S.Text>Já tem uma conta?</S.Text>
-                    <S.Login href={'/'}>Login</S.Login>
+                    <S.Login href={'/'}>Fazer Login</S.Login>
                 </S.Info>
             </S.Content>
         </S.Container>
