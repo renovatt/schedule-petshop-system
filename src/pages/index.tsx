@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import { Poppins } from '@next/font/google'
-import LoginForm from '@/components/Forms/LoginForm'
-import RegisterForm from '@/components/Forms/RegisterForm'
 import { GetServerSideProps } from 'next'
 import { parseCookies } from 'nookies'
+import Login from '@/views/login'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -19,8 +18,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <LoginForm />
-        <RegisterForm />
+        <Login />
       </main>
     </>
   )
