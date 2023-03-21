@@ -1,8 +1,8 @@
 import React from "react";
 import Router from "next/router";
-import { setCookie, destroyCookie } from 'nookies';
+import { setCookie, destroyCookie, parseCookies } from 'nookies';
 import { AuthContextType, AuthProviderProps, SignInData, User } from "./types";
-import { sendingLoginFormToDatabase } from "@/services";
+import { gettingUserById, getUserIdFromToken, sendingLoginFormToDatabase } from "@/services";
 
 export const AuthContext = React.createContext({} as AuthContextType);
 
@@ -13,15 +13,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
   async function signIn({ email, password }: SignInData) {
     const { response, error } = await sendingLoginFormToDatabase({ email, password })
     if (response) {
-      setUser(response.user)
+      setUser(response?.user)
       setCookie(undefined, '@nextauth-token', response.token, {
         maxAge: 60 * 60 * 8, // 8 hours
-        path: '/', // global cookie accessible in all pages
+        path: '/',
       });
       Router.push('/dashboard');
     }
     return { response, error }
   }
+
+  React.useEffect(() => {
+    const { ['@nextauth-token']: token } = parseCookies();
+    if (token) {
+      const userId = getUserIdFromToken(token)
+      gettingUserById(userId as string).then((res) => setUser(res?.response?.user))
+    }
+  }, [])
 
   const signOut = () => {
     setUser(null);
