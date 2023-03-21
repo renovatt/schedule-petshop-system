@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import InputMask from 'react-input-mask';
 
 export const Form = styled.form`
     display: flex;
@@ -36,6 +37,22 @@ export const Span = styled.span`
 `
 
 export const Input = styled.input`
+    height: 2rem;
+    width: 100%;
+    text-align: start;
+    border-radius: .4rem;
+    margin-top: .4rem;
+    padding-left: .4rem;
+    transition: all .3s;
+    border: 1px solid #ccc;
+    /* box-shadow: 5px 5px 35px rgba(0, 0, 0, 0.25); */
+
+    &:focus{
+        border-color: #ff6b00;
+    }
+`
+
+export const ContactInputMask = styled(InputMask)`
     height: 2rem;
     width: 100%;
     text-align: start;

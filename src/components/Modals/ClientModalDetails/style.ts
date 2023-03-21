@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import InputMask from 'react-input-mask';
 
 export const Container = styled.section`
     display: flex;
@@ -154,6 +155,23 @@ export const Span = styled.span`
 `
 
 export const Input = styled.input`
+    height: 2rem;
+    width: 100%;
+    text-align: start;
+    border-radius: .4rem;
+    margin-top: .4rem;
+    padding-left: .4rem;
+    transition: all .3s;
+    border: 1px solid #ccc;
+    color: #fff;
+    background-color: rgba(51, 42, 42, 0.064);
+
+    &:focus{
+        border-color: #ff6b00;
+    }
+`
+
+export const ContactInputMask = styled(InputMask)`
     height: 2rem;
     width: 100%;
     text-align: start;
