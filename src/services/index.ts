@@ -110,6 +110,27 @@ export const updatingUserFormToDatabase = async (id: string, data: UserFormProps
     }
 }
 
+export const gettingUserById = async (id: string) => {
+    try {
+        const response = await fetch(`/api/user/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+
+            }
+        })
+        const json = await response.json()
+        if (response.ok) {
+            return { response: json }
+        } else {
+            throw new Error(json.error)
+        }
+    } catch (error: any) {
+        return { error: error.message }
+    }
+}
+
 export const deletingUserFormToDatabase = async (id: string) => {
     try {
         const response = await fetch(`/api/user/${id}`, {
