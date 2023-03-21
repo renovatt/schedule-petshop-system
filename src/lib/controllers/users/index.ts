@@ -4,9 +4,9 @@ import jwt from 'jsonwebtoken';
 import { UserFormProps } from "@/components/Forms/LoginForm/type";
 
 type UserProps = {
-  id: string;
-  username: string;
-  email: string
+  id?: string;
+  username?: string;
+  email?: string
 }
 
 export async function loginUser(data: UserFormProps) {
@@ -113,9 +113,15 @@ export async function deleteUser(id: string) {
 
 export async function findUser(id: string) {
   try {
-    const user = await prisma.user.findUnique({
+    const foundUser = await prisma.user.findUnique({
       where: { id: id }
     })
+
+    const user: UserProps = {
+      id: foundUser?.id,
+      username: foundUser?.username,
+      email: foundUser?.email
+    }
 
     return { user }
   } catch (error) {
