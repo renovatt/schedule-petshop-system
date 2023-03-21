@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Image from 'next/image'
 
 export const Header = styled.header`
     display: flex;
@@ -26,8 +27,8 @@ export const Icon = styled.span`
     display: block;
     text-align: center;
     min-width: 3.75rem;
-    line-height: 4.375rem;
     height: 3.75rem;
+    line-height: 4.375rem;
 
     &:hover{
         cursor: pointer;
@@ -38,5 +39,16 @@ export const Icon = styled.span`
         margin-top: .4rem;
         font-size: 2.75rem;
         padding: 0  .4rem;
+    }
+`
+
+export const UserLogo = styled(Image)`
+    color: #fff;
+    margin-top: .8rem;
+    border-radius: 50%;
+    object-fit: cover;
+
+    &:hover{
+        opacity: .9;
     }
 `
