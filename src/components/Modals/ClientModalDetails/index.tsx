@@ -64,7 +64,10 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                     render={({ field }) => (
                                         <S.Label>
                                             <S.Span>Nome:</S.Span>
-                                            <S.Input {...field} type="text" maxLength={40} />
+                                            <S.Input {...field}
+                                                type="text"
+                                                placeholder="Nome do cliente"
+                                                maxLength={41} />
                                             <S.InputAlert>{errors.name?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
@@ -83,7 +86,9 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                     render={({ field }) => (
                                         <S.Label>
                                             <S.Span>Idade:</S.Span>
-                                            <S.Input {...field} type="number" />
+                                            <S.Input {...field}
+                                                type="number"
+                                                placeholder="Idade do cliente" />
                                             <S.InputAlert>{errors.age?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
@@ -125,8 +130,11 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                     render={({ field }) => (
                                         <S.Label>
                                             <S.Span>Endereço:</S.Span>
-                                            <S.Input {...field} type="text" maxLength={41} />
-                                            <S.InputAlert>{errors.name?.message}</S.InputAlert>
+                                            <S.Input {...field}
+                                                type="text"
+                                                maxLength={41}
+                                                placeholder="Endereço do cliente" />
+                                            <S.InputAlert>{errors.street?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
 
@@ -144,7 +152,9 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                     render={({ field }) => (
                                         <S.Label>
                                             <S.Span>N°:</S.Span>
-                                            <S.Input {...field} type="text" />
+                                            <S.Input {...field}
+                                                type="text"
+                                                placeholder="Numero da casa" />
                                             <S.InputAlert>{errors.house_number?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
@@ -163,7 +173,10 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                     render={({ field }) => (
                                         <S.Label>
                                             <S.Span>Bairro:</S.Span>
-                                            <S.Input {...field} type="text" maxLength={21} />
+                                            <S.Input {...field}
+                                                type="text"
+                                                maxLength={21}
+                                                placeholder="Bairro" />
                                             <S.InputAlert>{errors.neighborhood?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
@@ -175,14 +188,17 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                     rules={{
                                         required: "*Campo obrigatório.",
                                         maxLength: {
-                                            value: 10,
-                                            message: "*Capacidade máxima de 10 caracteres."
+                                            value: 20,
+                                            message: "*Capacidade máxima de 20 caracteres."
                                         }
                                     }}
                                     render={({ field }) => (
                                         <S.Label>
                                             <S.Span>Cidade:</S.Span>
-                                            <S.Input {...field} type="text" maxLength={11} />
+                                            <S.Input {...field}
+                                                type="text"
+                                                maxLength={21}
+                                                placeholder="Cidade" />
                                             <S.InputAlert>{errors.city?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
@@ -190,18 +206,21 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                 <Controller
                                     name="contact"
                                     control={control}
-                                    defaultValue={clientProps.house_number}
+                                    defaultValue={clientProps.contact}
                                     rules={{
                                         required: "*Campo obrigatório.",
                                         maxLength: {
-                                            value: 11,
-                                            message: "*Capacidade máxima de 11 caracteres."
+                                            value: 15,
+                                            message: "*Capacidade máxima de 15 caracteres."
                                         }
                                     }}
                                     render={({ field }) => (
                                         <S.Label>
                                             <S.Span>Contato:</S.Span>
-                                            <S.Input {...field} type="text" />
+                                            <S.ContactInputMask
+                                                {...field}
+                                                mask="(99) 99999-9999"
+                                                placeholder='(99) 99999-9999' />
                                             <S.InputAlert>{errors.contact?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />

@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { sendingClientFormToDatabase } from '@/services';
 
 const ClientForm = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<ClientFormProps>();
+    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm<ClientFormProps>();
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
         const { response, error } = await sendingClientFormToDatabase(data)
         if (response) {
@@ -15,6 +15,7 @@ const ClientForm = () => {
             toast.error(error.toString())
         }
         reset();
+        setValue("contact", "")
     }
     return (
         <S.Form onSubmit={handleSubmit(onSubmit)}>
@@ -24,7 +25,8 @@ const ClientForm = () => {
                     maxLength={40}
                     {...register("name",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 40,
                                 message: "*Capacidade máxima de 40 caracteres."
                             }
@@ -37,12 +39,13 @@ const ClientForm = () => {
             <S.Label>
                 <S.Span>Sexo:</S.Span>
                 <S.Select {...register("sex", {
-                    required: true
+                    required: "*Campo obrigatório.",
                 })}>
                     <S.Option value="" defaultChecked>Escolha</S.Option>
                     <S.Option value="Masculino">Masculino</S.Option>
                     <S.Option value="Feminino">Feminino</S.Option>
                 </S.Select>
+                <S.InputAlert>{errors.sex?.message}</S.InputAlert>
             </S.Label>
 
             <S.Label>
@@ -50,13 +53,14 @@ const ClientForm = () => {
                 <S.Input type="number"
                     {...register("age",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 2,
                                 message: "*Capacidade de máxima 2 caracteres."
                             }
                         })
                     }
-                    placeholder='Idade' />
+                    placeholder='Idade do cliente' />
                 <S.InputAlert>{errors.age?.message}</S.InputAlert>
             </S.Label>
 
@@ -65,13 +69,14 @@ const ClientForm = () => {
                 <S.Input type="text"
                     {...register("street",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 40,
                                 message: "*Capacidade máxima de 40 caracteres."
                             }
                         })
                     }
-                    placeholder='Endereço' />
+                    placeholder='Endereço do cliente' />
                 <S.InputAlert>{errors.street?.message}</S.InputAlert>
             </S.Label>
 
@@ -80,7 +85,8 @@ const ClientForm = () => {
                 <S.Input type="number"
                     {...register("house_number",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 5,
                                 message: "*Capacidade máxima de 5 caracteres."
                             }
@@ -95,7 +101,8 @@ const ClientForm = () => {
                 <S.Input type="text"
                     {...register("neighborhood",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 20,
                                 message: "*Capacidade máxima de 20 caracteres."
                             }
@@ -110,9 +117,10 @@ const ClientForm = () => {
                 <S.Input type="text"
                     {...register("city",
                         {
-                            required: true, maxLength: {
-                                value: 10,
-                                message: "*Capacidade máxima de 10 caracteres."
+                            required: "*Campo obrigatório.",
+                            maxLength: {
+                                value: 20,
+                                message: "*Capacidade máxima de 20 caracteres."
                             }
                         })
                     }
@@ -122,16 +130,18 @@ const ClientForm = () => {
 
             <S.Label>
                 <S.Span>Contato:</S.Span>
-                <S.Input type="number"
+                <S.ContactInputMask
+                    mask="(99) 99999-9999"
                     {...register("contact",
                         {
-                            required: true, maxLength: {
-                                value: 11,
-                                message: "*Capacidade máxima de 12 caracteres."
+                            required: "*Campo obrigatório.",
+                            maxLength: {
+                                value: 15,
+                                message: "*Capacidade máxima de 15 caracteres."
                             }
                         })
                     }
-                    placeholder='(00) 00000-0000' />
+                    placeholder='(99) 99999-9999' />
                 <S.InputAlert>{errors.contact?.message}</S.InputAlert>
             </S.Label>
 
