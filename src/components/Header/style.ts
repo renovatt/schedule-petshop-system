@@ -12,7 +12,7 @@ export const Header = styled.header`
     /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15); */
 
     @media (max-width: 70rem) {
-        padding: 0;
+        padding: 0 .5rem;
     }
 `
 
