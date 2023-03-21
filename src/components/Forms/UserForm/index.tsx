@@ -1,20 +1,19 @@
 import React from 'react'
 import * as S from './style'
 import { toast } from 'react-toastify'
-import { parseCookies } from 'nookies'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { UserFormProps } from '@/components/Forms/LoginForm/type'
-import { getUserIdFromToken, updatingUserFormToDatabase } from '@/services'
+import { updatingUserFormToDatabase } from '@/services'
 import DeleteAccountModal from '@/components/Modals/DeleteAccountModal'
+import { AuthContext } from '@/components/contexts/authContext'
 
 const UserForm = () => {
-    const { ['@nextauth-token']: token } = parseCookies();
-    const userId = getUserIdFromToken(token)
+    const { user } = React.useContext(AuthContext)
     const [isDeleteModalOpen, setDeleteModalOpen] = React.useState(false)
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormProps>();
 
     const onSubmit: SubmitHandler<UserFormProps> = async data => {
-        const { response, error } = await updatingUserFormToDatabase(userId as string, data)
+        const { response, error } = await updatingUserFormToDatabase(user?.id as string, data)
         if (response) {
             toast.success('Seus dados foram atualizados com sucesso!')
         } else if (error) {
@@ -25,7 +24,7 @@ const UserForm = () => {
 
     return (
         <>
-            {isDeleteModalOpen && <DeleteAccountModal userId={userId as string} setDeleteModalOpen={setDeleteModalOpen} />}
+            {isDeleteModalOpen && <DeleteAccountModal userId={user?.id as string} setDeleteModalOpen={setDeleteModalOpen} />}
             <S.Form onSubmit={handleSubmit(onSubmit)}>
                 <S.Label>
                     <S.Span>Nome:</S.Span>
