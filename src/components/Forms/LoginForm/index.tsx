@@ -25,7 +25,8 @@ const LoginForm = () => {
                 <S.Input type="email"
                     {...register("email",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 40,
                                 message: "*Deve ser um e-mail válido!"
                             }
@@ -40,7 +41,8 @@ const LoginForm = () => {
                 <S.Input type="password"
                     {...register("password",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 40,
                                 message: "*Capacidade máxima de 40 caracteres."
                             }

@@ -7,7 +7,7 @@ import { UserFormProps } from '../LoginForm/type';
 
 const RegisterForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormProps>();
-    
+
     const onSubmit: SubmitHandler<UserFormProps> = async data => {
         const { response, error } = await sendingUserFormToDatabase(data)
         if (response) {
@@ -25,7 +25,8 @@ const RegisterForm = () => {
                     maxLength={40}
                     {...register("username",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 40,
                                 message: "*Capacidade máxima de 40 caracteres."
                             }
@@ -40,7 +41,8 @@ const RegisterForm = () => {
                 <S.Input type="email"
                     {...register("email",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 40,
                                 message: "*Capacidade de máxima 2 caracteres."
                             }
@@ -55,7 +57,8 @@ const RegisterForm = () => {
                 <S.Input type="password"
                     {...register("password",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 40,
                                 message: "*Capacidade máxima de 40 caracteres."
                             }

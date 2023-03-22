@@ -43,7 +43,8 @@ const ScheduleForm = () => {
                     type="text"
                     {...register("tutor",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 40,
                                 message: "*Capacidade máxima de 40 caracteres."
                             }
@@ -60,7 +61,8 @@ const ScheduleForm = () => {
                     type="text"
                     {...register("pet",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 20,
                                 message: "*Capacidade máxima de 20 caracteres."
                             }
@@ -78,7 +80,8 @@ const ScheduleForm = () => {
                     list="alpha"
                     id="breeds"
                     {...register("breed", {
-                        required: true, maxLength: {
+                        required: "*Campo obrigatório.",
+                        maxLength: {
                             value: 40,
                             message: "*Capacidade máxima de 40 caracteres."
                         }
@@ -106,7 +109,8 @@ const ScheduleForm = () => {
                     type="number"
                     {...register("age",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 2,
                                 message: "*Capacidade máxima de 2 caracteres."
                             }
@@ -122,7 +126,8 @@ const ScheduleForm = () => {
                     type="number"
                     {...register("weight",
                         {
-                            required: true, maxLength: {
+                            required: "*Campo obrigatório.",
+                            maxLength: {
                                 value: 2,
                                 message: "*Capacidade máxima de 2 caracteres."
                             }
@@ -135,19 +140,20 @@ const ScheduleForm = () => {
             <S.Label>
                 <S.Span>Sexo:</S.Span>
                 <S.Select {...register("sex", {
-                    required: true
+                    required: "*Campo obrigatório."
                 })}>
                     <S.Option value="" defaultChecked>Escolha</S.Option>
                     <S.Option value="Macho">Macho</S.Option>
                     <S.Option value="Fêmea">Fêmea</S.Option>
                 </S.Select>
+                <S.InputAlert>{errors.sex?.message}</S.InputAlert>
             </S.Label>
 
             <S.Label>
                 <S.Span>Data:</S.Span>
                 <S.Input type="datetime-local"
                     {...register("date", {
-                        required: true
+                        required: "*Campo obrigatório."
                     })} />
                 <S.InputAlert>{errors.date?.message}</S.InputAlert>
             </S.Label>

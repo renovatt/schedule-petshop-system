@@ -32,9 +32,9 @@ const UserForm = () => {
                         maxLength={40}
                         {...register("username",
                             {
-                                required: true,
+                                required: "*Campo obrigatório.",
                                 maxLength: {
-                                    value: 39,
+                                    value: 41,
                                     message: "*Capacidade máxima de 40 caracteres."
                                 }
                             })
@@ -48,7 +48,7 @@ const UserForm = () => {
                     <S.Input type="email"
                         {...register("email",
                             {
-                                required: true,
+                                required: "*Campo obrigatório.",
                                 maxLength: {
                                     value: 40,
                                     message: "*Capacidade de máxima 40 caracteres."
@@ -64,7 +64,7 @@ const UserForm = () => {
                     <S.Input type="password"
                         {...register("password",
                             {
-                                required: true,
+                                required: "*Campo obrigatório.",
                                 maxLength: {
                                     value: 40,
                                     message: "*Capacidade máxima de 40 caracteres."
