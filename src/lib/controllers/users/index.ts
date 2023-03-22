@@ -2,12 +2,7 @@ import prisma from "../../prisma";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import { UserFormProps } from "@/components/Forms/LoginForm/type";
-
-type UserProps = {
-  id?: string;
-  username?: string;
-  email?: string
-}
+import { Prisma } from "@prisma/client";
 
 export async function loginUser(data: UserFormProps) {
   try {
@@ -24,10 +19,10 @@ export async function loginUser(data: UserFormProps) {
 
     if (!passwordMatch) throw new Error("Senha incorreta.");
 
-    const user: UserProps = {
+    const user: Omit<Prisma.UserCreateInput, "password"> = {
       id: searchUser.id,
       username: searchUser.username,
-      email: searchUser.email
+      email: searchUser.email,
     }
 
     return { user, token };
@@ -55,10 +50,10 @@ export async function createUser(data: UserFormProps) {
       },
     });
 
-    const user: UserProps = {
+    const user: Omit<Prisma.UserCreateInput, "password"> = {
       id: createdUser.id,
       username: createdUser.username,
-      email: createdUser.email
+      email: createdUser.email,
     }
 
     return { user };
@@ -70,7 +65,7 @@ export async function createUser(data: UserFormProps) {
 export async function getAllUsers() {
   try {
     const users = await prisma.user.findMany()
-    return { users }
+    return { users: users.map((user: any) => { delete user.password; return user }) }
   } catch (error) {
     return { error }
   }
@@ -88,10 +83,10 @@ export async function updateUser(id: string, data: UserFormProps) {
       }
     })
 
-    const user: UserProps = {
+    const user: Omit<Prisma.UserCreateInput, "password"> = {
       id: updatedUser.id,
       username: updatedUser.username,
-      email: updatedUser.email
+      email: updatedUser.email,
     }
 
     return { user }
@@ -117,7 +112,7 @@ export async function findUser(id: string) {
       where: { id: id }
     })
 
-    const user: UserProps = {
+    const user: Partial<Prisma.UserCreateInput> = {
       id: foundUser?.id,
       username: foundUser?.username,
       email: foundUser?.email
