@@ -6,7 +6,7 @@ function countSchedules(
     predicate: (schedule: any) => boolean
 ): number {
     const currentDate = getDate(new Date());
-    const currentSchedules = schedules?.schedules?.filter(schedule => {
+    const currentSchedules = schedules?.filter(schedule => {
         const scheduleDate = getDate(new Date(schedule.date));
         return scheduleDate === currentDate && predicate(schedule);
     });
