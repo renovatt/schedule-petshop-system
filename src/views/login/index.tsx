@@ -18,7 +18,7 @@ const Login = () => {
                 <LoginForm />
                 {/* <S.ForgotPassword href={'/reset'}>Esqueceu sua senha?</S.ForgotPassword> */}
                 <S.Info>
-                    <S.Text>Não tem um conta?</S.Text>
+                    <S.Text>Não tem uma conta?</S.Text>
                     <S.Register href={'/register-account'}>Registre-se</S.Register>
                 </S.Info>
             </S.Content>
