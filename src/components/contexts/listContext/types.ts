@@ -10,6 +10,9 @@ export type InitialValueProps = {
     loader: boolean;
     clients: DataListClientsProps;
     schedules: DataListSchedulesProps;
+    clear: () => void;
     loadClients: () => Promise<void>;
     loadSchedules: () => Promise<void>;
+    setClients: React.Dispatch<React.SetStateAction<DataListClientsProps>>;
+    setSchedules: React.Dispatch<React.SetStateAction<DataListSchedulesProps>>;
 };

@@ -1,18 +1,16 @@
-import { ClientFormProps } from "@/components/Forms/ClientForm/types"
-import { UserFormProps } from "@/components/Forms/LoginForm/type"
-import { dogFetchProps, ScheduleFormProps } from "@/components/Forms/ScheduleForm/types"
-import { parseCookies } from "nookies";
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import { UserFormProps } from "@/components/Forms/LoginForm/type"
+import { ClientFormProps } from "@/components/Forms/ClientForm/types"
 import { SignInData, SignInResponse } from "@/components/contexts/authContext/types";
+import { dogFetchProps, ScheduleFormProps } from "@/components/Forms/ScheduleForm/types"
 
 interface DecodedToken extends JwtPayload {
     userId: string;
 }
 
 const base_url = `https://api.thedogapi.com/v1/breeds`
-const { ['@nextauth-token']: token } = parseCookies();
 
-export const renderScheduleList = async () => {
+export const renderScheduleList = async (token: string) => {
     try {
         const response = await fetch('/api/schedules', {
             headers: {
@@ -30,7 +28,7 @@ export const renderScheduleList = async () => {
     }
 }
 
-export const renderClientList = async () => {
+export const renderClientList = async (token: string) => {
     try {
         const response = await fetch('/api/clients', {
             headers: {
@@ -88,7 +86,7 @@ export const sendingUserFormToDatabase = async (data: UserFormProps) => {
     }
 }
 
-export const updatingUserFormToDatabase = async (id: string, data: UserFormProps) => {
+export const updatingUserFormToDatabase = async (id: string, data: UserFormProps, token: string) => {
     try {
         const response = await fetch(`/api/user/${id}`, {
             method: 'PUT',
@@ -110,7 +108,7 @@ export const updatingUserFormToDatabase = async (id: string, data: UserFormProps
     }
 }
 
-export const gettingUserById = async (id: string) => {
+export const gettingUserById = async (id: string, token: string) => {
     try {
         const response = await fetch(`/api/user/${id}`, {
             method: 'GET',
@@ -131,7 +129,7 @@ export const gettingUserById = async (id: string) => {
     }
 }
 
-export const deletingUserFormToDatabase = async (id: string) => {
+export const deletingUserFormToDatabase = async (id: string, token: string) => {
     try {
         const response = await fetch(`/api/user/${id}`, {
             method: 'DELETE',
@@ -151,7 +149,7 @@ export const deletingUserFormToDatabase = async (id: string) => {
     }
 }
 
-export const sendingClientFormToDatabase = async (data: ClientFormProps) => {
+export const sendingClientFormToDatabase = async (data: ClientFormProps, token: string) => {
     try {
         const response = await fetch('/api/clients', {
             method: 'POST',
@@ -172,7 +170,7 @@ export const sendingClientFormToDatabase = async (data: ClientFormProps) => {
     }
 }
 
-export const updatingClientFormToDatabase = async (id: string, data: ClientFormProps) => {
+export const updatingClientFormToDatabase = async (id: string, data: ClientFormProps, token: string) => {
     try {
         const response = await fetch(`/api/clients/${id}`, {
             method: 'PUT',
@@ -194,7 +192,7 @@ export const updatingClientFormToDatabase = async (id: string, data: ClientFormP
     }
 }
 
-export const deletingClientFormToDatabase = async (id: string) => {
+export const deletingClientFormToDatabase = async (id: string, token: string) => {
     try {
         const response = await fetch(`/api/clients/${id}`, {
             method: 'DELETE',
@@ -214,7 +212,7 @@ export const deletingClientFormToDatabase = async (id: string) => {
     }
 }
 
-export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps) => {
+export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps, token: string) => {
     try {
         const response = await fetch('/api/schedules', {
             method: 'POST',
@@ -235,7 +233,7 @@ export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps) => 
     }
 }
 
-export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleFormProps) => {
+export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleFormProps, token: string) => {
     try {
         const response = await fetch(`/api/schedules/${id}`, {
             method: 'PUT',
@@ -256,7 +254,7 @@ export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleF
     }
 }
 
-export const deletingScheduleFormToDatabase = async (id: string) => {
+export const deletingScheduleFormToDatabase = async (id: string, token: string) => {
     try {
         const response = await fetch(`/api/schedules/${id}`, {
             method: 'DELETE',

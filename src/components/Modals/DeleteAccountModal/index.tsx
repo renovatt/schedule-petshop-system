@@ -7,10 +7,10 @@ import { DeleteModalProps } from './types'
 import { CgCloseR } from 'react-icons/cg'
 
 const DeleteAccountModal = ({ userId, setDeleteModalOpen }: DeleteModalProps) => {
-    const { signOut } = React.useContext(AuthContext)
+    const { signOut, isToken } = React.useContext(AuthContext)
 
     const deleteUser = async () => {
-        const { response, error } = await deletingUserFormToDatabase(userId)
+        const { response, error } = await deletingUserFormToDatabase(userId, isToken)
         if (response) {
             toast.success('Usuário deletado com sucesso!')
         } else if (error) {

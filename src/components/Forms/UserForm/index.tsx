@@ -8,12 +8,12 @@ import DeleteAccountModal from '@/components/Modals/DeleteAccountModal'
 import { AuthContext } from '@/components/contexts/authContext'
 
 const UserForm = () => {
-    const { user } = React.useContext(AuthContext)
+    const { user, isToken } = React.useContext(AuthContext)
     const [isDeleteModalOpen, setDeleteModalOpen] = React.useState(false)
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormProps>();
 
     const onSubmit: SubmitHandler<UserFormProps> = async data => {
-        const { response, error } = await updatingUserFormToDatabase(user?.id as string, data)
+        const { response, error } = await updatingUserFormToDatabase(user?.id as string, data, isToken)
         if (response) {
             toast.success('Seus dados foram atualizados com sucesso!')
         } else if (error) {

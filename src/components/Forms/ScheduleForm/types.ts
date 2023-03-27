@@ -1,6 +1,4 @@
-export type DataListSchedulesProps = {
-    schedules?: ScheduleFormProps[]
-}
+export type DataListSchedulesProps = ScheduleFormProps[]
 
 export type ScheduleFormProps = {
     id: string,

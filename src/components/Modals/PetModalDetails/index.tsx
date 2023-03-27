@@ -13,8 +13,10 @@ import {
     updatingScheduleFormToDatabase,
     dogsBreedsReferences
 } from '@/services'
+import { AuthContext } from '@/components/contexts/authContext'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
+    const { isToken } = React.useContext(AuthContext)
     const { loadSchedules } = React.useContext(ListContext)
     const [dogRef, setDogRef] = React.useState<dogFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState(petProps.reference_image_id);
@@ -27,7 +29,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
         setValue } = useForm<ScheduleFormProps>({ defaultValues: petProps });
 
     const onSubmit: SubmitHandler<ScheduleFormProps> = async data => {
-        const { response, error } = await updatingScheduleFormToDatabase(petProps.id, data)
+        const { response, error } = await updatingScheduleFormToDatabase(petProps.id, data, isToken)
         if (response) {
             toast.success('Dados atualizado com sucesso!')
         } else if (error) {
@@ -46,7 +48,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     }
 
     const deleteSchedule = async () => {
-        const { response, error } = await deletingScheduleFormToDatabase(petProps.id)
+        const { response, error } = await deletingScheduleFormToDatabase(petProps.id, isToken)
         if (response) {
             toast.success('Agendamento finalizado com sucesso!')
         } else if (error) {

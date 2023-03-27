@@ -5,16 +5,18 @@ import { dogFetchProps, ScheduleFormProps } from './types';
 import { toast } from 'react-toastify';
 import { dogsBreedsReferences, sendingScheduleFormToDatabase } from '@/services';
 import { ListContext } from '@/components/contexts/listContext';
+import { AuthContext } from '@/components/contexts/authContext';
 
 const ScheduleForm = () => {
-    const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();
+    const { isToken } = React.useContext(AuthContext)
+    const { loadSchedules } = React.useContext(ListContext)
     const [isClient, setClientCheckBox] = React.useState(false)
     const [dogRef, setDogRef] = React.useState<dogFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState('');
-    const { loadSchedules } = React.useContext(ListContext)
+    const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();
 
     const onSubmit: SubmitHandler<ScheduleFormProps> = async data => {
-        const { response, error } = await sendingScheduleFormToDatabase(data)
+        const { response, error } = await sendingScheduleFormToDatabase(data, isToken)
         if (response) {
             toast.success('Agendamento realizado com sucesso!')
         } else if (error) {

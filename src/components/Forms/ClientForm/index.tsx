@@ -4,11 +4,14 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { ClientFormProps } from './types';
 import { toast } from 'react-toastify';
 import { sendingClientFormToDatabase } from '@/services';
+import { AuthContext } from '@/components/contexts/authContext';
 
 const ClientForm = () => {
+    const { isToken } = React.useContext(AuthContext)
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm<ClientFormProps>();
+    
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
-        const { response, error } = await sendingClientFormToDatabase(data)
+        const { response, error } = await sendingClientFormToDatabase(data, isToken)
         if (response) {
             toast.success('Cliente cadastrado realizado com sucesso!')
         } else if (error) {

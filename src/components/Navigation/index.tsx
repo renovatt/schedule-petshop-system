@@ -1,16 +1,19 @@
 import React from 'react'
 import * as S from './style'
+import Navlink from '../Navlink'
 import { BsGithub } from 'react-icons/bs'
 import { FaAddressCard, FaBone } from 'react-icons/fa'
 import { RiLogoutCircleLine } from 'react-icons/ri'
 import { MdSpaceDashboard } from 'react-icons/md'
-import { AiFillSchedule, AiFillLinkedin, AiFillSetting } from 'react-icons/ai'
 import { AuthContext } from '../contexts/authContext'
-import Navlink from '../Navlink'
+import { ListContext } from '../contexts/listContext'
+import { AiFillSchedule, AiFillLinkedin, AiFillSetting } from 'react-icons/ai'
 
 const Navigation = () => {
     const [isActive, setIsActive] = React.useState(false)
     const { signOut } = React.useContext(AuthContext)
+    const { clear } = React.useContext(ListContext)
+
     return (
         <S.Navigation active={isActive}>
             <S.ListContainer>
@@ -37,7 +40,7 @@ const Navigation = () => {
 
             <S.Logout>
                 <S.LogoutLink href='/'>
-                    <S.Icon onClick={() => signOut()}><RiLogoutCircleLine /></S.Icon>
+                    <S.Icon onClick={() => { signOut(); clear(); }}><RiLogoutCircleLine /></S.Icon>
                 </S.LogoutLink>
             </S.Logout>
 

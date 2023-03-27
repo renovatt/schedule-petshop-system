@@ -19,6 +19,8 @@ export type SignInResponse = {
 };
 
 export type AuthContextType = {
+    isToken: string;
+    isLoading: boolean
     isAuthenticated: boolean;
     user: User | null;
     signIn: (data: SignInData) => Promise<{

@@ -10,12 +10,15 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { CgCloseR } from 'react-icons/cg'
 import { ListContext } from '@/components/contexts/listContext'
+import { AuthContext } from '@/components/contexts/authContext'
 
 const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProps) => {
+    const { isToken } = React.useContext(AuthContext)
     const { loadClients } = React.useContext(ListContext)
+
     const { control, handleSubmit, formState: { errors } } = useForm<ClientFormProps>({ defaultValues: clientProps });
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
-        const { response, error } = await updatingClientFormToDatabase(clientProps.id, data)
+        const { response, error } = await updatingClientFormToDatabase(clientProps.id, data, isToken)
         if (response) {
             toast.success('Dados atualizado com sucesso!')
         } else if (error) {
@@ -26,7 +29,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
     }
 
     const deleteClient = async () => {
-        const { response, error } = await deletingClientFormToDatabase(clientProps.id)
+        const { response, error } = await deletingClientFormToDatabase(clientProps.id, isToken)
         if (response) {
             toast.success('Cliente deletado com sucesso!')
         } else if (error) {

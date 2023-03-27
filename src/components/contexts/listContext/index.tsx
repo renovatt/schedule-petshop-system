@@ -1,31 +1,38 @@
 import React from 'react';
-import { DataListClientsProps } from '@/components/Forms/ClientForm/types';
+import { ClientFormProps, DataListClientsProps } from '@/components/Forms/ClientForm/types';
 import { DataListSchedulesProps } from '@/components/Forms/ScheduleForm/types';
 import { renderClientList, renderScheduleList } from '@/services';
 import { ListContextProviderProps, InitialValueProps } from './types';
+import { AuthContext } from '../authContext';
 
 const initialValue: InitialValueProps = {
-    clients: {},
-    schedules: {},
+    error: false,
+    loader: false,
+    clients: [],
+    schedules: [],
+    clear: () => { },
+    setClients: () => { },
+    setSchedules: () => { },
     loadClients: async () => { },
     loadSchedules: async () => { },
-    loader: false,
-    error: false,
 };
 
-export const ListContext = React.createContext<InitialValueProps>(initialValue);
+
+export const ListContext = React.createContext({} as InitialValueProps);
 
 export const ListContextProvider = ({ children }: ListContextProviderProps) => {
+    const { user, isToken } = React.useContext(AuthContext)
     const [error, setError] = React.useState(initialValue.error)
     const [loader, setLoader] = React.useState(initialValue.loader)
     const [clients, setClients] = React.useState<DataListClientsProps>(initialValue.clients);
     const [schedules, setSchedules] = React.useState<DataListSchedulesProps>(initialValue.schedules);
 
-    async function loadSchedules() {
+    async function loadClients() {
         setLoader(true);
         try {
-            const { response } = await renderScheduleList()
-            setSchedules(response)
+            const { response } = await renderClientList(isToken)
+            const filteredClients = await response?.clients?.filter((client: ClientFormProps) => client.userId === user?.id)
+            setClients(filteredClients)
         } catch (error) {
             setError(true)
         } finally {
@@ -33,16 +40,22 @@ export const ListContextProvider = ({ children }: ListContextProviderProps) => {
         }
     }
 
-    async function loadClients() {
+    async function loadSchedules() {
         setLoader(true);
         try {
-            const { response } = await renderClientList()
-            setClients(response)
+            const { response } = await renderScheduleList(isToken)
+            const filteredSchedules = await response?.schedules?.filter((client: ClientFormProps) => client.userId === user?.id)
+            setSchedules(filteredSchedules)
         } catch (error) {
             setError(true)
         } finally {
             setLoader(false);
         }
+    }
+
+    async function clear() {
+        setClients(() => initialValue.clients)
+        setSchedules(() => initialValue.schedules)
     }
 
     const contextValue: InitialValueProps = {
@@ -52,6 +65,9 @@ export const ListContextProvider = ({ children }: ListContextProviderProps) => {
         schedules,
         loadClients,
         loadSchedules,
+        setClients,
+        setSchedules,
+        clear,
     };
 
     return (

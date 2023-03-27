@@ -13,23 +13,17 @@ const ClientTable = ({ searchValue }: InputSearchValueProps) => {
     const [prevSize, setPrevSize] = React.useState(0)
     const { loader, clients, loadClients } = React.useContext(ListContext)
 
-    const filteredClients = React.useMemo(() => {
-        if (clients && clients?.clients) {
-            const filtered = clients?.clients?.filter((client) => {
-                return client.name.toLowerCase().includes(searchValue.toLowerCase());
-            });
-            return filtered
-        }
-        return [];
-    }, [clients?.clients, searchValue]);
+    const filteredClients = clients?.filter((client) => {
+        return client.name.toLowerCase().includes(searchValue.toLowerCase());
+    }) || [];
 
     React.useEffect(() => {
         loadClients()
     }, [])
 
     React.useEffect(() => {
-        if (clients && clients.clients) {
-            const newSize = clients.clients.length
+        if (clients && clients?.length) {
+            const newSize = clients?.length
             if (newSize > prevSize) {
                 scrollRef.current?.scrollTo(0, -scrollRef.current.scrollHeight)
             }
@@ -41,7 +35,7 @@ const ClientTable = ({ searchValue }: InputSearchValueProps) => {
         <S.Container>
             <S.Table ref={scrollRef}>
                 {loader ? <Loader /> :
-                    filteredClients.length ? filteredClients?.map((client, index) =>
+                    filteredClients?.length ? filteredClients?.map((client, index) =>
                         (<ClientList key={index} {...client} />)) : <p>Sem clientes.</p>
                 }
             </S.Table>
@@ -49,4 +43,4 @@ const ClientTable = ({ searchValue }: InputSearchValueProps) => {
     )
 }
 
-export default ClientTable
+export default ClientTable;

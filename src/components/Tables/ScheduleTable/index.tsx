@@ -8,21 +8,15 @@ const ScheduleTable = () => {
     const [prevSize, setPrevSize] = React.useState(0)
     const scrollRef = React.useRef<HTMLDivElement>(null)
     const { loader, schedules, loadSchedules } = React.useContext(ListContext)
-
-    const filteredSchedules = React.useMemo(() => {
-        if (schedules && schedules.schedules) {
-            return schedules.schedules.filter(schedule => schedule.status);
-        }
-        return [];
-    }, [schedules?.schedules]);
+    const filteredSchedules = schedules?.filter(schedule => schedule.status) || [];
 
     React.useEffect(() => {
         loadSchedules()
     }, [])
 
     React.useEffect(() => {
-        if (schedules && schedules.schedules) {
-            const newSize = schedules.schedules.length
+        if (schedules && schedules?.length) {
+            const newSize = schedules?.length
             if (newSize > prevSize) {
                 scrollRef.current?.scrollTo(0, -scrollRef.current.scrollHeight)
             }
@@ -34,7 +28,7 @@ const ScheduleTable = () => {
         <S.Container>
             <S.Table ref={scrollRef}>
                 {loader ? <Loader /> :
-                    filteredSchedules.length ? filteredSchedules?.map((schedule, index) =>
+                    filteredSchedules?.length ? filteredSchedules?.map((schedule, index) =>
                         (<ScheduleList key={index} {...schedule} />)) : <p>Sem agendamentos.</p>
                 }
             </S.Table>
@@ -42,4 +36,4 @@ const ScheduleTable = () => {
     )
 }
 
-export default ScheduleTable
+export default ScheduleTable;
