@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn2.thedogapi.com",
+        hostname: ["cdn2.thedogapi.com", "avatars.dicebear.com"],
         port: "",
         pathname: "/**",
       },
