@@ -23,7 +23,7 @@ const ViewRegister = () => {
                             <UserForm />
                         </S.Section>
                         <S.ImageContainder>
-                            <Image src={hug} alt='thumb' />
+                            <Image src={hug} alt='thumb' priority={true}/>
                         </S.ImageContainder>
                     </S.Content>
                 </S.Main>

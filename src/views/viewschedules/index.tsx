@@ -32,7 +32,7 @@ const ViewSchedules = () => {
               <ScheduleForm />
             </S.Section>
             <S.ImageContainder>
-              <Image src={dog} alt="thumb-dog" />
+              <Image src={dog} alt="thumb-dog" priority={true} />
             </S.ImageContainder>
           </S.Content>
         </S.Main>

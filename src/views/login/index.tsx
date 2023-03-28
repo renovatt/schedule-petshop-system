@@ -8,7 +8,7 @@ const Login = () => {
         <S.Container className='animation-container'>
             <S.LogoContainer>
                 <S.LogoContent>
-                    <S.Logo alt='dog' src={photo} />
+                    <S.Logo alt='dog' src={photo} priority={true} />
                 </S.LogoContent>
                 <S.Title>Cute Pet</S.Title>
                 <S.Span>Seu sistema de agendamentos para Pets</S.Span>

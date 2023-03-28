@@ -34,7 +34,7 @@ const ViewDashboard = () => {
                 <Goal />
               </S.SectionCards>
               <S.Thumb>
-                <Image src={thumb} alt="thumb" />
+                <Image src={thumb} alt="thumb" priority={true}/>
               </S.Thumb>
             </S.CardThumbContent>
             <S.Section>

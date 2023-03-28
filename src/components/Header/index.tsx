@@ -27,6 +27,7 @@ const Header = ({ title }: HeaderProps) => {
                             width={35}
                             height={35}
                             alt='user'
+                            priority={true}
                             src={`https://avatars.dicebear.com/api/initials/${user?.email}.svg`}
                             onClick={() => setProfileOpen(!isProfileOpen)} />
                     ) : <FaUserCircle />}
