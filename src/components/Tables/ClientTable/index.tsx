@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './style'
 import ClientList from '@/components/Lists/ClientList';
 import { Loader } from '@/components/Helper/Loader';
-import { ListContext } from '@/components/contexts/listContext';
+import { ListContext } from '@/contexts/listContext';
 
 type InputSearchValueProps = {
     searchValue: string

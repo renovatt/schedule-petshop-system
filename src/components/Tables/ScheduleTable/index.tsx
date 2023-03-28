@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { Loader } from '@/components/Helper/Loader'
 import ScheduleList from '../../Lists/SchedulesList'
-import { ListContext } from '@/components/contexts/listContext'
+import { ListContext } from '@/contexts/listContext'
 
 const ScheduleTable = () => {
     const [prevSize, setPrevSize] = React.useState(0)

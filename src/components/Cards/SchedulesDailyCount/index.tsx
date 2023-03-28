@@ -2,20 +2,23 @@ import React from 'react'
 import * as S from './style'
 import { FaUserClock } from 'react-icons/fa'
 import { getSchedulesDailyQuantity } from '@/connections';
-import { renderScheduleList } from '@/services';
-import { AuthContext } from '@/components/contexts/authContext';
+import { AuthContext } from '@/contexts/authContext';
+import { renderScheduleList } from '@/services/schedules';
 
 const SchedulesCountDaily = () => {
     const { isToken } = React.useContext(AuthContext)
     const [schedulesDailyQuantity, setSchedulesDayQuantity] = React.useState<number>(0);
+
+    async function countSchedules() {
+        const { response } = await renderScheduleList(isToken);
+        const currentDailySchedules = await getSchedulesDailyQuantity(response)
+        setSchedulesDayQuantity(currentDailySchedules);
+    }
+
     React.useEffect(() => {
-        async function loadSchedules() {
-            const { response } = await renderScheduleList(isToken);
-            const currentDailySchedules = await getSchedulesDailyQuantity(response)
-            setSchedulesDayQuantity(currentDailySchedules);
-        }
-        loadSchedules();
+        countSchedules();
     }, []);
+
     return (
         <S.Container>
             <S.Content>
@@ -27,4 +30,4 @@ const SchedulesCountDaily = () => {
     )
 }
 
-export default SchedulesCountDaily
+export default SchedulesCountDaily;

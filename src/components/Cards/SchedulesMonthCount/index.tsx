@@ -1,21 +1,24 @@
 import React from 'react'
 import * as S from './style'
 import { FaUserClock } from 'react-icons/fa'
-import { renderScheduleList } from '@/services'
 import { getSchedulesMonthQuantity } from '@/connections'
-import { AuthContext } from '@/components/contexts/authContext'
+import { AuthContext } from '@/contexts/authContext'
+import { renderScheduleList } from '@/services/schedules'
 
 const SchedulesMonthCount = () => {
     const { isToken } = React.useContext(AuthContext)
     const [schedulesMonthQuantity, setSchedulesMonthQuantity] = React.useState<number>(0);
+
+    async function countSchedules() {
+        const { response } = await renderScheduleList(isToken);
+        const currentMonthSchedules = await getSchedulesMonthQuantity(response)
+        setSchedulesMonthQuantity(currentMonthSchedules);
+    }
+
     React.useEffect(() => {
-        async function loadSchedules() {
-            const { response } = await renderScheduleList(isToken);
-            const currentMonthSchedules = await getSchedulesMonthQuantity(response)
-            setSchedulesMonthQuantity(currentMonthSchedules);
-        }
-        loadSchedules();
+        countSchedules();
     }, []);
+
     return (
         <S.Container>
             <S.Content>
@@ -27,4 +30,4 @@ const SchedulesMonthCount = () => {
     )
 }
 
-export default SchedulesMonthCount
+export default SchedulesMonthCount;

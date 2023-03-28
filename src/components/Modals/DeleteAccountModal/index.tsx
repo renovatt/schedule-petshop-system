@@ -1,10 +1,10 @@
 import * as S from './style'
 import React from 'react'
-import { AuthContext } from '@/components/contexts/authContext'
-import { deletingUserFormToDatabase } from '@/services'
+import { AuthContext } from '@/contexts/authContext'
 import { toast } from 'react-toastify'
 import { DeleteModalProps } from './types'
 import { CgCloseR } from 'react-icons/cg'
+import { deletingUserFormToDatabase } from '@/services/user'
 
 const DeleteAccountModal = ({ userId, setDeleteModalOpen }: DeleteModalProps) => {
     const { signOut, isToken } = React.useContext(AuthContext)
@@ -19,6 +19,7 @@ const DeleteAccountModal = ({ userId, setDeleteModalOpen }: DeleteModalProps) =>
         signOut()
         setDeleteModalOpen(false)
     }
+    
     return (
         <S.Container className='animation-container'>
             <S.Content>

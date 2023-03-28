@@ -2,8 +2,8 @@ import React from 'react'
 import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from 'react-toastify';
-import { sendingUserFormToDatabase } from '@/services';
 import { UserFormProps } from '../LoginForm/type';
+import { sendingUserFormToDatabase } from '@/services/user';
 
 const RegisterForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormProps>();

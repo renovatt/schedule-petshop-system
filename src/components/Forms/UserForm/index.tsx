@@ -3,9 +3,9 @@ import * as S from './style'
 import { toast } from 'react-toastify'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { UserFormProps } from '@/components/Forms/LoginForm/type'
-import { updatingUserFormToDatabase } from '@/services'
 import DeleteAccountModal from '@/components/Modals/DeleteAccountModal'
-import { AuthContext } from '@/components/contexts/authContext'
+import { AuthContext } from '@/contexts/authContext'
+import { updatingUserFormToDatabase } from '@/services/user'
 
 const UserForm = () => {
     const { user, isToken } = React.useContext(AuthContext)

@@ -1,10 +1,11 @@
 import * as S from './style'
 import React from 'react'
 import { BiLogOut } from 'react-icons/bi'
-import { AuthContext } from '@/components/contexts/authContext'
+import { AuthContext } from '@/contexts/authContext'
 
 const ProfileModal = () => {
     const { user, signOut } = React.useContext(AuthContext)
+    
     return (
         <S.Container className='animation-container'>
             <S.Content>

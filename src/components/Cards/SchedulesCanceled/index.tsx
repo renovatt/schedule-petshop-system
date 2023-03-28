@@ -1,21 +1,24 @@
 import React from 'react'
 import * as S from './style'
 import { FaUserTimes } from 'react-icons/fa'
-import { renderScheduleList } from '@/services';
 import { getSchedulesMonthCanceledQuantity } from '@/connections';
-import { AuthContext } from '@/components/contexts/authContext';
+import { AuthContext } from '@/contexts/authContext';
+import { renderScheduleList } from '@/services/schedules';
 
 const SchedulesCanceled = () => {
     const { isToken } = React.useContext(AuthContext)
     const [schedulesCanceledQuantity, setSchedulesCanceledQuantity] = React.useState<number>(0);
+
+    async function countSchedules() {
+        const { response } = await renderScheduleList(isToken);
+        const currentMonthSchedulesCanceled = await getSchedulesMonthCanceledQuantity(response)
+        setSchedulesCanceledQuantity(currentMonthSchedulesCanceled);
+    }
+
     React.useEffect(() => {
-        async function loadSchedules() {
-            const { response } = await renderScheduleList(isToken);
-            const currentMonthSchedulesCanceled = await getSchedulesMonthCanceledQuantity(response)
-            setSchedulesCanceledQuantity(currentMonthSchedulesCanceled);
-        }
-        loadSchedules();
+        countSchedules();
     }, []);
+
     return (
         <S.Container>
             <S.Content>
@@ -27,4 +30,4 @@ const SchedulesCanceled = () => {
     )
 }
 
-export default SchedulesCanceled
+export default SchedulesCanceled;

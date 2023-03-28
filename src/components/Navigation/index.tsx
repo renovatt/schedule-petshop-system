@@ -5,8 +5,8 @@ import { BsGithub } from 'react-icons/bs'
 import { FaAddressCard, FaBone } from 'react-icons/fa'
 import { RiLogoutCircleLine } from 'react-icons/ri'
 import { MdSpaceDashboard } from 'react-icons/md'
-import { AuthContext } from '../contexts/authContext'
-import { ListContext } from '../contexts/listContext'
+import { AuthContext } from '../../contexts/authContext'
+import { ListContext } from '../../contexts/listContext'
 import { AiFillSchedule, AiFillLinkedin, AiFillSetting } from 'react-icons/ai'
 
 const Navigation = () => {

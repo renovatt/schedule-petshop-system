@@ -3,7 +3,7 @@ import * as S from './style'
 import { HeaderProps } from './types'
 import Navigation from '../Navigation'
 import ProfileModal from '../Modals/ProfileModal'
-import { AuthContext } from '../contexts/authContext'
+import { AuthContext } from '../../contexts/authContext'
 import { FaUserCircle } from 'react-icons/fa'
 
 const Header = ({ title }: HeaderProps) => {

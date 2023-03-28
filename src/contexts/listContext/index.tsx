@@ -1,9 +1,10 @@
 import React from 'react';
 import { ClientFormProps, DataListClientsProps } from '@/components/Forms/ClientForm/types';
 import { DataListSchedulesProps } from '@/components/Forms/ScheduleForm/types';
-import { renderClientList, renderScheduleList } from '@/services';
 import { ListContextProviderProps, InitialValueProps } from './types';
 import { AuthContext } from '../authContext';
+import { renderClientList } from '@/services/clients';
+import { renderScheduleList } from '@/services/schedules';
 
 const initialValue: InitialValueProps = {
     error: false,

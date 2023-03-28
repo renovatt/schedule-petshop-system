@@ -3,8 +3,8 @@ import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ClientFormProps } from './types';
 import { toast } from 'react-toastify';
-import { sendingClientFormToDatabase } from '@/services';
-import { AuthContext } from '@/components/contexts/authContext';
+import { AuthContext } from '@/contexts/authContext';
+import { sendingClientFormToDatabase } from '@/services/clients';
 
 const ClientForm = () => {
     const { isToken } = React.useContext(AuthContext)

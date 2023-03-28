@@ -1,9 +1,10 @@
 import React from "react";
 import Router from "next/router";
+import Loading from "@/pages/loading";
 import { setCookie, destroyCookie, parseCookies } from 'nookies';
 import { AuthContextType, AuthProviderProps, SignInData, User } from "./types";
-import { gettingUserById, getUserIdFromToken, sendingLoginFormToDatabase } from "@/services";
-import Loading from "@/pages/loading";
+import { getUserIdFromToken } from "@/services";
+import { gettingUserById, sendingLoginFormToDatabase } from "@/services/user";
 
 export const AuthContext = React.createContext({} as AuthContextType);
 

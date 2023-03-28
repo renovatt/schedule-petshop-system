@@ -6,14 +6,11 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import dayjs from 'dayjs'
 import { toast } from 'react-toastify'
 import { CgCloseR } from 'react-icons/cg'
-import { ListContext } from '@/components/contexts/listContext'
+import { ListContext } from '@/contexts/listContext'
 import { dogFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
-import {
-    deletingScheduleFormToDatabase,
-    updatingScheduleFormToDatabase,
-    dogsBreedsReferences
-} from '@/services'
-import { AuthContext } from '@/components/contexts/authContext'
+import { AuthContext } from '@/contexts/authContext'
+import { deletingScheduleFormToDatabase, updatingScheduleFormToDatabase } from '@/services/schedules'
+import { dogsBreedsReferences } from '@/services/api'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const { isToken } = React.useContext(AuthContext)

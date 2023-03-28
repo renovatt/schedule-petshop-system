@@ -3,9 +3,10 @@ import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { dogFetchProps, ScheduleFormProps } from './types';
 import { toast } from 'react-toastify';
-import { dogsBreedsReferences, sendingScheduleFormToDatabase } from '@/services';
-import { ListContext } from '@/components/contexts/listContext';
-import { AuthContext } from '@/components/contexts/authContext';
+import { ListContext } from '@/contexts/listContext';
+import { AuthContext } from '@/contexts/authContext';
+import { sendingScheduleFormToDatabase } from '@/services/schedules';
+import { dogsBreedsReferences } from '@/services/api';
 
 const ScheduleForm = () => {
     const { isToken } = React.useContext(AuthContext)

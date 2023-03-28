@@ -4,13 +4,13 @@ import Image from 'next/image'
 import male from '@/assets/male-client.png'
 import female from '@/assets/female-client.png'
 import { ClientModalProps } from './types'
-import { deletingClientFormToDatabase, updatingClientFormToDatabase } from '@/services'
 import { ClientFormProps } from '@/components/Forms/ClientForm/types'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { CgCloseR } from 'react-icons/cg'
-import { ListContext } from '@/components/contexts/listContext'
-import { AuthContext } from '@/components/contexts/authContext'
+import { ListContext } from '@/contexts/listContext'
+import { AuthContext } from '@/contexts/authContext'
+import { deletingClientFormToDatabase, updatingClientFormToDatabase } from '@/services/clients'
 
 const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProps) => {
     const { isToken } = React.useContext(AuthContext)
@@ -38,6 +38,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
         loadClients()
         setClientModalOpen(false)
     }
+    
     return (
         <S.Container className='animation-container'>
             <S.Content>

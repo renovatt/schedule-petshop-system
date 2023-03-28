@@ -2,8 +2,8 @@ import React from 'react'
 import * as S from './style'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from 'react-toastify';
-import { AuthContext } from '@/components/contexts/authContext';
-import { SignInData } from '@/components/contexts/authContext/types';
+import { AuthContext } from '@/contexts/authContext';
+import { SignInData } from '@/contexts/authContext/types';
 
 const LoginForm = () => {
     const { signIn } = React.useContext(AuthContext)
