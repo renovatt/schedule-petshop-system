@@ -1,9 +1,10 @@
-import { GetServerSideProps } from 'next'
-import { parseCookies } from 'nookies'
 import React from 'react'
+import { parseCookies } from 'nookies'
+import { GetServerSideProps } from 'next'
+import { ViewLoading } from '@/views/viewloading'
 
 export default function Loading() {
-    return <div>Carregando...</div>
+    return <ViewLoading />
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
