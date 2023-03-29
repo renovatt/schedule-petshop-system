@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import { HiUsers } from 'react-icons/hi'
 import thumb from '@/assets/thumb.jpg'
-import Goal from '@/components/Cards/Goal'
 import ClientTable from '@/components/Tables/ClientTable'
 import SchedulesCanceled from '@/components/Cards/SchedulesCanceled'
 import SchedulesMonthCount from '@/components/Cards/SchedulesMonthCount'
@@ -31,10 +30,9 @@ const ViewDashboard = () => {
                 <SchedulesMonthCount />
                 <SchedulesCountDaily />
                 <SchedulesCanceled />
-                <Goal />
               </S.SectionCards>
               <S.Thumb>
-                <Image src={thumb} alt="thumb" priority={true}/>
+                <Image src={thumb} alt="thumb" priority={true} />
               </S.Thumb>
             </S.CardThumbContent>
             <S.Section>
