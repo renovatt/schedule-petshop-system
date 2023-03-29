@@ -8,6 +8,18 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn2.thecatapi.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.dicebear.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   reactStrictMode: true,
