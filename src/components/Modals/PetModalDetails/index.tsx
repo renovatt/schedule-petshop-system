@@ -9,13 +9,13 @@ import { ListContext } from '@/contexts/listContext'
 import { AuthContext } from '@/contexts/authContext'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { catsBreedsReferences, dogsBreedsReferences } from '@/services/api'
-import { AnimalsFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
+import { PetFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { deletingScheduleFormToDatabase, updatingScheduleFormToDatabase } from '@/services/schedules'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const { isToken } = React.useContext(AuthContext)
     const { loadSchedules } = React.useContext(ListContext)
-    const [petRef, setPetRef] = React.useState<AnimalsFetchProps[]>([])
+    const [petRef, setPetRef] = React.useState<PetFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState(petProps.reference_image_id);
     const [petImgUrl, setPetImgUrl] = React.useState(petProps.specie ?
         `https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.jpg` :

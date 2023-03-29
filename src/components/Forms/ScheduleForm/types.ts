@@ -17,7 +17,7 @@ export type ScheduleFormProps = {
     client: boolean,
 };
 
-export type AnimalsFetchProps = {
+export type PetFetchProps = {
     id: string
     name: string
     image: {

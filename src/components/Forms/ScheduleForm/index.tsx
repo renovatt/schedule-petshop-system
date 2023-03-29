@@ -5,7 +5,7 @@ import { FaCat, FaDog } from 'react-icons/fa';
 import { ListContext } from '@/contexts/listContext';
 import { AuthContext } from '@/contexts/authContext';
 import { useForm, SubmitHandler } from "react-hook-form";
-import { AnimalsFetchProps, ScheduleFormProps } from './types';
+import { PetFetchProps, ScheduleFormProps } from './types';
 import { sendingScheduleFormToDatabase } from '@/services/schedules';
 import { catsBreedsReferences, dogsBreedsReferences } from '@/services/api';
 
@@ -14,8 +14,8 @@ const ScheduleForm = () => {
     const { loadSchedules } = React.useContext(ListContext)
     const [isClient, setClientCheckBox] = React.useState(false)
     const [specie, setSpecie] = React.useState(true)
-    const [dogRef, setDogRef] = React.useState<AnimalsFetchProps[]>([])
-    const [catRef, setCatRef] = React.useState<AnimalsFetchProps[]>([])
+    const [dogRef, setDogRef] = React.useState<PetFetchProps[]>([])
+    const [catRef, setCatRef] = React.useState<PetFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState('');
     const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();
 
