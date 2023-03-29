@@ -1,23 +1,25 @@
 import React from 'react'
 import * as S from './style'
 import Image from 'next/image'
-import { PetModalProps } from './types'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import dayjs from 'dayjs'
 import { toast } from 'react-toastify'
+import { PetModalProps } from './types'
 import { CgCloseR } from 'react-icons/cg'
 import { ListContext } from '@/contexts/listContext'
-import { dogFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { AuthContext } from '@/contexts/authContext'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { catsBreedsReferences, dogsBreedsReferences } from '@/services/api'
+import { AnimalsFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { deletingScheduleFormToDatabase, updatingScheduleFormToDatabase } from '@/services/schedules'
-import { dogsBreedsReferences } from '@/services/api'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const { isToken } = React.useContext(AuthContext)
     const { loadSchedules } = React.useContext(ListContext)
-    const [dogRef, setDogRef] = React.useState<dogFetchProps[]>([])
+    const [petRef, setPetRef] = React.useState<AnimalsFetchProps[]>([])
     const [selectedReferenceImageId, setSelectedReferenceImageId] = React.useState(petProps.reference_image_id);
-    const [petImgUrl, setPetImgUrl] = React.useState(`https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.jpg`)
+    const [petImgUrl, setPetImgUrl] = React.useState(petProps.specie ?
+        `https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.jpg` :
+        `https://cdn2.thecatapi.com/images/${petProps.reference_image_id}.jpg`)
 
     const {
         control,
@@ -54,17 +56,20 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
         loadSchedules()
     }
 
-    React.useEffect(() => {
-        async function loadDogsReferences() {
-            const { response } = await dogsBreedsReferences()
-            setDogRef(response)
-        }
-        setValue("reference_image_id", selectedReferenceImageId);
-        loadDogsReferences()
-    }, [selectedReferenceImageId])
+    const loadBreedsReferences = async (specie: string) => {
+        const { response } = specie === 'dog'
+            ? await dogsBreedsReferences()
+            : await catsBreedsReferences()
 
-    const updateBreed = (value: string) => {
-        const selectedBreed = dogRef.find((breed) => breed.name === value);
+        if (specie === 'dog') {
+            setPetRef(response)
+        } else {
+            setPetRef(response)
+        }
+    }
+
+    const updateBreeds = (value: string) => {
+        const selectedBreed = petRef.find((breed) => breed.name === value)
         if (selectedBreed) {
             setSelectedReferenceImageId(selectedBreed.reference_image_id);
         } else {
@@ -73,14 +78,20 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
         setValue("breed", value);
     };
 
-    function handleLoad(event: React.SyntheticEvent<HTMLImageElement>): void {
-        const target = event.target as HTMLImageElement;
-        target.style.opacity = "1";
+    const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>): void => {
+        event.currentTarget.style.opacity = "1";
     }
 
-    function handleError() {
-        setPetImgUrl(`https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.png`);
+    const handleError = () => {
+        setPetImgUrl(petProps.specie ?
+            `https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.png` :
+            `https://cdn2.thecatapi.com/images/${petProps.reference_image_id}.png`);
     }
+
+    React.useEffect(() => {
+        setValue("reference_image_id", selectedReferenceImageId);
+        loadBreedsReferences(petProps.specie ? "dog" : "cat")
+    }, [selectedReferenceImageId])
 
     return (
         <S.Container className='animation-container'>
@@ -160,10 +171,10 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                                 type="text"
                                                 list="alpha"
                                                 maxLength={41}
-                                                onChange={(event) => updateBreed(event.target.value)} />
+                                                onChange={(event) => updateBreeds(event.target.value)} />
 
                                             <S.DataList id="alpha">
-                                                {dogRef.map((breed) => (
+                                                {petRef.map((breed) => (
                                                     <S.Option key={breed.id} value={breed.name}>
                                                         {breed.name}
                                                     </S.Option>

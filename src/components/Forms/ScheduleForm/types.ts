@@ -12,11 +12,12 @@ export type ScheduleFormProps = {
     date: Date,
     created_at: Date
     canceled_date: Date,
+    specie: boolean,
     status: boolean,
     client: boolean,
 };
 
-export type dogFetchProps = {
+export type AnimalsFetchProps = {
     id: string
     name: string
     image: {

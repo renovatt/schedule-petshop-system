@@ -42,6 +42,7 @@ model Schedules {
   weight             String
   sex                String
   client             Boolean
+  specie             Boolean
   status             Boolean
   date               DateTime
   canceled_date      DateTime

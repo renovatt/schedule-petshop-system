@@ -16,6 +16,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 canceled_date: new Date(data.date),
                 status: data.client,
                 client: data.client,
+                specie: data.specie,
                 user: {
                     connect: { id: userId },
                 }
@@ -56,6 +57,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                 canceled_date: new Date(data.canceled_date),
                 status: data.status,
                 client: data.client,
+                specie: data.specie,
             }
         })
         return { schedule }
