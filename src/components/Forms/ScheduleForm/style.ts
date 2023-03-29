@@ -1,5 +1,28 @@
 import styled from "styled-components"
 
+export const SvgContent = styled.div`
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    svg{
+        width: 1.75rem;
+        height: 1.75rem;
+        transition: all .3s;
+    }
+`
+
 export const Form = styled.form`
     display: flex;
     align-items: flex-start;
