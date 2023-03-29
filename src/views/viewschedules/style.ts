@@ -86,15 +86,40 @@ export const LastRegister = styled.div`
 
 export const Header = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
     margin-bottom: .8rem;
+    width: 100%;
+
+    @media (max-width: 70rem) {
+            flex-direction: column;
+        }
 `
 
 export const Date = styled.div`
     display: flex;
     margin-bottom: .8rem;
+
+    input{
+        height: 2rem;
+        width: 100%;
+        text-align: start;
+        border-radius: .4rem;
+        margin-top: .4rem;
+        padding-left: .4rem;
+        transition: all .3s;
+        border: 1px solid #ccc;
+        
+        padding: 8px 28px 8px 8px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        background-size: 13px 13px;
+
+        &:focus{
+            border-color: #ff6b00;
+        }
+    }
 `
 
 export const Span = styled.span`

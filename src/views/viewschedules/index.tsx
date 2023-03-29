@@ -6,8 +6,12 @@ import dog from '@/assets/dog.png'
 import Header from '@/components/Header'
 import ScheduleForm from '@/components/Forms/ScheduleForm'
 import ScheduleTable from '@/components/Tables/ScheduleTable'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const ViewSchedules = () => {
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null)
+
   return (
     <>
       <Head>
@@ -20,12 +24,16 @@ const ViewSchedules = () => {
             <S.Section>
               <S.LastRegister>
                 <S.Header>
-                  <S.Title>Agendamentos do Dia</S.Title>
+                  <S.Title>Agendamentos</S.Title>
                   <S.Date>
-                    <S.Span>Data:</S.Span><S.Input type="date" />
+                    <DatePicker
+                      selected={selectedDate}
+                      dateFormat="dd/MM/yyyy"
+                      placeholderText='Pesquisar agendamentos'
+                      onChange={(date) => setSelectedDate(date)} />
                   </S.Date>
                 </S.Header>
-                <ScheduleTable />
+                <ScheduleTable datePicker={selectedDate} />
               </S.LastRegister>
             </S.Section>
             <S.Section>
