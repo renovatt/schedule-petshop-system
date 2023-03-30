@@ -82,13 +82,14 @@ export const SaveButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: #000;
-    background: #fff;
+    color: #fff;
+    background: #000;
 
     &:hover{
         cursor: pointer;
-        color: #fff;
-        background: #000;
+        color: #000;
+        background: #fff;
+        border: 1px solid #000;
     }
 `
 
@@ -104,8 +105,8 @@ export const DeleteButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: #000;
-    background: #fff;
+    color: #fff;
+    background: #000;
 
     @media (max-width: 70rem) {
      width: 90%;
@@ -113,7 +114,8 @@ export const DeleteButton = styled.button`
 
     &:hover{
         cursor: pointer;
-        color: #fff;
-        background: #000;
+        color: #000;
+        background: #fff;
+        border: 1px solid #000;
     }
 `

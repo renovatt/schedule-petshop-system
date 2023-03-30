@@ -80,4 +80,5 @@ export const Text = styled.p`
     width: 100%;
     color: #fff;
     text-align: center;
+    font-weight: bold;
 `
