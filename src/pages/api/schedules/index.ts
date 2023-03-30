@@ -27,10 +27,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             const data = req.body
             const { schedule, error } = await createSchedule(data, userId)
-            if (error) throw new Error(`Error: ${error}`)
+            if (error) throw new Error((error as any).message)
             return res.status(200).json({ schedule })
-        } catch (error) {
-            return res.status(400).json({ error: "Erro na criação do agendamento." })
+        } catch (error: any) {
+            return res.status(400).json({ error: error.message })
         }
     }
     res.status(501).end(`Method ${req.method} is not allowed.`)

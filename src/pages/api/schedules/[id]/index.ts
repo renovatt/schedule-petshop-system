@@ -15,11 +15,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
             if (typeof id === 'string') {
                 const { schedule, error } = await updateSchedule(id, data)
-                if (error) throw new Error(`Error: ${error}`)
+                if (error) throw new Error((error as any).message)
                 return res.status(200).json({ schedule })
             }
-        } catch (error) {
-            return res.status(400).json({ error: "Erro ao atualizar dados do agendamento." })
+        } catch (error: any) {
+            return res.status(400).json({ error: error.message })
         }
     }
 

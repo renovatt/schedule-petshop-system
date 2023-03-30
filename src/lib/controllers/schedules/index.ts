@@ -1,8 +1,21 @@
 import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
+import dayjs from "dayjs";
 
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
+        const dateTime = dayjs(data.date);
+        const alreadyExists = await prisma.schedules.findFirst({
+            where: {
+                date: {
+                    gte: dateTime.startOf("hour").toDate(),
+                    lte: dateTime.endOf("hour").toDate(),
+                },
+            },
+        });
+
+        if (alreadyExists) throw new Error("Já existe um agendamento para esse dia e horário.");
+
         const schedule = await prisma.schedules.create({
             data: {
                 tutor: data.tutor,
@@ -43,6 +56,18 @@ export async function getAllSchedules(userId: string | undefined) {
 
 export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
+        const dateTime = dayjs(data.date);
+        const alreadyExists = await prisma.schedules.findFirst({
+            where: {
+                date: {
+                    gte: dateTime.startOf("hour").toDate(),
+                    lte: dateTime.endOf("hour").toDate(),
+                },
+            },
+        });
+
+        if (alreadyExists) throw new Error("Já existe um agendamento para esse dia e horário.");
+
         const schedule = await prisma.schedules.update({
             where: { id: id },
             data: {
