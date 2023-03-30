@@ -20,7 +20,7 @@ const DeleteCanceledModal = ({ isToken, setCanceledModalOpen }: DeleteModalProps
     return (
         <S.Container className='animation-container'>
             <S.Content>
-                <S.Text>Todos os agendamentos que estão como "cancelados" vão ser excluídos, não se preocupe, todos os outros dados permaneceram salvos, isso serve apenas para liberar um pouco mais de espaço no banco de dados.</S.Text>
+                <S.Text>Todos os agendamentos que estão como cancelados vão ser excluídos, não se preocupe, todos os outros dados permaneceram salvos, isso serve apenas para liberar um pouco mais de espaço no banco de dados.</S.Text>
                 <S.Icon>
                     <CgCloseR onClick={() => setCanceledModalOpen(false)} />
                 </S.Icon>
