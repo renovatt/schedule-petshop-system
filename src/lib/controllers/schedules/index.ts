@@ -4,7 +4,9 @@ import dayjs from "dayjs";
 
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
+        const referenceImageId = data.reference_image_id ? data.reference_image_id : ""
         const dateTime = dayjs(data.date);
+
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
                 date: {
@@ -24,7 +26,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 sex: data.sex,
                 breed: data.breed,
                 weight: data.weight,
-                reference_image_id: data.reference_image_id,
+                reference_image_id: referenceImageId,
                 date: new Date(data.date),
                 canceled_date: new Date(data.date),
                 status: data.client,
@@ -56,35 +58,63 @@ export async function getAllSchedules(userId: string | undefined) {
 
 export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
+        const referenceImageId = data.reference_image_id ? data.reference_image_id : ""
         const dateTime = dayjs(data.date);
-        const alreadyExists = await prisma.schedules.findFirst({
-            where: {
-                date: {
-                    gte: dateTime.startOf("hour").toDate(),
-                    lte: dateTime.endOf("hour").toDate(),
-                },
-            },
+
+        const schedule = await prisma.schedules.findUnique({
+            where: { id: id },
         });
 
-        if (alreadyExists) throw new Error("Já existe um agendamento para esse dia e horário.");
+        if (!schedule) throw new Error("Agendamento não encontrado.");
 
-        const schedule = await prisma.schedules.update({
-            where: { id: id },
-            data: {
-                tutor: data.tutor,
-                pet: data.pet,
-                age: data.age,
-                sex: data.sex,
-                breed: data.breed,
-                weight: data.weight,
-                reference_image_id: data.reference_image_id,
-                date: new Date(data.date),
-                canceled_date: new Date(data.canceled_date),
-                status: data.status,
-                client: data.client,
-                specie: data.specie,
-            }
-        })
+        if (dateTime.isSame(dayjs(schedule.date))) {
+            await prisma.schedules.update({
+                where: { id: id },
+                data: {
+                    tutor: data.tutor,
+                    pet: data.pet,
+                    age: data.age,
+                    sex: data.sex,
+                    breed: data.breed,
+                    weight: data.weight,
+                    reference_image_id: referenceImageId,
+                    canceled_date: new Date(data.canceled_date),
+                    status: data.status,
+                    client: data.client,
+                    specie: data.specie,
+                },
+            });
+        } else {
+            const alreadyExists = await prisma.schedules.findFirst({
+                where: {
+                    date: {
+                        gte: dateTime.startOf("hour").toDate(),
+                        lte: dateTime.endOf("hour").toDate(),
+                    },
+                },
+            });
+
+            if (alreadyExists) throw new Error("Já existe um agendamento para esse dia e horário.");
+
+            await prisma.schedules.update({
+                where: { id: id },
+                data: {
+                    tutor: data.tutor,
+                    pet: data.pet,
+                    age: data.age,
+                    sex: data.sex,
+                    breed: data.breed,
+                    weight: data.weight,
+                    reference_image_id: referenceImageId,
+                    date: new Date(data.date),
+                    canceled_date: new Date(data.canceled_date),
+                    status: data.status,
+                    client: data.client,
+                    specie: data.specie,
+                },
+            });
+        }
+
         return { schedule }
     } catch (error) {
         return { error }
