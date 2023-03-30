@@ -87,3 +87,31 @@ export async function findSchedule(id: string) {
         return { error }
     }
 }
+
+export async function getAllCanceledSchedules(userId: string | undefined) {
+    try {
+        const schedules = await prisma.schedules.findMany({
+            where: {
+                userId: userId,
+                status: false
+            },
+        })
+        return { schedules }
+    } catch (error) {
+        return { error }
+    }
+}
+
+export async function deleteAllCanceledSchedules(userId: string | undefined,) {
+    try {
+        const schedules = await prisma.schedules.deleteMany({
+            where: {
+                userId: userId,
+                status: false
+            },
+        })
+        return { schedules }
+    } catch (error) {
+        return { error }
+    }
+}

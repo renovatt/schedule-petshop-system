@@ -6,10 +6,12 @@ import { UserFormProps } from '@/components/Forms/LoginForm/type'
 import DeleteAccountModal from '@/components/Modals/DeleteAccountModal'
 import { AuthContext } from '@/contexts/authContext'
 import { updatingUserFormToDatabase } from '@/services/user'
+import DeleteCanceledModal from '@/components/Modals/DeleteCanceledModal'
 
 const UserForm = () => {
     const { user, isToken } = React.useContext(AuthContext)
     const [isDeleteModalOpen, setDeleteModalOpen] = React.useState(false)
+    const [isCanceledModalOpen, setCanceledModalOpen] = React.useState(false)
     const { register, handleSubmit, reset, formState: { errors } } = useForm<UserFormProps>();
 
     const onSubmit: SubmitHandler<UserFormProps> = async data => {
@@ -24,7 +26,12 @@ const UserForm = () => {
 
     return (
         <>
-            {isDeleteModalOpen && <DeleteAccountModal userId={user?.id as string} setDeleteModalOpen={setDeleteModalOpen} />}
+            {isDeleteModalOpen &&
+                <DeleteAccountModal userId={user?.id as string} setDeleteModalOpen={setDeleteModalOpen} />}
+                
+            {isCanceledModalOpen &&
+                <DeleteCanceledModal isToken={isToken} setCanceledModalOpen={setCanceledModalOpen} />}
+
             <S.Form onSubmit={handleSubmit(onSubmit)}>
                 <S.Label>
                     <S.Span>Nome:</S.Span>
@@ -78,6 +85,7 @@ const UserForm = () => {
                 <S.SaveButton>Salvar dados</S.SaveButton>
             </S.Form>
             <S.DeleteButton onClick={() => setDeleteModalOpen(true)}>Excuir conta</S.DeleteButton>
+            <S.DeleteButton onClick={() => setCanceledModalOpen(true)}>Liberar espaço</S.DeleteButton>
         </>
     )
 }
