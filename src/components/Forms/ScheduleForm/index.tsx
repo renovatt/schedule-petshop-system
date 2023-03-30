@@ -2,6 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { toast } from 'react-toastify';
 import { FaCat, FaDog } from 'react-icons/fa';
+import { useTranslation } from "react-i18next";
 import { ListContext } from '@/contexts/listContext';
 import { AuthContext } from '@/contexts/authContext';
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -10,6 +11,7 @@ import { sendingScheduleFormToDatabase } from '@/services/schedules';
 import { catsBreedsReferences, dogsBreedsReferences } from '@/services/api';
 
 const ScheduleForm = () => {
+    const { t } = useTranslation()
     const { isToken } = React.useContext(AuthContext)
     const { loadSchedules } = React.useContext(ListContext)
     const [isClient, setClientCheckBox] = React.useState(false)
@@ -119,7 +121,7 @@ const ScheduleForm = () => {
                             })}
                             placeholder='Raça'
                             onChange={(event) => {
-                                const selectedBreed = dogRef.find((breed) => breed.name === event.target.value);
+                                const selectedBreed = dogRef.find((breed) => t(breed.name) === event.target.value);
                                 if (selectedBreed) {
                                     setSelectedReferenceImageId(selectedBreed.reference_image_id);
                                 } else {
@@ -128,7 +130,9 @@ const ScheduleForm = () => {
                             }} />
                         <S.DataList id="alpha">
                             {dogRef.map((breed) => (
-                                <S.Option key={breed.id} value={breed.name}>{breed.name}</S.Option>
+                                <S.Option key={breed.id} value={t(breed.name).toString()}>
+                                    {t(breed.name)}
+                                </S.Option>
                             ))}
                         </S.DataList>
                         <S.InputAlert>{errors.breed?.message}</S.InputAlert>
@@ -152,7 +156,7 @@ const ScheduleForm = () => {
                             })}
                             placeholder='Raça'
                             onChange={(event) => {
-                                const selectedBreed = catRef.find((breed) => breed.name === event.target.value);
+                                const selectedBreed = catRef.find((breed) => t(breed.name) === event.target.value);
                                 if (selectedBreed) {
                                     setSelectedReferenceImageId(selectedBreed.reference_image_id);
                                 } else {
@@ -161,7 +165,9 @@ const ScheduleForm = () => {
                             }} />
                         <S.DataList id="alpha">
                             {catRef.map((breed) => (
-                                <S.Option key={breed.id} value={breed.name}>{breed.name}</S.Option>
+                                <S.Option key={breed.id} value={t(breed.name).toString()}>
+                                    {t(breed.name)}
+                                </S.Option>
                             ))}
                         </S.DataList>
                         <S.InputAlert>{errors.breed?.message}</S.InputAlert>

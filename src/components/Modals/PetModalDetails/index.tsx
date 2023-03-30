@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import { toast } from 'react-toastify'
 import { PetModalProps } from './types'
 import { CgCloseR } from 'react-icons/cg'
+import { useTranslation } from "react-i18next";
 import { ListContext } from '@/contexts/listContext'
 import { AuthContext } from '@/contexts/authContext'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
@@ -13,6 +14,7 @@ import { PetFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleFor
 import { deletingScheduleFormToDatabase, updatingScheduleFormToDatabase } from '@/services/schedules'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
+    const { t } = useTranslation()
     const { isToken } = React.useContext(AuthContext)
     const { loadSchedules } = React.useContext(ListContext)
     const [petRef, setPetRef] = React.useState<PetFetchProps[]>([])
@@ -69,11 +71,11 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     }
 
     const updateBreeds = (value: string) => {
-        const selectedBreed = petRef.find((breed) => breed.name === value)
+        const selectedBreed = petRef.find((breed) => t(breed.name) === value)
         if (selectedBreed) {
             setSelectedReferenceImageId(selectedBreed.reference_image_id);
         } else {
-            setSelectedReferenceImageId("error");
+            setSelectedReferenceImageId("https://http.cat/404");
         }
         setValue("breed", value);
     };
@@ -85,7 +87,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const handleError = () => {
         setPetImgUrl(petProps.specie ?
             `https://cdn2.thedogapi.com/images/${petProps.reference_image_id}.png` :
-            `https://cdn2.thecatapi.com/images/${petProps.reference_image_id}.png`);
+            `https://cdn2.thecatapi.com/images/${petProps.reference_image_id}.png`)
     }
 
     React.useEffect(() => {
@@ -103,10 +105,10 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                 <Image
                                     width={500}
                                     height={500}
-                                    src={petImgUrl}
+                                    src={petProps.reference_image_id !== '' ? petImgUrl : "https://http.cat/404"}
                                     onLoad={handleLoad}
                                     onError={handleError}
-                                    alt="pet-image" />
+                                    alt={"pet-image"} />
                             </S.CardImage>
                             <S.ConfirmButton onClick={cancelSchedule}>Cancelar</S.ConfirmButton>
                             <S.Icon>
@@ -175,8 +177,8 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
 
                                             <S.DataList id="alpha">
                                                 {petRef.map((breed) => (
-                                                    <S.Option key={breed.id} value={breed.name}>
-                                                        {breed.name}
+                                                    <S.Option key={breed.id} value={t(breed.name).toString()}>
+                                                        {t(breed.name)}
                                                     </S.Option>
                                                 ))}
                                             </S.DataList>

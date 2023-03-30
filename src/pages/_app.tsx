@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from 'react-toastify';
 import { ListContextProvider } from '@/contexts/listContext';
 import { AuthProvider } from '../contexts/authContext'
+import '@/i18n';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
