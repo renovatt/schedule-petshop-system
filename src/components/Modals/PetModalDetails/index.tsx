@@ -269,7 +269,11 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                         year: 'numeric',
                                         month: 'long',
                                         day: 'numeric',
-                                    })} às {new Date(petProps.date).getHours()}:{new Date(petProps.date).getMinutes()}h
+                                    })} às {new Date(petProps.date)
+                                        .toLocaleString("pt-br", {
+                                            hour: 'numeric',
+                                            minute: 'numeric'
+                                        })}h
                                 </S.Text>
                             </S.Info>
                         </S.Description>
