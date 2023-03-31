@@ -1,27 +1,33 @@
 import React from 'react'
+import Head from 'next/head'
 import * as S from './style'
 import photo from '@/assets/hug.png'
 import RegisterForm from '@/components/Forms/RegisterForm'
 
 const Register = () => {
     return (
-        <S.Container className='animation-container'>
-            <S.LogoContainer>
-                <S.LogoContent>
-                    <S.Logo alt='dog' src={photo} priority={true} />
-                </S.LogoContent>
-                <S.Title>Cute Pet</S.Title>
-                <S.Span>Seu sistema de agendamentos para Pets</S.Span>
-            </S.LogoContainer>
+        <>
+            <Head>
+                <title>Registrar | Cute Pet</title>
+            </Head>
+            <S.Container className='animation-container'>
+                <S.LogoContainer>
+                    <S.LogoContent>
+                        <S.Logo alt='dog' src={photo} priority={true} />
+                    </S.LogoContent>
+                    <S.Title>Cute Pet</S.Title>
+                    <S.Span>Seu sistema de agendamentos para Pets</S.Span>
+                </S.LogoContainer>
 
-            <S.Content>
-                <RegisterForm />
-                <S.Info>
-                    <S.Text>Já tem uma conta?</S.Text>
-                    <S.Login href={'/'}>Fazer Login</S.Login>
-                </S.Info>
-            </S.Content>
-        </S.Container>
+                <S.Content>
+                    <RegisterForm />
+                    <S.Info>
+                        <S.Text>Já tem uma conta?</S.Text>
+                        <S.Login href={'/'}>Fazer Login</S.Login>
+                    </S.Info>
+                </S.Content>
+            </S.Container>
+        </>
     )
 }
 
