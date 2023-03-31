@@ -8,8 +8,8 @@ import { sendingClientFormToDatabase } from '@/services/clients';
 
 const ClientForm = () => {
     const { isToken } = React.useContext(AuthContext)
-    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm<ClientFormProps>();
-    
+    const { register, handleSubmit, setValue, getValues, reset, formState: { errors } } = useForm<ClientFormProps>();
+
     const onSubmit: SubmitHandler<ClientFormProps> = async data => {
         const { response, error } = await sendingClientFormToDatabase(data, isToken)
         if (response) {
@@ -135,13 +135,14 @@ const ClientForm = () => {
                 <S.Span>Contato:</S.Span>
                 <S.ContactInputMask
                     mask="(99) 99999-9999"
+                    maskChar={null}
                     {...register("contact",
                         {
                             required: "*Campo obrigatório.",
                             maxLength: {
                                 value: 15,
                                 message: "*Capacidade máxima de 15 caracteres."
-                            }
+                            },
                         })
                     }
                     placeholder='(99) 99999-9999' />

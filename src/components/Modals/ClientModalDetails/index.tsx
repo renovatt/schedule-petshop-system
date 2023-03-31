@@ -38,7 +38,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
         loadClients()
         setClientModalOpen(false)
     }
-    
+
     return (
         <S.Container className='animation-container'>
             <S.Content>
@@ -224,6 +224,7 @@ const ClientModalDetails = ({ setClientModalOpen, clientProps }: ClientModalProp
                                             <S.ContactInputMask
                                                 {...field}
                                                 mask="(99) 99999-9999"
+                                                maskChar={null}
                                                 placeholder='(99) 99999-9999' />
                                             <S.InputAlert>{errors.contact?.message}</S.InputAlert>
                                         </S.Label>
