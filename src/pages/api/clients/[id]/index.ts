@@ -7,7 +7,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (!authorization) {
         return res.status(401).json({ error: 'Authorization header is missing.' })
     }
-    
+
     if (req.method === 'PUT') {
         try {
             const { id } = req.query
@@ -15,11 +15,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
             if (typeof id === 'string') {
                 const { client, error } = await updateClient(id, data)
-                if (error) throw new Error(`Error: ${error}`)
+                if (error) throw new Error((error as any).message)
                 return res.status(200).json({ client })
             }
-        } catch (error) {
-            return res.status(400).json({ error: "Erro ao atualizar dados do cliente." })
+        } catch (error: any) {
+            return res.status(400).json({ error: error.message })
         }
     }
 

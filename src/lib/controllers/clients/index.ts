@@ -3,6 +3,13 @@ import { ClientFormProps } from "@/components/Forms/ClientForm/types";
 
 export async function createClient(data: ClientFormProps, userId: string | undefined) {
   try {
+
+    const ageIsNegative = (Number(data.age) <= 0);
+    const houseNumberIsNegative = (Number(data.house_number) <= 0);
+
+    if (ageIsNegative) throw new Error("A idade precisa ser um valor válido!");
+    if (houseNumberIsNegative) throw new Error("O número da casa precisa ser um valor válido!");
+
     const client = await prisma.clients.create({
       data: {
         name: data.name,
@@ -39,6 +46,13 @@ export async function getAllClients(userId: string | undefined) {
 
 export async function updateClient(id: string, data: ClientFormProps) {
   try {
+
+    const ageIsNegative = (Number(data.age) <= 0);
+    const houseNumberIsNegative = (Number(data.house_number) <= 0);
+
+    if (ageIsNegative) throw new Error("A idade precisa ser um valor válido!");
+    if (houseNumberIsNegative) throw new Error("O número da casa precisa ser um valor válido!");
+
     const client = await prisma.clients.update({
       where: { id: id },
       data: {

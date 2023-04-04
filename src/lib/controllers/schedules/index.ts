@@ -4,6 +4,10 @@ import dayjs from "dayjs";
 
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
+
+        const ageIsNegative = (Number(data.age) <= 0);
+        const weightIsNegative = (Number(data.weight) <= 0);
+
         const referenceImageId = data.reference_image_id ? data.reference_image_id : ""
         const dateTime = dayjs(data.date);
 
@@ -16,6 +20,8 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
             },
         });
 
+        if (ageIsNegative) throw new Error("A idade precisa ser um valor válido!");
+        if (weightIsNegative) throw new Error("O peso precisa ser um valor válido!");
         if (alreadyExists) throw new Error("Já existe um agendamento para esse dia e horário.");
 
         const schedule = await prisma.schedules.create({
@@ -60,12 +66,16 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
         const referenceImageId = data.reference_image_id ? data.reference_image_id : ""
         const dateTime = dayjs(data.date);
+        const ageIsNegative = (Number(data.age) <= 0);
+        const weightIsNegative = (Number(data.weight) <= 0);
 
         const schedule = await prisma.schedules.findUnique({
             where: { id: id },
         });
 
         if (!schedule) throw new Error("Agendamento não encontrado.");
+        if (ageIsNegative) throw new Error("A idade precisa ser um valor válido!");
+        if (weightIsNegative) throw new Error("O peso precisa ser um valor válido!");
 
         if (dateTime.isSame(dayjs(schedule.date))) {
             await prisma.schedules.update({

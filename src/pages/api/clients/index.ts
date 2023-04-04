@@ -26,10 +26,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             const data = req.body
             const { client, error } = await createClient(data, userId)
-            if (error) throw new Error(`Error: ${error}`)
+            if (error) throw new Error((error as any).message)
             return res.status(200).json({ client })
-        } catch (error) {
-            return res.status(400).json({ error: "Erro ao cadastrar cliente." })
+        } catch (error: any) {
+            return res.status(400).json({ error: error.message })
         }
     }
     res.status(501).end(`Method ${req.method} is not allowed.`)
