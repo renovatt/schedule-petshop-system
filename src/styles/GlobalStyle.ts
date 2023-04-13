@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         /* --text-dark-color: #252422; */
         --text-dark-color: #323031;
         --text-clean-color: #eaf4f4;
-        --text-white-color: #fceade;
+        --text-white-color: #fff;
         --text-orange-color: #fb8500;
         --text-yellow-color: #e9ff70;
         --text-red-color: #f94144;
@@ -30,15 +30,12 @@ export const GlobalStyle = createGlobalStyle`
 body {
     min-width: 100vw;
     min-height: 100vh;
-    width: var(--max-width);
     background: var(--text-white-color);
 }
 
 main{
     display: flex;
-    max-width: var(--max-width);
     justify-content: space-around;
-    width: var(--max-width);
 }
 
 ::-webkit-scrollbar{
