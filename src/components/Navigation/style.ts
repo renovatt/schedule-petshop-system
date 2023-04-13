@@ -12,14 +12,14 @@ export const Navigation = styled.nav<ContainerProps>`
     height: 100%;
     overflow: hidden;
     transition: all .5s;
-    background-color: #fff;
-    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25);
+    background-color: var(--text-white-color);
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15); */
     width: ${(props) => props.active ? '15rem' : '3rem'};
     /* border-left: 0.625rem solid transparent; */
     /* background-color: ${(props) => props.active ? '#fff' : 'transparent'}; */
     /* border-top-right-radius: ${(props) => props.active ? '.4rem' : '0'}; */
     /* border-bottom-right-radius: ${(props) => props.active ? '.4rem' : '0'}; */
-    /* box-shadow: ${(props) => props.active ? "15px 15px 25px rgba(0, 0, 0, 0.25)" : "none"}; */
+    box-shadow: ${(props) => props.active ? "none" : "5px 5px 15px rgba(0, 0, 0, 0.15)"};
     
     @media (max-width: 70rem) {
         inset: initial;
@@ -30,7 +30,7 @@ export const Navigation = styled.nav<ContainerProps>`
         justify-content: center;
         height: 5rem;
         width: 100%;
-        background: #fff;
+        background: var(--text-white-color);
         border-radius: 3rem 3rem 0 0;
         box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
     }
@@ -78,7 +78,6 @@ export const GitHub = styled.div`
     height: 50px;
     border-radius: 50%;
     transition: all .3s;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.15);
 
     @media (max-width: 70rem){
         display: none;
@@ -89,14 +88,14 @@ export const GitHubLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #101010;
+    color: var(--text-dark-color);
     width: 100%;
     margin-left: -.4rem;
     transition: all .3s;
 
     &:hover{
         cursor: pointer;
-        color: #ff6b00;
+        color: var(--text-orange-color);
     }
 `
 
@@ -111,7 +110,6 @@ export const Linkedin = styled.div`
     height: 50px;
     border-radius: 50%;
     transition: all .3s;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.15);
 
     @media (max-width: 70rem){
         display: none;
@@ -122,14 +120,14 @@ export const LinkedinLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #101010;
+    color: var(--text-dark-color);
     width: 100%;
     margin-left: -.4rem;
     transition: all .3s;
 
     &:hover{
         cursor: pointer;
-        color: #ff6b00;
+        color: var(--text-orange-color);
     }
 `
 
@@ -144,14 +142,13 @@ export const Logout = styled.div`
     height: 30px;
     border-radius: 50%;
     transition: all .3s;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.45);
 
     @media (max-width: 70rem){
         display: none;
     }
 
     &:hover{
-        background-color: #ff6b00;
+        background-color: var(--text-orange-color);
     }
 `
 
@@ -159,7 +156,7 @@ export const LogoutLink = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ff6b00;
+    color: var(--text-orange-color);
     width: 100%;
     margin-left: -.3rem;
     transition: all .3s;
@@ -172,7 +169,7 @@ export const LogoutLink = styled(Link)`
 
     &:hover{
         cursor: pointer;
-        color: #fff;
+        color: var(--text-white-color);
     }
 `
 
@@ -185,9 +182,9 @@ export const Toggle = styled.div`
     right: 10px;
     width: 30px;
     height: 30px;
-    background: #fff;
+    background: var(--text-white-color);
     border-radius: 50%;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.45);
+    transition: all .3s;
 
     &:hover{
         cursor: pointer;
@@ -211,7 +208,7 @@ export const Toggle = styled.div`
         border-radius: 3px;
         transform: translateY(-5px);
         transition: 1s;
-        background: #ff6b00;
+        background: var(--text-orange-color);
     }
 
     ::after{
@@ -222,7 +219,7 @@ export const Toggle = styled.div`
         border-radius: 3px;
         transform: translateY(5px);
         transition: 1s;
-        background: #ff6b00;
+        background: var(--text-orange-color);
     }
 
     @media (max-width: 70rem){

@@ -68,7 +68,7 @@ export const Logo = styled(Image)`
 `
 
 export const Title = styled.h1`
-    color: #000;
+    color: var(--text-dark-color);
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: .2rem;
@@ -92,7 +92,7 @@ export const Content = styled.section`
     flex-direction: column;
     width: 30%;
     height: 100vh;
-    background: #000;
+    background: var(--text-dark-color);
     background: #fb1;
     /* background: #ff6b00; */
     /* border-radius: 0 1.25rem 1.25rem 0; */
@@ -141,7 +141,7 @@ export const Login = styled(Link)`
 
     &:hover{
         cursor: pointer;
-        color: #fff;
+        color: var(--text-white-color);
          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 `

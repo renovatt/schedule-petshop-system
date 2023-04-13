@@ -26,8 +26,8 @@ export const Loading = styled.button`
 
     &:focus svg path,
     &:hover svg path{
-        fill: #ff6b00;
-        stroke: #ff6b00;
+        fill: var(--text-orange-color);
+        stroke: var(--text-orange-color);
     }
 
     &:focus svg g,

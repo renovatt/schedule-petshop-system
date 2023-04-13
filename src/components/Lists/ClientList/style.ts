@@ -37,8 +37,8 @@ export const List = styled.li`
     height: 3rem;
     margin: .2rem;
     border-radius: .4rem;
-    color: #fff;
-    background: #101010;
+    color: var(--text-white-color);
+    background: var(--text-dark-color);
     transition: all .3s;
     
     &:hover{
@@ -66,7 +66,7 @@ export const UserIcon = styled.div`
     justify-content: center;
     text-align: center;
     /* background: ${(props) => props.color}; */
-    background: #fff;
+    background: var(--text-white-color);
     border-radius: 50%;
     margin: .4rem;
 
@@ -80,7 +80,7 @@ export const UserIcon = styled.div`
 
 export const ClientName = styled.h3`
     text-align: start;
-    color: #fff;
+    color: var(--text-white-color);
     font-size: .8rem;
     width: 100%;
     &::first-letter {

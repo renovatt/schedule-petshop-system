@@ -37,7 +37,7 @@ export const Label = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin-top: .4rem;
-    color: #000;
+    color: var(--text-dark-color);
     /* text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25); */
 `
 
@@ -56,16 +56,16 @@ export const Input = styled.input`
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
-    background-color: #fff;
+    background-color: var(--text-white-color);
 
     &:focus{
-        border-color: #ff6b00;
+        border-color: var(--text-orange-color);
     }
 `
 
 export const InputAlert = styled.span`
     font-size: .6rem;
-    color: #f01;
+    color: var(--text-alert-color);
     padding: .2rem;
     width: 100%;
 `
@@ -82,14 +82,14 @@ export const SaveButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: #fff;
-    background: #000;
+    color: var(--text-white-color);
+    background: var(--text-dark-color);
 
     &:hover{
         cursor: pointer;
-        color: #000;
-        background: #fff;
-        border: 1px solid #000;
+        color: var(--text-dark-color);
+        background: var(--text-white-color);
+        border: 1px solid var(--text-dark-color);
     }
 `
 
@@ -105,8 +105,8 @@ export const DeleteButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: #fff;
-    background: #000;
+    color: var(--text-white-color);
+    background: var(--text-dark-color);
 
     @media (max-width: 70rem) {
      width: 90%;
@@ -114,8 +114,8 @@ export const DeleteButton = styled.button`
 
     &:hover{
         cursor: pointer;
-        color: #000;
-        background: #fff;
-        border: 1px solid #000;
+        color: var(--text-dark-color);
+        background: var(--text-white-color);
+        border: 1px solid var(--text-dark-color);
     }
 `

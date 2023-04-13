@@ -37,8 +37,8 @@ export const List = styled.li`
     height: 3rem;
     margin: .2rem;
     border-radius: .4rem;
-    color: #fff;
-    background: #101010;
+    color: var(--text-white-color);
+    background: var(--text-dark-color);
     transition: all .3s;
     
     &:hover{
@@ -60,7 +60,7 @@ export const Icon = styled.div`
     justify-content: center;
     text-align: center;
     /* background: ${(props) => props.color}; */
-    background: #fff;
+    background: var(--text-white-color);
     border-radius: 50%;
     margin: .4rem;
 
@@ -74,7 +74,7 @@ export const Icon = styled.div`
 
 export const PetName = styled.h3`
     text-align: start;
-    color: #fff;
+    color: var(--text-white-color);
     font-size: .8rem;
     width: auto;
 
@@ -89,7 +89,7 @@ export const Span = styled.span`
 
 export const Breed = styled.p`
     text-align: start;
-    color: #fff;
+    color: var(--text-white-color);
     font-size: .8rem;
     width: auto;
     overflow: hidden;
@@ -114,7 +114,7 @@ export const ContentListRight = styled.div`
 
 export const Time = styled.h3`
     text-align: end;
-    color: #fff;
+    color: var(--text-white-color);
     font-size: 1rem;
     padding-right: .4rem;
 `

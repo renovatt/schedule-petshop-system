@@ -10,7 +10,7 @@ export const SvgContent = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--text-white-color);
 
     &:hover{
         cursor: pointer;
@@ -48,7 +48,7 @@ export const Label = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin: .4rem;
-    color: #333;
+    color: var(--text-dark-color);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 `
 
@@ -67,16 +67,15 @@ export const Input = styled.input`
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
+    background-color: var(--text-white-color);
     /* box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25); */
 
     &:focus{
-        border: 1px solid #ff6b00;
+        border: 1px solid var(--text-orange-color);
     }
 `
 
-export const DataList = styled.datalist`
-   
-`
+export const DataList = styled.datalist``
 
 export const Select = styled.select`
     padding: .4rem;
@@ -91,8 +90,8 @@ export const Select = styled.select`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: #fff;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-color: var(--text-white-color);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/var(--text-dark-color)/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
     background-position: right 10px center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -100,7 +99,7 @@ export const Select = styled.select`
 
     &:focus {
         outline: none;
-        border-color: #ff6b00;
+        border-color: var(--text-orange-color);
     }
 `
 
@@ -108,22 +107,22 @@ export const Option = styled.option`
     padding: .4rem;
     font-size: .8rem;
     border-radius: .4rem;
-    color: #333;
-    background-color: #fff;
+    color: var(--text-dark-color);
+    background-color: var(--text-white-color);
 
     &:hover {
-        background-color: #ff6b00;
+        background-color: var(--text-orange-color);
     }
 
     &:checked {
-        color: #fff;
-        background-color: #ff6b00;
+        color: var(--text-white-color);
+        background-color: var(--text-orange-color);
     }
 `
 
 export const InputAlert = styled.span`
     font-size: .6rem;
-    color: #f01;
+    color: var(--text-alert-color);
     padding: .2rem;
     width: 100%;
 `
@@ -137,7 +136,7 @@ export const CheckLabel = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin: .4rem;
-    color: #333;
+    color: var(--text-dark-color);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 `
 
@@ -169,20 +168,20 @@ export const Button = styled.button`
     font-weight: bold;
     border-radius: .4rem;
     transition: all .3s;
-    color: #fff;
-    background: #000;
+    color: var(--text-white-color);
+    background: var(--text-dark-color);
     border: 1px solid transparent;
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.95);
 
     &:hover{
-        color: #000;
-        background: #fff;
-        border: 1px solid #000;
+        color: var(--text-dark-color);
+        background: var(--text-white-color);
+        border: 1px solid var(--text-dark-color);
     }
 
     &:disabled{
         cursor: not-allowed;
-        background: #000;
-        color: #fff;
+        background: var(--text-dark-color);
+        color: var(--text-white-color);
     }
 `

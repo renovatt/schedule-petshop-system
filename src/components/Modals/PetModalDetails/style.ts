@@ -11,7 +11,8 @@ export const Container = styled.section`
     height: 100%;
     z-index: 1;
     border-radius: .4rem;
-    background: rgba(0, 0, 0, .8);
+    /* background: rgba(0, 0, 0, .8); */
+    background-color: var(--text-dark-color);
 `
 
 export const Content = styled.div`
@@ -25,8 +26,8 @@ export const Content = styled.div`
     padding: .4rem;
     border-radius: .4rem;
     padding: 0 .8rem;
-    backdrop-filter: blur(20px);
-    background: rgba(51, 42, 42, 0.064);
+    /* backdrop-filter: blur(20px); */
+    /* background: rgba(51, 42, 42, 0.064); */
 `
 
 export const Form = styled.form`
@@ -90,7 +91,7 @@ export const CardImage = styled.section`
     width: 10rem;
     height: 10rem;
     border-radius: .4rem;
-    background: #fff;
+    background: var(--text-white-color);
     overflow: hidden;
 
     @media (max-width: 70rem) {
@@ -113,7 +114,7 @@ export const Icon = styled.i`
     svg{
         width: 1.5rem;
         height: 1.5rem;
-        color: #fff;
+        color: var(--text-white-color);
 
         &:hover{
             cursor: pointer;
@@ -142,13 +143,13 @@ export const ConfirmButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: #fff;
-    background: #ff6b00;
+    color: var(--text-white-color);
+    background: var(--text-orange-color);
 
     &:hover{
         cursor: pointer;
-        color: #000;
-        background: #fff;
+        color: var(--text-dark-color);
+        background: var(--text-white-color);
     }
 `
 
@@ -181,7 +182,7 @@ export const Label = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin-top: .4rem;
-    color: #fff;
+    color: var(--text-white-color);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 `
 
@@ -200,11 +201,11 @@ export const Input = styled.input`
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
-    color: #fff;
+    color: var(--text-white-color);
     background-color: rgba(31, 29, 29, 0.064);
 
     &:focus{
-        border-color: #ff6b00;
+        border-color: var(--text-orange-color);
     }
 
     &::-webkit-calendar-picker-indicator {
@@ -218,7 +219,7 @@ export const Input = styled.input`
 
 export const InputAlert = styled.span`
     font-size: .6rem;
-    color: #f01;
+    color: var(--text-alert-color);
     padding: .2rem;
     width: 100%;
 `
@@ -227,7 +228,7 @@ export const ScheduleDate = styled.p`
     text-align: start;
     font-size: .6rem;
     margin: .4rem;
-    color: #ff6b00;
+    color: var(--text-orange-color);
     font-weight: bold;
     width: 100%;
 `
@@ -236,7 +237,7 @@ export const Text = styled.p`
     text-align: start;
     font-size: .6rem;
     margin: .4rem;
-    color: #ff0000;
+    color: var(--text-red-color);
     font-weight: bold;
     width: 100%;
 `
@@ -255,7 +256,7 @@ export const Select = styled.select`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    color: #fff;
+    color: var(--text-white-color);
     background-color: rgba(31, 29, 29, 0.064);
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
     background-position: right 10px center;
@@ -265,7 +266,7 @@ export const Select = styled.select`
 
     &:focus {
         outline: none;
-        border-color: #ff6b00;
+        border-color: var(--text-orange-color);
     }
 `
 
@@ -274,15 +275,15 @@ export const Option = styled.option`
     font-size: .8rem;
     border-radius: .4rem;
     color: #333;
-    background-color: #fff;
+    background-color: var(--text-white-color);
 
     &:hover {
-        background-color: #ff6b00;
+        background-color: var(--text-orange-color);
     }
 
     &:checked {
-        color: #fff;
-        background-color: #ff6b00;
+        color: var(--text-white-color);
+        background-color: var(--text-orange-color);
     }
 `
 
@@ -298,13 +299,13 @@ export const SaveButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: #000;
-    background: #fff;
+    color: var(--text-dark-color);
+    background: var(--text-white-color);
 
     &:hover{
         cursor: pointer;
-        color: #fff;
-        background: #ff6b00;
+        color: var(--text-white-color);
+        background: var(--text-orange-color);
     }
 `
 
@@ -320,12 +321,12 @@ export const DeleteButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: #000;
-    background: #fff;
+    color: var(--text-dark-color);
+    background: var(--text-white-color);
 
     &:hover{
         cursor: pointer;
-        color: #fff;
-        background: #ff0000;
+        color: var(--text-white-color);
+        background: var(--text-red-color);
     }
 `

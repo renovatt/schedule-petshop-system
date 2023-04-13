@@ -28,7 +28,7 @@ export const Content = styled.div`
     padding: 0 .8rem;
     backdrop-filter: blur(20px);
     background-color: rgba(51, 42, 42, 0.064);
-    background-color: #000;
+    background-color: var(--text-dark-color);
 
     @media (max-width: 70rem) {
         width: 90%;   
@@ -47,14 +47,14 @@ export const DeleteButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: #000;
-    background: #fff;
+    color: var(--text-dark-color);
+    background: var(--text-white-color);
     margin-top: 1rem;
 
     &:hover{
         cursor: pointer;
-        color: #fff;
-        background: #ff0000;
+        color: var(--text-white-color);
+        background: var(--text-red-color);
     }
 `
 
@@ -66,7 +66,7 @@ export const Icon = styled.i`
     svg{
         width: 1.5rem;
         height: 1.5rem;
-        color: #fff;
+        color: var(--text-white-color);
         margin-top: -5rem;
 
         &:hover{
@@ -78,7 +78,7 @@ export const Icon = styled.i`
 export const Text = styled.p`
     font-size: .8rem;
     width: 100%;
-    color: #fff;
+    color: var(--text-white-color);
     text-align: center;
     font-weight: bold;
 `

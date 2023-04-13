@@ -15,7 +15,7 @@ export const Content = styled.section`
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
-    background-color: #ff6b00;
+    background-color: var(--text-orange-color);
     /* box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15); */
 
     svg{
@@ -24,7 +24,7 @@ export const Content = styled.section`
     }
 
     svg path{
-        fill: #fff;
+        fill: var(--text-white-color);
     }
 
     svg g{

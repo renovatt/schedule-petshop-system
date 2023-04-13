@@ -68,7 +68,7 @@ export const Logo = styled(Image)`
 `
 
 export const Title = styled.h1`
-    color: #000;
+    color: var(--text-dark-color);
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: .2rem;
@@ -92,9 +92,9 @@ export const Content = styled.section`
     flex-direction: column;
     width: 30%;
     height: 100vh;
-    background: #000;
+    background: var(--text-dark-color);
     background: #fb1;
-    /* background: #ff6b00; */
+    /* background: var(--text-orange-color); */
     /* border-radius: 0 1.25rem 1.25rem 0; */
     box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15);
 
@@ -141,19 +141,19 @@ export const Register = styled(Link)`
 
     &:hover{
         cursor: pointer;
-        color: #fff;
+        color: var(--text-white-color);
          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 `
 
 export const ForgotPassword = styled(Link)`
-    color: #000;
+    color: var(--text-dark-color);
     font-size: .7rem;
     margin-bottom: .4rem;
     transition: all .2s;
 
     &:hover{
         cursor: pointer;
-        color: #ff6b00;
+        color: var(--text-orange-color);
     }
 `

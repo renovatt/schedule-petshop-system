@@ -3,6 +3,23 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+:root {
+  --max-width: 1100px;
+    --background-default: rgb(255,108,21);
+    --background-linear: linear-gradient(
+        0deg, rgba(255,108,21,0.994014793417367) 0%,
+        rgba(232,138,60,1) 14%, rgba(233,255,112,1) 73%);
+
+        /* --text-dark-color: #252422; */
+        --text-dark-color: #323031;
+        --text-clean-color: #eaf4f4;
+        --text-white-color: #fceade;
+        --text-orange-color: #fb8500;
+        --text-yellow-color: #e9ff70;
+        --text-red-color: #f94144;
+        --text-alert-color: #f01;
+}
+
 *{
     margin:0;
     padding:0;
@@ -13,13 +30,15 @@ export const GlobalStyle = createGlobalStyle`
 body {
     min-width: 100vw;
     min-height: 100vh;
-    background: #fff;
-    /* background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(16,16,16,1) 0%, rgba(39,39,39,1) 100%); */
+    width: var(--max-width);
+    background: var(--text-white-color);
 }
 
 main{
     display: flex;
+    max-width: var(--max-width);
     justify-content: space-around;
+    width: var(--max-width);
 }
 
 ::-webkit-scrollbar{
@@ -33,10 +52,6 @@ main{
     background: #ed2f5a;
     border-radius: .4rem;
 }
-
-/* ::selection{
-    background: transparent;
-} */
 
 html {
     scroll-behavior: smooth;

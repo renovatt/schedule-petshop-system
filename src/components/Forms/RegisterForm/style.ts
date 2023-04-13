@@ -20,7 +20,7 @@ export const Label = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin: .4rem;
-    color: #333;
+    color: var(--text-dark-color);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 `
 
@@ -39,16 +39,17 @@ export const Input = styled.input`
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
+    background-color: var(--text-white-color);
     /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15); */
 
     &:focus{
-        border-color: #ff6b00;
+        border-color: var(--text-orange-color);
     }
 `
 
 export const InputAlert = styled.span`
     font-size: .6rem;
-    color: #f01;
+    color: var(--text-alert-color);
     padding: .2rem;
     width: 100%;
 `
@@ -60,13 +61,13 @@ export const Button = styled.button`
     font-weight: bold;
     border-radius: .4rem;
     transition: all .3s;
-    color: #fff;
-    background: #000;
+    color: var(--text-white-color);
+    background: var(--text-dark-color);
     border: 1px solid transparent;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 
     &:hover{
-        color: #000;
-        background: #fff;
+        color: var(--text-dark-color);
+        background: var(--text-white-color);
     }
 `

@@ -12,7 +12,8 @@ export const Container = styled.section`
     height: 5rem;
     z-index: 1;
     border-radius: .4rem;
-    background: rgba(0, 0, 0, .8);
+    /* background: rgba(0, 0, 0, .8); */
+    background-color: var(--text-dark-color);
 
     @media (max-width: 70rem) {
         right: .5rem;
@@ -28,8 +29,8 @@ export const Content = styled.div`
     height: 100%;
     width: 100%;
     border-radius: .4rem;
-    backdrop-filter: blur(20px);
-    background-color: rgba(51, 42, 42, 0.064);
+    /* backdrop-filter: blur(20px); */
+    /* background-color: rgba(51, 42, 42, 0.064); */
 `
 
 export const Section = styled.div`
@@ -43,18 +44,18 @@ export const Section = styled.div`
     svg{
         width: 1.5rem;
         height: 1.5rem;
-        color: #fff;
+        color: var(--text-white-color);
         transition: all .3s;
 
         &:hover{
             cursor: pointer;
-            color: #ff6b00;
+            color: var(--text-orange-color);
         }
     }
 `
 
 export const UserLogo = styled(Image)`
-    color: #fff;
+    color: var(--text-white-color);
     margin-top: .6rem;
     border-radius: 50%;
     object-fit: cover;
@@ -65,7 +66,7 @@ export const UserLogo = styled(Image)`
 `
 export const Text = styled.p`
     font-size: .8rem;
-    color: #fff;
+    color: var(--text-white-color);
     font-weight: bold;
     text-align: center;
 `

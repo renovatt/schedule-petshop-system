@@ -5,13 +5,13 @@ export const Container = styled.section`
         justify-content: space-around;
         align-items: flex-start;
         flex-direction: column;
-        background: #fff;
+        background-color: var(--text-white-color);
         height: 8rem;
         width: 15rem;
         margin: .8rem;
         padding: .8rem;
         border-radius: .4rem;
-        box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
+        /* box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25); */
 
         @media (max-width: 70rem) {
             width: 100%;
@@ -28,13 +28,16 @@ export const Content = styled.div`
     svg{
         width: 2.5rem;
         height: 2.5rem;
+        color: var(--text-dark-color);
     }
 `
 
-export const Title = styled.h5``
+export const Title = styled.h5`
+    color: var(--text-dark-color);
+`
 
 export const Count = styled.span`
-    color: #101010;
+    color: var(--text-dark-color);
     font-weight: bold;
     font-size: 2rem;
 `
