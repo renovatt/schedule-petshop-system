@@ -75,7 +75,7 @@ export const Title = styled.h1`
 `
 
 export const Span = styled.span`
-    color: #333;
+    color: var(--text-dark-color);
     font-size: .8rem;
     margin-top: .8rem;
 
@@ -93,7 +93,7 @@ export const Content = styled.section`
     width: 30%;
     height: 100vh;
     background: var(--text-dark-color);
-    background: #fb1;
+    background: var(--text-yellow-color);
     /* background: #ff6b00; */
     /* border-radius: 0 1.25rem 1.25rem 0; */
     box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15);
@@ -127,13 +127,13 @@ export const Info = styled.section`
 `
 
 export const Text = styled.p`
-    color: #333;
+    color: var(--text-dark-color);
     font-size: .9rem;
     margin-bottom: .4rem;
 `
 
 export const Login = styled(Link)`
-    color: #333;
+    color: var(--text-dark-color);
     font-size: .7rem;
     font-weight: bold;
     transition: all .2s;
