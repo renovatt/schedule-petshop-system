@@ -30,7 +30,7 @@ export const Content = styled.div`
     align-items: center;
     border-radius: .4rem;
     overflow: hidden;
-    background: var(--text-yellow-color);
+    background: var(--highlight-color);
     /* margin-left: 4rem; */
     /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25); */
 
@@ -43,7 +43,7 @@ export const Content = styled.div`
 
 export const Section = styled.section`
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
@@ -63,6 +63,7 @@ export const Section = styled.section`
     @media (max-width: 70rem) {
         width: 90%;
         min-height: auto;
+        justify-content: flex-start;
     }
 `
 
@@ -90,10 +91,15 @@ export const Header = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: .8rem;
+    /* margin-bottom: .8rem; */
+
+    @media (max-width: 70rem) {
+        margin-top: 4rem;
+    }
 `
 
 export const Title = styled.h2`
-    margin-top: 3rem;
-    margin-bottom: 2rem;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
+    color: var(--text-secondary-color);
 `

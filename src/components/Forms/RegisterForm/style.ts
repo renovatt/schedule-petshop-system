@@ -20,7 +20,7 @@ export const Label = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin: .4rem;
-    color: var(--text-dark-color);
+    color: var(--text-secondary-color);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 `
 
@@ -39,11 +39,11 @@ export const Input = styled.input`
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
-    background-color: var(--text-white-color);
+    background-color: var(--main-background);
     /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15); */
 
     &:focus{
-        border-color: var(--text-orange-color);
+        border-color: var(--border-secondary-color);
     }
 `
 
@@ -61,13 +61,13 @@ export const Button = styled.button`
     font-weight: bold;
     border-radius: .4rem;
     transition: all .3s;
-    color: var(--text-white-color);
-    background: var(--text-dark-color);
+    color: var(--text-main-color);
+    background: var(--secondary-background);
     border: 1px solid transparent;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 
     &:hover{
-        color: var(--text-dark-color);
-        background: var(--text-white-color);
+        color: var(--text-secondary-color);
+        background: var(--main-background);
     }
 `

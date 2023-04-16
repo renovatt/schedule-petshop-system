@@ -11,7 +11,7 @@ export const Container = styled.section`
     height: 100%;
     z-index: 1;
     border-radius: .4rem;
-    background: rgba(0, 0, 0, .8);
+    background-color: var(--main-background);
 `
 
 export const Content = styled.div`
@@ -26,9 +26,7 @@ export const Content = styled.div`
     padding: .4rem;
     border-radius: .4rem;
     padding: 0 .8rem;
-    backdrop-filter: blur(20px);
-    background-color: rgba(51, 42, 42, 0.064);
-    background-color: var(--text-dark-color);
+    background-color: var(--secondary-background);
 
     @media (max-width: 70rem) {
         width: 90%;   
@@ -47,14 +45,14 @@ export const DeleteButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: var(--text-dark-color);
-    background: var(--text-white-color);
+    color: var(--text-secondary-color);
+    background: var(--main-background);
     margin-top: 1rem;
 
     &:hover{
         cursor: pointer;
-        color: var(--text-white-color);
-        background: var(--text-red-color);
+        color: var(--text-main-color);
+        background: var(--alert-background-color);
     }
 `
 
@@ -66,11 +64,13 @@ export const Icon = styled.i`
     svg{
         width: 1.5rem;
         height: 1.5rem;
-        color: var(--text-white-color);
+        color: var(--text-main-color);
         margin-top: -5rem;
 
         &:hover{
             cursor: pointer;
+            transition: all .3s;
+            color: var(--svg-primary-color);
         }
     }
 `
@@ -78,7 +78,7 @@ export const Icon = styled.i`
 export const Text = styled.p`
     font-size: .8rem;
     width: 100%;
-    color: var(--text-white-color);
+    color: var(--text-main-color);
     text-align: center;
     font-weight: bold;
 `

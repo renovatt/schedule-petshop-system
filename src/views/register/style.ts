@@ -68,14 +68,14 @@ export const Logo = styled(Image)`
 `
 
 export const Title = styled.h1`
-    color: var(--text-dark-color);
+    color: var(--text-secondary-color);
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: .2rem;
 `
 
 export const Span = styled.span`
-    color: var(--text-dark-color);
+    color: var(--text-secondary-color);
     font-size: .8rem;
     margin-top: .8rem;
 
@@ -92,11 +92,10 @@ export const Content = styled.section`
     flex-direction: column;
     width: 30%;
     height: 100vh;
-    background: var(--text-dark-color);
-    background: var(--text-yellow-color);
+    background-color: var(--highlight-color);
+    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15);
     /* background: #ff6b00; */
     /* border-radius: 0 1.25rem 1.25rem 0; */
-    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15);
 
     @media(max-width: 70rem) {
         width: 100%;
@@ -127,13 +126,13 @@ export const Info = styled.section`
 `
 
 export const Text = styled.p`
-    color: var(--text-dark-color);
+    color: var(--text-secondary-color);
     font-size: .9rem;
     margin-bottom: .4rem;
 `
 
 export const Login = styled(Link)`
-    color: var(--text-dark-color);
+    color: var(--text-secondary-color);
     font-size: .7rem;
     font-weight: bold;
     transition: all .2s;
@@ -141,7 +140,7 @@ export const Login = styled(Link)`
 
     &:hover{
         cursor: pointer;
-        color: var(--text-white-color);
-         text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+        color: var(--text-main-color);
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 `

@@ -12,14 +12,15 @@ export const Navigation = styled.nav<ContainerProps>`
     height: 100%;
     overflow: hidden;
     transition: all .5s;
-    background-color: var(--text-white-color);
-    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15); */
+    background-color: var(--main-background);
     width: ${(props) => props.active ? '15rem' : '3rem'};
+    /* box-shadow: ${(props) => props.active ? "none" : "5px 5px 15px rgba(0, 0, 0, 0.25)"}; */
+
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
     /* border-left: 0.625rem solid transparent; */
     /* background-color: ${(props) => props.active ? '#fff' : 'transparent'}; */
     /* border-top-right-radius: ${(props) => props.active ? '.4rem' : '0'}; */
     /* border-bottom-right-radius: ${(props) => props.active ? '.4rem' : '0'}; */
-    box-shadow: ${(props) => props.active ? "none" : "5px 5px 15px rgba(0, 0, 0, 0.15)"};
     
     @media (max-width: 70rem) {
         inset: initial;
@@ -30,8 +31,8 @@ export const Navigation = styled.nav<ContainerProps>`
         justify-content: center;
         height: 5rem;
         width: 100%;
-        background: var(--text-white-color);
         border-radius: 3rem 3rem 0 0;
+        background: var(--main-background);
         box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
     }
 `
@@ -88,14 +89,14 @@ export const GitHubLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-dark-color);
+    color: var(--text-primary-color);
     width: 100%;
     margin-left: -.4rem;
     transition: all .3s;
 
     &:hover{
         cursor: pointer;
-        color: var(--text-orange-color);
+        color: var(--text-secondary-color);
     }
 `
 
@@ -120,14 +121,14 @@ export const LinkedinLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-dark-color);
+    color: var(--text-primary-color);
     width: 100%;
     margin-left: -.4rem;
     transition: all .3s;
 
     &:hover{
         cursor: pointer;
-        color: var(--text-orange-color);
+        color: var(--text-secondary-color);
     }
 `
 
@@ -148,7 +149,7 @@ export const Logout = styled.div`
     }
 
     &:hover{
-        background-color: var(--text-orange-color);
+        background-color: var(--primary-background);
     }
 `
 
@@ -156,7 +157,7 @@ export const LogoutLink = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-orange-color);
+    color: var(--text-primary-color);
     width: 100%;
     margin-left: -.3rem;
     transition: all .3s;
@@ -169,7 +170,7 @@ export const LogoutLink = styled(Link)`
 
     &:hover{
         cursor: pointer;
-        color: var(--text-white-color);
+        color: var(--text-main-color);
     }
 `
 
@@ -182,7 +183,7 @@ export const Toggle = styled.div`
     right: 10px;
     width: 30px;
     height: 30px;
-    background: var(--text-white-color);
+    background: var(--main-background);
     border-radius: 50%;
     transition: all .3s;
 
@@ -208,7 +209,7 @@ export const Toggle = styled.div`
         border-radius: 3px;
         transform: translateY(-5px);
         transition: 1s;
-        background: var(--text-orange-color);
+        background: var(--primary-background);
     }
 
     ::after{
@@ -219,7 +220,7 @@ export const Toggle = styled.div`
         border-radius: 3px;
         transform: translateY(5px);
         transition: 1s;
-        background: var(--text-orange-color);
+        background: var(--primary-background);
     }
 
     @media (max-width: 70rem){

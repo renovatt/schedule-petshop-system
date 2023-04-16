@@ -12,7 +12,7 @@ export const List = styled.li`
     transition: all .3s;
 
     &:hover{
-        background-color: var(--text-orange-color);
+        background-color: var(--primary-background);
     }
 
     @media (max-width: 70rem){
@@ -27,15 +27,15 @@ export const List = styled.li`
 
 export const RefLink = styled(Link)`
     display: flex;
-    color: var(--text-orange-color);
+    color: var(--text-primary-color);
     width: 100%;
     transition: all .3s;
     font-weight: bold;
 
     &:hover{
         cursor: pointer;
-        color: var(--text-white-color);
-        background: var(--text-orange-color);
+        color: var(--text-main-color);
+        background: var(--primary-background);
     }
 
     @media (max-width: 70rem){
@@ -60,7 +60,7 @@ export const Icon = styled.span`
 
         @media (max-width: 70rem){
             margin-left: .1rem;
-    }
+        }
     }
 `
 

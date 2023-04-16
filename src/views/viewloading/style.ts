@@ -6,6 +6,7 @@ export const Container = styled.section`
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: var(--main-background);
 `
 
 export const Content = styled.section`
@@ -15,7 +16,7 @@ export const Content = styled.section`
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
-    background-color: var(--text-orange-color);
+    background-color: var(--primary-background);
     /* box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15); */
 
     svg{
@@ -24,7 +25,7 @@ export const Content = styled.section`
     }
 
     svg path{
-        fill: var(--text-white-color);
+        fill: var(--main-background);
     }
 
     svg g{

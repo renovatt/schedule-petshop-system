@@ -30,7 +30,7 @@ export const Content = styled.div`
     align-items: center;
     border-radius: .4rem;
     overflow: hidden;
-    background: var(--text-yellow-color);
+    background: var(--highlight-color);
     /* margin-left: 4rem; */
     /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25); */
 

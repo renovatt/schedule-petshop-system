@@ -37,10 +37,9 @@ export const Content = styled.div`
     align-items: center;
     border-radius: .4rem;
     overflow: hidden;
-    background-color: var(--background-linear);
-    background-color: var(--text-yellow-color);
+    background-color: var(--highlight-color);
     /* margin-left: 4rem; */
-    /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25); */
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15); */
 
     @media (max-width: 70rem) {
         margin: 0;
@@ -110,7 +109,6 @@ export const Section = styled.section`
     border-radius: .4rem;
     margin: .4rem;
     overflow-y: auto;
-    /* box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25); */
 
     ::-webkit-scrollbar-track{
         background-color: transparent;
@@ -133,13 +131,9 @@ export const LastRegister = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: var(--text-white-color);
+    background-color: var(--main-background);
     padding: .4rem;
     overflow: hidden;
-
-    @media (max-width: 70rem) {
-        /* max-height: 25rem; */
-    }
 `
 
 export const Header = styled.div`
@@ -155,10 +149,12 @@ export const TitleContent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--text-secondary-color);
 
     svg{
         width: 2rem;
         height: 2rem;
+        color: var(--svg-secondary-color);
     }
 `
 
@@ -183,13 +179,13 @@ export const Search = styled.input`
     border: 1px solid #ccc;
     transition: all .3s;
     padding: 8px 28px 8px 8px;
-    background-color: var(--text-white-color);
+    background-color: var(--main-background);
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>');
     background-repeat: no-repeat;
     background-position: right 8px center;
     background-size: 13px 13px;
 
     &:focus{
-        border: 1px solid #ff6b00;
+        border: 1px solid var(--border-primary-color);
     }
 `

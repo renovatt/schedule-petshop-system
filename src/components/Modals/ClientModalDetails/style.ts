@@ -12,8 +12,8 @@ export const Container = styled.section`
     height: 100%;
     z-index: 1;
     border-radius: .4rem;
+    background-color: var(--secondary-background);
     /* background: rgba(0, 0, 0, .8); */
-    background-color: var(--text-dark-color);
 `
 
 export const Content = styled.div`
@@ -98,8 +98,8 @@ export const CardImage = styled.section`
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        background-color: var(--text-orange-color);
-        border: 2px solid #fff;
+        background-color: var(--primary-background);
+        border: 2px solid var(--main-background);
     }
 `
 
@@ -107,11 +107,13 @@ export const Icon = styled.i`
     svg{
         width: 1.5rem;
         height: 1.5rem;
-        color: var(--text-white-color);
+        color: var(--main-background);
         margin-top: -5rem;
 
         &:hover{
+            transition: all .3s;
             cursor: pointer;
+            color: var(--text-primary-color);
         }
     }
 `
@@ -145,7 +147,7 @@ export const Label = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin-top: .4rem;
-    color: var(--text-white-color);
+    color: var(--modal-label-text-color);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 `
 
@@ -163,12 +165,16 @@ export const Input = styled.input`
     margin-top: .4rem;
     padding-left: .4rem;
     transition: all .3s;
-    border: 1px solid #ccc;
-    color: var(--text-white-color);
-    background-color: rgba(51, 42, 42, 0.064);
+    border: 1px solid var(--border-clean-color);
+    color: var(--modal-input-text-color);
+    background-color: var(--modal-input-background-color);
+
+    &::placeholder{
+        color: var(--modal-input-text-color);
+    }
 
     &:focus{
-        border-color: var(--text-orange-color);
+        border-color: var(--border-primary-color);
     }
 `
 
@@ -180,12 +186,12 @@ export const ContactInputMask = styled(InputMask)`
     margin-top: .4rem;
     padding-left: .4rem;
     transition: all .3s;
-    border: 1px solid #ccc;
-    color: var(--text-white-color);
-    background-color: rgba(51, 42, 42, 0.064);
+    border: 1px solid var(--border-clean-color);
+    color: var(--modal-input-text-color);
+    background-color: var(--modal-input-background-color);
 
     &:focus{
-        border-color: var(--text-orange-color);
+        border-color: var(--border-primary-color);
     }
 `
 
@@ -200,7 +206,7 @@ export const Text = styled.p`
     text-align: start;
     font-size: .8rem;
     margin: .4rem;
-    color: var(--text-orange-color);
+    color: var(--text-primary-color);
     font-weight: bold;
     width: 100%;
 `
@@ -213,14 +219,14 @@ export const Select = styled.select`
     color: #666;
     width: 100%;
     height: 2rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-clean-color);
     border-radius: .4rem;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    color: var(--text-white-color);
-    background-color: rgba(51, 42, 42, 0.064);
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
+    color: var(--modal-input-text-color);
+    background-color: var(--modal-input-background-color);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M7 10l5 5 5-5z"/></svg>');
     background-position: right 10px center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -228,7 +234,7 @@ export const Select = styled.select`
 
     &:focus {
         outline: none;
-        border-color: var(--text-orange-color);
+        border-color: var(--border-primary-color);
     }
 `
 
@@ -236,16 +242,16 @@ export const Option = styled.option`
     padding: .4rem;
     font-size: .8rem;
     border-radius: .4rem;
-    color: var(--text-dark-color);
-    background-color: var(--text-white-color);
+    color: var(--text-secondary-color);
+    background-color: var(--main-background);
 
     &:hover {
-        background-color: var(--text-orange-color);
+        background-color: var(--primary-background);
     }
 
     &:checked {
-        color: var(--text-white-color);
-        background-color: var(--text-orange-color);
+        color: var(--main-background);
+        background-color: var(--primary-background);
     }
 `
 
@@ -261,13 +267,13 @@ export const SaveButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: var(--text-dark-color);
-    background-color: var(--text-white-color);
+    color: var(--text-secondary-color);
+    background-color: var(--main-background);
 
     &:hover{
         cursor: pointer;
-        color: var(--text-white-color);
-        background-color: var(--text-orange-color);
+        color: var(--main-background);
+        background-color: var(--primary-background);
     }
 `
 
@@ -283,12 +289,12 @@ export const DeleteButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: var(--text-dark-color);
-    background-color: var(--text-white-color);
+    color: var(--text-secondary-color);
+    background-color: var(--main-background);
 
     &:hover{
         cursor: pointer;
-        color: var(--text-white-color);
-        background-color: var(--text-red-color);
+        color: var(--main-background);
+        background-color: var(--alert-background-color);
     }
 `

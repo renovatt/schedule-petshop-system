@@ -12,8 +12,7 @@ export const Container = styled.section`
     height: 5rem;
     z-index: 1;
     border-radius: .4rem;
-    /* background: rgba(0, 0, 0, .8); */
-    background-color: var(--text-dark-color);
+    background-color: var(--secondary-background);
 
     @media (max-width: 70rem) {
         right: .5rem;
@@ -44,18 +43,18 @@ export const Section = styled.div`
     svg{
         width: 1.5rem;
         height: 1.5rem;
-        color: var(--text-white-color);
+        color: var(--text-main-color);
         transition: all .3s;
 
         &:hover{
             cursor: pointer;
-            color: var(--text-orange-color);
+            color: var(--svg-primary-color);
         }
     }
 `
 
 export const UserLogo = styled(Image)`
-    color: var(--text-white-color);
+    color: var(--text-main-color);
     margin-top: .6rem;
     border-radius: 50%;
     object-fit: cover;
@@ -66,7 +65,7 @@ export const UserLogo = styled(Image)`
 `
 export const Text = styled.p`
     font-size: .8rem;
-    color: var(--text-white-color);
+    color: var(--text-main-color);
     font-weight: bold;
     text-align: center;
 `

@@ -19,5 +19,5 @@ export const Loading = styled.section`
     align-items: center;
     padding-left: 5px;
     border-radius: 50%;
-    background-color: var(--text-white-color);
+    background-color: var(--main-background);
 `

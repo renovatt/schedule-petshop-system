@@ -35,10 +35,10 @@ export const List = styled.li`
     justify-content: center;
     width: 95%;
     height: 3rem;
-    margin: .2rem;
+    margin: .4rem;
     border-radius: .4rem;
-    color: var(--text-white-color);
-    background: var(--text-dark-color);
+    color: var(--text-main-color);
+    background: var(--secondary-background);
     transition: all .3s;
     
     &:hover{
@@ -58,6 +58,7 @@ export const ContentListLeft = styled.div`
         width: 2.5rem;
         height: 2.5rem;
         padding: .4rem;
+        color: var(--svg-main-color);
     }
 `
 
@@ -66,7 +67,7 @@ export const UserIcon = styled.div`
     justify-content: center;
     text-align: center;
     /* background: ${(props) => props.color}; */
-    background: var(--text-white-color);
+    background: var(--main-background);
     border-radius: 50%;
     margin: .4rem;
 
@@ -74,13 +75,13 @@ export const UserIcon = styled.div`
         width: 2rem;
         height: 2rem;
         padding: .4rem;
-        color: #000;
+        color: var(--svg-secondary-color);
     }
 `
 
 export const ClientName = styled.h3`
     text-align: start;
-    color: var(--text-white-color);
+    color: var(--text-main-color);
     font-size: .8rem;
     width: 100%;
     &::first-letter {

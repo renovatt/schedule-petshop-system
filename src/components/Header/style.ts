@@ -8,8 +8,8 @@ export const Header = styled.header`
     width: 100%;
     height: 3rem;
     padding: 0 3.5rem;
-    background: var(--text-orange-color);
-    /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15); */
+    background: var(--primary-background);
+    /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15); */
 
     @media (max-width: 70rem) {
         padding: 0 .5rem;
@@ -17,7 +17,7 @@ export const Header = styled.header`
 `
 
 export const Title = styled.h1`
-    color: var(--text-white-color);
+    color: var(--text-main-color);
     text-align: center;
     font-size: 1rem;
 `
@@ -35,7 +35,7 @@ export const Icon = styled.span`
     }
 
     svg{
-        color: var(--text-white-color);
+        color: var(--svg-secondary-color);
         margin-top: .4rem;
         font-size: 2.75rem;
         padding: 0  .4rem;
@@ -43,7 +43,7 @@ export const Icon = styled.span`
 `
 
 export const UserLogo = styled(Image)`
-    color: var(--text-white-color);
+    color: var(--text-main-color);
     margin-top: .8rem;
     border-radius: 50%;
     object-fit: cover;

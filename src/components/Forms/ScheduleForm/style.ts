@@ -10,7 +10,7 @@ export const SvgContent = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: var(--text-white-color);
+    background-color: var(--main-background);
 
     &:hover{
         cursor: pointer;
@@ -20,6 +20,7 @@ export const SvgContent = styled.div`
         width: 1.75rem;
         height: 1.75rem;
         transition: all .3s;
+        color: var(--svg-secondary-color);
     }
 `
 
@@ -48,7 +49,7 @@ export const Label = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin: .4rem;
-    color: var(--text-dark-color);
+    color: var(--text-secondary-color);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 `
 
@@ -66,12 +67,12 @@ export const Input = styled.input`
     margin-top: .4rem;
     padding-left: .4rem;
     transition: all .3s;
-    border: 1px solid #ccc;
-    background-color: var(--text-white-color);
+    border: 1px solid var(--border-clean-color);
+    background-color: var(--main-background);
     /* box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25); */
 
     &:focus{
-        border: 1px solid var(--text-orange-color);
+        border: 1px solid var(--border-primary-color);
     }
 `
 
@@ -85,13 +86,13 @@ export const Select = styled.select`
     color: #666;
     width: 100%;
     height: 2rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-clean-color);
     border-radius: .4rem;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: var(--text-white-color);
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/var(--text-dark-color)/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-color: var(--main-background);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/var(--text-secondary-color)/svg" viewBox="0 0 24 24" fill="%23333"><path d="M7 10l5 5 5-5z"/></svg>');
     background-position: right 10px center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -99,7 +100,7 @@ export const Select = styled.select`
 
     &:focus {
         outline: none;
-        border-color: var(--text-orange-color);
+        border-color: var(--border-primary-color);
     }
 `
 
@@ -107,16 +108,16 @@ export const Option = styled.option`
     padding: .4rem;
     font-size: .8rem;
     border-radius: .4rem;
-    color: var(--text-dark-color);
-    background-color: var(--text-white-color);
+    color: var(--text-secondary-color);
+    background-color: var(--main-background);
 
     &:hover {
-        background-color: var(--text-orange-color);
+        background-color: var(--primary-background);
     }
 
     &:checked {
-        color: var(--text-white-color);
-        background-color: var(--text-orange-color);
+        color: var(--text-main-color);
+        background-color: var(--primary-background);
     }
 `
 
@@ -136,7 +137,7 @@ export const CheckLabel = styled.label`
     font-weight: bold;
     font-size: .9rem;
     margin: .4rem;
-    color: var(--text-dark-color);
+    color: var(--text-secondary-color);
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
 `
 
@@ -168,20 +169,20 @@ export const Button = styled.button`
     font-weight: bold;
     border-radius: .4rem;
     transition: all .3s;
-    color: var(--text-white-color);
-    background: var(--text-dark-color);
+    color: var(--text-main-color);
+    background: var(--secondary-background);
     border: 1px solid transparent;
     text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.95);
 
     &:hover{
-        color: var(--text-dark-color);
-        background: var(--text-white-color);
-        border: 1px solid var(--text-dark-color);
+        color: var(--text-secondary-color);
+        background: var(--main-background);
+        border: 1px solid var(--border-clean-color);
     }
 
     &:disabled{
         cursor: not-allowed;
-        background: var(--text-dark-color);
-        color: var(--text-white-color);
+        color: var(--text-main-color);
+        background: var(--secondary-background);
     }
 `

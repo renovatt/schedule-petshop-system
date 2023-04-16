@@ -35,7 +35,7 @@ export const Content = styled.div`
     align-items: center;
     border-radius: .4rem;
     overflow: hidden;
-    background: var(--text-yellow-color);
+    background: var(--highlight-color);
     /* margin-left: 4rem; */
     /* box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.25); */
 
@@ -78,8 +78,7 @@ export const LastRegister = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-
-    background: var(--text-white-color);
+    background: var(--main-background);
     padding: .4rem;
     overflow: hidden;
 `
@@ -108,8 +107,8 @@ export const Date = styled.div`
         margin-top: .4rem;
         padding-left: .4rem;
         transition: all .3s;
-        border: 1px solid #ccc;
-        background-color: var(--text-white-color);
+        border: 1px solid var(--border-clean-color);
+        background-color: var(--main-background);
         
         padding: 8px 28px 8px 8px;
         background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>');
@@ -118,7 +117,7 @@ export const Date = styled.div`
         background-size: 13px 13px;
 
         &:focus{
-            border-color: var(--text-orange-color);
+            border-color: var(--border-primary-color);
         }
     }
 `
@@ -129,6 +128,7 @@ export const Span = styled.span`
 
 export const Title = styled.h2`
     margin: 1rem 0;
+    color: var(--text-secondary-color);
 `
 
 export const ImageContainder = styled.div`

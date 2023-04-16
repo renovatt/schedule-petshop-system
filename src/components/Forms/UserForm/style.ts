@@ -32,12 +32,12 @@ export const Label = styled.label`
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    height: 5rem;
+    /* height: 5rem; */
     width: 100%;
-    font-weight: bold;
     font-size: .9rem;
-    margin-top: .4rem;
-    color: var(--text-dark-color);
+    color: transparent;
+    /* font-weight: bold; */
+    /* margin-top: .4rem; */
     /* text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25); */
 `
 
@@ -52,14 +52,18 @@ export const Input = styled.input`
     width: 100%;
     text-align: start;
     border-radius: .4rem;
-    margin-top: .4rem;
+    /* margin-top: .4rem; */
     padding-left: .4rem;
     transition: all .3s;
     border: 1px solid #ccc;
-    background-color: var(--text-white-color);
+    background-color: var(--main-background);
+
+    &::placeholder{
+        /* color: var(--input-text-color); */
+    }
 
     &:focus{
-        border-color: var(--text-orange-color);
+        border-color: var(--border-primary-color);
     }
 `
 
@@ -82,14 +86,14 @@ export const SaveButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: var(--text-white-color);
-    background: var(--text-dark-color);
+    color: var(--text-main-color);
+    background: var(--secondary-background);
 
     &:hover{
         cursor: pointer;
-        color: var(--text-dark-color);
-        background: var(--text-white-color);
-        border: 1px solid var(--text-dark-color);
+        color: var(--text-secondary-color);
+        background: var(--main-background);
+        border: 1px solid var(--border-secondary-color);
     }
 `
 
@@ -105,8 +109,8 @@ export const DeleteButton = styled.button`
     outline: none;
     transition: .2s;
     border-radius: .4rem;
-    color: var(--text-white-color);
-    background: var(--text-dark-color);
+    color: var(--text-main-color);
+    background: var(--secondary-background);
 
     @media (max-width: 70rem) {
      width: 90%;
@@ -114,8 +118,8 @@ export const DeleteButton = styled.button`
 
     &:hover{
         cursor: pointer;
-        color: var(--text-dark-color);
-        background: var(--text-white-color);
-        border: 1px solid var(--text-dark-color);
+        color: var(--text-secondary-color);
+        background: var(--main-background);
+        border: 1px solid var(--text-secondary-color);
     }
 `
