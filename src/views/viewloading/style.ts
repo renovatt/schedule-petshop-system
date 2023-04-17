@@ -7,6 +7,7 @@ export const Container = styled.section`
     width: 100vw;
     height: 100vh;
     background-color: var(--main-background);
+    
 `
 
 export const Content = styled.section`
@@ -25,7 +26,7 @@ export const Content = styled.section`
     }
 
     svg path{
-        fill: var(--main-background);
+        fill: var(--secondary-background);
     }
 
     svg g{
