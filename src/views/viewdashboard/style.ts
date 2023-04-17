@@ -107,7 +107,7 @@ export const Section = styled.section`
     width: 40%;
     height: 95%;
     border-radius: .4rem;
-    margin: .4rem;
+    margin: .8rem;
     overflow-y: auto;
 
     ::-webkit-scrollbar-track{
