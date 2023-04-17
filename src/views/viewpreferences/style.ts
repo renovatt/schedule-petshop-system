@@ -69,8 +69,8 @@ export const Section = styled.section`
 
 export const ImageContainder = styled.div`
     position: absolute;
-    bottom: -2rem;
-    right: 0rem;
+    bottom: 0;
+    right: 2rem;
     width: 20rem;
     height: 20rem;
 
@@ -87,6 +87,28 @@ export const ImageContainder = styled.div`
     }
 `
 
+export const ImageContainder2 = styled.div`
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    width: 20rem;
+    height: 20rem;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+
+    @media (max-width: 70rem) {
+        display: none;
+    }
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`
+
 export const Header = styled.div`
     display: flex;
     justify-content: center;
@@ -94,7 +116,7 @@ export const Header = styled.div`
     /* margin-bottom: .8rem; */
 
     @media (max-width: 70rem) {
-        margin-top: 4rem;
+        margin-top: 2rem;
     }
 `
 

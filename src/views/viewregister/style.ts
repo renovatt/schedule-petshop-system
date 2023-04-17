@@ -43,8 +43,8 @@ export const Content = styled.div`
 
 export const Section = styled.section`
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 100%;
     height: 100%;
     border-radius: .4rem;
@@ -62,15 +62,17 @@ export const Section = styled.section`
     @media (max-width: 70rem) {
         width: 90%;
         min-height: auto;
+        justify-content: center;
+        align-items: center;
     }
 `
 
 export const ImageContainder = styled.div`
     position: absolute;
-    bottom: -2rem;
-    right: 0rem;
-    width: 20rem;
-    height: 20rem;
+    top: 5rem;
+    right: 8rem;
+    width: 25rem;
+    height: 25rem;
 
     @media (max-width: 70rem) {
         position: static;

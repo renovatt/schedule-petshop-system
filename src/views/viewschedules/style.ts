@@ -133,15 +133,15 @@ export const Title = styled.h2`
 
 export const ImageContainder = styled.div`
     position: absolute;
-    bottom: -6rem;
-    right: -4rem;
-    width: 20rem;
-    height: 20rem;
+    bottom: -2rem;
+    right: 0;
+    width: 15rem;
+    height: 15rem;
 
     @media (max-width: 70rem) {
         position: static;
-        width: 10rem;
-        height: 10rem;
+        width: 8rem;
+        height: 8rem;
     }
 
     img{

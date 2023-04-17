@@ -38,8 +38,8 @@ export const LogoContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     /* margin-bottom: .4rem; */
     /* animation: growAnimation .5s ease-in-out; */
@@ -62,9 +62,16 @@ export const LogoContent = styled.div`
 
 export const Logo = styled(Image)`
     object-fit: contain;
-    width: 100%;
-    height: 100%;
-    /* filter: drop-shadow(0 0 0.75rem rgb(21, 21, 21)); */
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    padding: .8rem;
+    background-color: var(--primary-background);
+
+    @media(max-width: 70rem) {
+        width: 70%;
+        height: 70%;
+    }
 `
 
 export const Title = styled.h1`
@@ -93,9 +100,7 @@ export const Content = styled.section`
     width: 30%;
     height: 100vh;
     background-color: var(--highlight-color);
-    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15);
-    /* box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15); */
-    /* background: var(--text-primary-color); */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
     /* border-radius: 0 1.25rem 1.25rem 0; */
 
     @media(max-width: 70rem) {
@@ -141,8 +146,8 @@ export const Register = styled(Link)`
 
     &:hover{
         cursor: pointer;
-        color: var(--text-main-color);
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+        color: var(--text-primary-color);
+        /* text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15); */
 }
 `
 

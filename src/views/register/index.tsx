@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import * as S from './style'
-import photo from '@/assets/hug.png'
+import cute from '@/assets/cute-register.svg'
 import RegisterForm from '@/components/Forms/RegisterForm'
 
 const Register = () => {
@@ -13,7 +13,7 @@ const Register = () => {
             <S.Container className='animation-container'>
                 <S.LogoContainer>
                     <S.LogoContent>
-                        <S.Logo alt='dog' src={photo} priority={true} />
+                        <S.Logo alt='dog' src={cute} priority={true} />
                     </S.LogoContent>
                     <S.Title>Cute Pet</S.Title>
                     <S.Span>Seu sistema de agendamentos para Pets</S.Span>

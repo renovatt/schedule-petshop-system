@@ -1,10 +1,8 @@
 import React from 'react'
 import * as S from './style'
 import Head from 'next/head'
-import Image from 'next/image'
 import Header from '@/components/Header'
 import { HiUsers } from 'react-icons/hi'
-import thumb from '@/assets/thumb.jpg'
 import ClientTable from '@/components/Tables/ClientTable'
 import SchedulesCanceled from '@/components/Cards/SchedulesCanceled'
 import SchedulesMonthCount from '@/components/Cards/SchedulesMonthCount'
@@ -31,9 +29,6 @@ const ViewDashboard = () => {
                 <SchedulesCountDaily />
                 <SchedulesCanceled />
               </S.SectionCards>
-              <S.Thumb>
-                <Image src={thumb} alt="thumb" priority={true} />
-              </S.Thumb>
             </S.CardThumbContent>
             <S.Section>
               <S.LastRegister>

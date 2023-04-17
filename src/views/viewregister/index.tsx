@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './style'
 import Head from 'next/head'
 import Image from 'next/image'
-import hug from '@/assets/hug.png'
+import hug from '@/assets/hug.svg'
 import Header from '@/components/Header'
 import ClientForm from '@/components/Forms/ClientForm'
 

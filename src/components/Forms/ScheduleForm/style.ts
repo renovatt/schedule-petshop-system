@@ -67,7 +67,8 @@ export const Input = styled.input`
     margin-top: .4rem;
     padding-left: .4rem;
     transition: all .3s;
-    border: 1px solid var(--border-clean-color);
+    color: var(--text-secondary-color);
+    border: 1px solid var(--border-secondary-color);
     background-color: var(--main-background);
     /* box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25); */
 
@@ -83,10 +84,10 @@ export const Select = styled.select`
     margin-top: .4rem;
     font-size: .8rem;
     line-height: 1.3;
-    color: #666;
+    color: var(--text-secondary-color);
     width: 100%;
     height: 2rem;
-    border: 1px solid var(--border-clean-color);
+    border: 1px solid var(--border-secondary-color);
     border-radius: .4rem;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -172,12 +173,12 @@ export const Button = styled.button`
     color: var(--text-main-color);
     background: var(--secondary-background);
     border: 1px solid transparent;
-    text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.95);
+    /* text-shadow: 5px 5px 25px rgba(0, 0, 0, 0.95); */
 
     &:hover{
         color: var(--text-secondary-color);
         background: var(--main-background);
-        border: 1px solid var(--border-clean-color);
+        border: 1px solid var(--border-secondary-color);
     }
 
     &:disabled{

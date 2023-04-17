@@ -6,19 +6,20 @@ export const GlobalStyle = createGlobalStyle`
 :root {
     --max-width: 1100px;
 
-    --highlight-color: #D1E7E0;
+    --highlight-color: #d1e7e0;
     --main-background: #ffffff; 
     --primary-background: #fb8500;
     --secondary-background: #024959;
     --alert-background-color: #f94144;
 
+    --text-clean-color: #d1e7e0;
     --text-alert-color: #f01;
     --text-main-color: #ffffff;
     --text-primary-color: #fb8500;
     --text-secondary-color: #024959;
     
     --border-primary-color: #fb8500;
-    --border-secondary-color: #323031;
+    --border-secondary-color: #024959;
     --border-clean-color: #ccc;
 
     --input-background-color: #ffffff;

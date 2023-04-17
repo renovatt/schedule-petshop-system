@@ -1,14 +1,14 @@
 import LoginForm from '@/components/Forms/LoginForm'
 import React from 'react'
 import * as S from './style'
-import photo from '@/assets/dog.png'
+import cute from '@/assets/cute-login.svg'
 
 const Login = () => {
     return (
         <S.Container className='animation-container'>
             <S.LogoContainer>
                 <S.LogoContent>
-                    <S.Logo alt='dog' src={photo} priority={true} />
+                    <S.Logo alt='dog' src={cute} priority={true} />
                 </S.LogoContent>
                 <S.Title>Cute Pet</S.Title>
                 <S.Span>Seu sistema de agendamentos para Pets</S.Span>

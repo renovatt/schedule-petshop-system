@@ -55,7 +55,8 @@ export const Input = styled.input`
     /* margin-top: .4rem; */
     padding-left: .4rem;
     transition: all .3s;
-    border: 1px solid #ccc;
+    color: var(--text-secondary-color);
+    border: 1px solid var(--border-secondary-color);
     background-color: var(--main-background);
 
     &::placeholder{
