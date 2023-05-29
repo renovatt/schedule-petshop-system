@@ -108,13 +108,19 @@ export const ContentListRight = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     height: 100%;
 `
 
 export const Time = styled.h3`
     text-align: end;
     color: var(--text-main-color);
-    font-size: 1rem;
+    font-size: .9rem;
+    padding-right: .4rem;
+`
+
+export const Date = styled.h3`
+    text-align: end;
+    color: var(--text-main-color);
+    font-size: .9rem;
     padding-right: .4rem;
 `

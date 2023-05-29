@@ -19,7 +19,12 @@ const ScheduleList = ({ ...props }: ScheduleFormProps) => {
               <S.Breed>{props.breed}</S.Breed>
             </S.ContentListLeft>
             <S.ContentListRight>
-              <S.Time>{new Date(props.date)
+              <S.Date>{new Date(props.date)
+                .toLocaleString("pt-br", {
+                  day: 'numeric',
+                  month: 'numeric'
+                })}</S.Date>
+              <S.Time>- {new Date(props.date)
                 .toLocaleString("pt-br", {
                   hour: 'numeric',
                   minute: 'numeric'
