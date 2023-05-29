@@ -9,6 +9,8 @@ import 'dayjs/locale/pt-br';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+const TZ = process.env.TZ_TIME;
+
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
         const ageIsNegative = (Number(data.age) <= 0);
@@ -16,10 +18,10 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
 
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
         
-        const dateTime = dayjs(data.date).tz('America/Sao_Paulo');
-        const scheduleDate = dayjs(data.date).tz('America/Sao_Paulo').toDate();
+        const dateTime = dayjs(data.date).tz(TZ);
+        const scheduleDate = dayjs(data.date).tz(TZ).toDate();
 
-        const dateTime2 = dayjs(data.date).tz('America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss')
+        const dateTime2 = dayjs(data.date).tz(TZ).format('YYYY-MM-DD HH:mm:ss')
 
         console.log(scheduleDate)
         console.log(dateTime2)
@@ -80,8 +82,8 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
-        const dateTime = dayjs(data.date).tz('America/Sao_Paulo');
-        const scheduleDate = dayjs(data.date).tz('America/Sao_Paulo').toDate();
+        const dateTime = dayjs(data.date).tz(TZ);
+        const scheduleDate = dayjs(data.date).tz(TZ).toDate();
 
         const ageIsNegative = (Number(data.age) <= 0);
         const weightIsNegative = (Number(data.weight) <= 0);
