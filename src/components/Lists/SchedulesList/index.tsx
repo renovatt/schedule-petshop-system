@@ -3,9 +3,11 @@ import * as S from './style'
 import { ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { FaCat, FaDog } from 'react-icons/fa'
 import PetModalDetails from '../../Modals/PetModalDetails'
+import moment from 'moment';
 
 const ScheduleList = ({ ...props }: ScheduleFormProps) => {
   const [isPetModalOpen, setPetModalOpen] = React.useState(false)
+  console.log(moment(props.date).utc().format('HH:mm:ss'))
   return (
     <>
       {isPetModalOpen && <PetModalDetails setPetModalOpen={setPetModalOpen} petProps={props} />}
@@ -24,11 +26,9 @@ const ScheduleList = ({ ...props }: ScheduleFormProps) => {
                   day: 'numeric',
                   month: 'numeric'
                 })}</S.Date>
-              <S.Time>- {new Date(props.date)
-                .toLocaleString("pt-br", {
-                  hour: 'numeric',
-                  minute: 'numeric'
-                })}h</S.Time>
+              <S.Time>-{moment(props.date).utc().format('HH:mm:ss')}h</S.Time>
+
+              <S.Time>- {new Date(props.date).getHours()}h</S.Time>
             </S.ContentListRight>
           </S.List>
         </S.ContentList>

@@ -1,15 +1,11 @@
 import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
 import dayjs from "dayjs";
-
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import 'dayjs/locale/pt-br';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
-
-const TZ = process.env.TZ_TIME;
 
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
@@ -17,14 +13,9 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
         const weightIsNegative = (Number(data.weight) <= 0);
 
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
-        
-        const dateTime = dayjs(data.date).tz(TZ);
-        const scheduleDate = dayjs(data.date).tz(TZ).toDate();
 
-        const dateTime2 = dayjs(data.date).tz(TZ).format('YYYY-MM-DD HH:mm:ss')
-
-        console.log(scheduleDate)
-        console.log(dateTime2)
+        const dateTime = dayjs(data.date);
+        const scheduleDate = dayjs(data.date).toDate();
 
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
@@ -39,7 +30,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
         if (ageIsNegative) throw new Error("A idade precisa ser um valor válido!");
         if (weightIsNegative) throw new Error("O peso precisa ser um valor válido!");
         if (alreadyExists) throw new Error("Já existe um agendamento para esse dia e horário.");
-
+       const dataNEw = new Date(data.date);
         const schedule = await prisma.schedules.create({
             data: {
                 tutor: data.tutor,
@@ -49,8 +40,8 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: referenceImageId,
-                date: dateTime2,
-                canceled_date: dateTime2,
+                date: dataNEw.toISOString(),
+                canceled_date:  scheduleDate,
                 status: data.client,
                 client: data.client,
                 specie: data.specie,
@@ -82,8 +73,8 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
-        const dateTime = dayjs(data.date).tz(TZ);
-        const scheduleDate = dayjs(data.date).tz(TZ).toDate();
+        const dateTime = dayjs(data.date).tz('America/Sao_Paulo');
+        const scheduleDate = dayjs(data.date).tz('America/Sao_Paulo').toDate();
 
         const ageIsNegative = (Number(data.age) <= 0);
         const weightIsNegative = (Number(data.weight) <= 0);
