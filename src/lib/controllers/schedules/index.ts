@@ -17,15 +17,11 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
         const weightIsNegative = (Number(data.weight) <= 0);
 
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
-        
+
         const dateTime = dayjs(data.date).tz(TZ);
         const scheduleDate = dayjs(data.date).tz(TZ).toDate();
 
-        const dateTime2 = dayjs(data.date).tz(TZ).format('YYYY-MM-DD HH:mm:ss')
-
         console.log(scheduleDate)
-        console.log(dateTime2)
-
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
                 date: {
@@ -49,8 +45,8 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: referenceImageId,
-                date: dateTime2,
-                canceled_date: dateTime2,
+                date: new Date(data.date).toISOString(),
+                canceled_date: new Date(data.date).toISOString(),
                 status: data.client,
                 client: data.client,
                 specie: data.specie,
