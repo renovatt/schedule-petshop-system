@@ -41,7 +41,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 weight: data.weight,
                 reference_image_id: referenceImageId,
                 date: new Date(data.date),
-                canceled_date:  new Date(data.date),
+                canceled_date:  scheduleDate,
                 status: data.client,
                 client: data.client,
                 specie: data.specie,
