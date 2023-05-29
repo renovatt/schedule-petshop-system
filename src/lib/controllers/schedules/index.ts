@@ -1,6 +1,11 @@
 import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
 import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
@@ -8,8 +13,10 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
         const ageIsNegative = (Number(data.age) <= 0);
         const weightIsNegative = (Number(data.weight) <= 0);
 
-        const referenceImageId = data.reference_image_id ? data.reference_image_id : ""
-        const dateTime = dayjs(data.date);
+        const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
+
+        const dateTime = dayjs(data.date).tz('America/Sao_Paulo');
+        const scheduleDate = dayjs(data.date).tz('America/Sao_Paulo').toDate();
 
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
@@ -17,6 +24,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                     gte: dateTime.startOf("hour").toDate(),
                     lte: dateTime.endOf("hour").toDate(),
                 },
+                status: true
             },
         });
 
@@ -33,7 +41,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: referenceImageId,
-                date: new Date(data.date),
+                date: scheduleDate,
                 canceled_date: new Date(data.date),
                 status: data.client,
                 client: data.client,
@@ -64,8 +72,11 @@ export async function getAllSchedules(userId: string | undefined) {
 
 export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
-        const referenceImageId = data.reference_image_id ? data.reference_image_id : ""
-        const dateTime = dayjs(data.date);
+        const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
+
+        const dateTime = dayjs(data.date).tz('America/Sao_Paulo');
+        const scheduleDate = dayjs(data.date).tz('America/Sao_Paulo').toDate();
+
         const ageIsNegative = (Number(data.age) <= 0);
         const weightIsNegative = (Number(data.weight) <= 0);
 
@@ -101,6 +112,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                         gte: dateTime.startOf("hour").toDate(),
                         lte: dateTime.endOf("hour").toDate(),
                     },
+                    status: true
                 },
             });
 
@@ -116,7 +128,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                     breed: data.breed,
                     weight: data.weight,
                     reference_image_id: referenceImageId,
-                    date: new Date(data.date),
+                    date: scheduleDate,
                     canceled_date: new Date(data.canceled_date),
                     status: data.status,
                     client: data.client,
