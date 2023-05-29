@@ -24,11 +24,13 @@ const ScheduleList = ({ ...props }: ScheduleFormProps) => {
                   day: 'numeric',
                   month: 'numeric'
                 })}</S.Date>
-              <S.Time>- {new Date(props.date)
+              <S.Time>- {new Date(props.canceled_date)
                 .toLocaleString("pt-br", {
                   hour: 'numeric',
                   minute: 'numeric'
                 })}h</S.Time>
+
+              <S.Time>- {new Date(props.date).getHours()}h</S.Time>
             </S.ContentListRight>
           </S.List>
         </S.ContentList>

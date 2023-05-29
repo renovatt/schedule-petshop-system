@@ -9,14 +9,13 @@ dayjs.extend(timezone);
 
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
-
         const ageIsNegative = (Number(data.age) <= 0);
         const weightIsNegative = (Number(data.weight) <= 0);
 
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
-        const dateTime = dayjs(data.date).tz('America/Sao_Paulo');
-        const scheduleDate = dayjs(data.date).tz('America/Sao_Paulo').toDate();
+        const dateTime = dayjs(data.date);
+        const scheduleDate = dayjs(data.date).toDate();
 
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
@@ -42,7 +41,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 weight: data.weight,
                 reference_image_id: referenceImageId,
                 date: scheduleDate,
-                canceled_date: new Date(data.date),
+                canceled_date: scheduleDate,
                 status: data.client,
                 client: data.client,
                 specie: data.specie,
