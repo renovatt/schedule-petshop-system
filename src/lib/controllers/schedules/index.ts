@@ -1,8 +1,10 @@
 import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
 import dayjs from "dayjs";
+
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
+import 'dayjs/locale/pt-br';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -13,9 +15,14 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
         const weightIsNegative = (Number(data.weight) <= 0);
 
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
+        
+        const dateTime = dayjs(data.date).tz('America/Sao_Paulo');
+        const scheduleDate = dayjs(data.date).tz('America/Sao_Paulo').toDate();
 
-        const dateTime = dayjs(data.date);
-        const scheduleDate = dayjs(data.date).toDate();
+        const dateTime2 = dayjs(data.date).tz('America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss')
+
+        console.log(scheduleDate)
+        console.log(dateTime2)
 
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
@@ -40,8 +47,8 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: referenceImageId,
-                date: new Date(data.date),
-                canceled_date:  scheduleDate,
+                date: scheduleDate,
+                canceled_date: scheduleDate,
                 status: data.client,
                 client: data.client,
                 specie: data.specie,
