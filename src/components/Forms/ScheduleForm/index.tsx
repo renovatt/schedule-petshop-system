@@ -22,7 +22,11 @@ const ScheduleForm = () => {
     const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm<ScheduleFormProps>();
 
     const onSubmit: SubmitHandler<ScheduleFormProps> = async data => {
-        const { response, error } = await sendingScheduleFormToDatabase(data, isToken)
+        const parsedData = data;
+
+        parsedData.date = new Date(parsedData.date).toISOString()
+
+        const { response, error } = await sendingScheduleFormToDatabase(parsedData, isToken)
         if (response) {
             toast.success('Agendamento realizado com sucesso!')
         } else if (error) {
