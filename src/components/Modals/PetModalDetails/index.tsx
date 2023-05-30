@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './style'
 import Image from 'next/image'
-import dayjs from 'dayjs'
+import moment from 'moment'
 import { toast } from 'react-toastify'
 import { PetModalProps } from './types'
 import { CgCloseR } from 'react-icons/cg'
@@ -12,7 +12,6 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { catsBreedsReferences, dogsBreedsReferences } from '@/services/api'
 import { PetFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { deletingScheduleFormToDatabase, updatingScheduleFormToDatabase } from '@/services/schedules'
-import moment from 'moment'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const { t } = useTranslation()
@@ -43,7 +42,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
 
     const cancelSchedule = async () => {
         const currentDate = new Date()
-        const canceledDateFormated = dayjs(currentDate).format('YYYY-MM-DDTHH:mm')
+        const canceledDateFormated = moment(currentDate).utc().format('YYYY-MM-DDTHH:mm')
         setValue("status", false);
         setValue("canceled_date", new Date(canceledDateFormated));
         toast.success('Agendamento cancelado com sucesso!')
@@ -253,7 +252,21 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                             <S.Input {...field}
                                                 type="datetime-local"
                                                 value={moment(field.value).utc().format('YYYY-MM-DDTHH:mm')} />
-                                            {/* value={dayjs(field.value).format('YYYY-MM-DDTHH:mm')} /> */}
+                                            <S.InputAlert>{errors.date?.message}</S.InputAlert>
+                                        </S.Label>
+                                    )} />
+
+                                <Controller
+                                    name="date"
+                                    control={control}
+                                    defaultValue={petProps.date}
+                                    rules={{ required: "*Campo obrigatório." }}
+                                    render={({ field }) => (
+                                        <S.Label>
+                                            <S.Span>Data:</S.Span>
+                                            <S.Input {...field}
+                                                type="datetime-local"
+                                                value={moment(field.value).format('YYYY-MM-DDTHH:mm')} />
                                             <S.InputAlert>{errors.date?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
@@ -271,13 +284,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                         year: 'numeric',
                                         month: 'long',
                                         day: 'numeric',
-                                    })} às {new Date(petProps.date)
-                                        .toLocaleString("pt-br", {
-                                            hour: 'numeric',
-                                            minute: 'numeric'
-                                        })}h
-
-                                    - {moment(petProps.date).utc().format('HH:mm:ss')}h
+                                    })} às {moment(petProps.date).utc().format('HH:mm')}h
                                 </S.Text>
                             </S.Info>
                         </S.Description>

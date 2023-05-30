@@ -11,11 +11,9 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
         const momentDate = moment(data.date);
+        const momentDate2 = moment(data.date).utc();
 
-        console.log(momentDate.toDate())
-
-        // const dateTime = dayjs(data.date);
-        // const scheduleDate = dayjs(data.date).toDate();
+        console.log(momentDate2.toDate());
 
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
@@ -40,7 +38,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: referenceImageId,
-                date: new Date(data.date).toISOString(),
+                date: momentDate2.toDate(),
                 canceled_date: new Date(data.date).toISOString(),
                 status: data.client,
                 client: data.client,
@@ -73,10 +71,8 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
-        // const dateTime = dayjs(data.date);
-        // const scheduleDate = dayjs(data.date).toDate();
-
         const momentDate = moment(data.date);
+        const momentDate2 = moment(data.date).utc();
 
         const ageIsNegative = (Number(data.age) <= 0);
         const weightIsNegative = (Number(data.weight) <= 0);
@@ -129,7 +125,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                     breed: data.breed,
                     weight: data.weight,
                     reference_image_id: referenceImageId,
-                    date: new Date(data.date).toISOString(),
+                    date: momentDate2.toDate(),
                     canceled_date: new Date(data.canceled_date).toISOString(),
                     status: data.status,
                     client: data.client,
