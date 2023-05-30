@@ -252,8 +252,8 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                             <S.Span>Data:</S.Span>
                                             <S.Input {...field}
                                                 type="datetime-local"
-                                                // value={moment(field.value).format('YYYY-MM-DDTHH:mm')} />
-                                             value={dayjs(field.value).format('YYYY-MM-DDTHH:mm')} />
+                                                value={moment(field.value).utc().format('YYYY-MM-DDTHH:mm')} />
+                                            {/* value={dayjs(field.value).format('YYYY-MM-DDTHH:mm')} /> */}
                                             <S.InputAlert>{errors.date?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
@@ -277,7 +277,7 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                             minute: 'numeric'
                                         })}h
 
-                                   - {moment(petProps.date).utc().format('HH:mm:ss')}h
+                                    - {moment(petProps.date).utc().format('HH:mm:ss')}h
                                 </S.Text>
                             </S.Info>
                         </S.Description>
