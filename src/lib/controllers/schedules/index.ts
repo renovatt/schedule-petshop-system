@@ -1,15 +1,7 @@
 import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
 import dayjs from "dayjs";
-
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-import 'dayjs/locale/pt-br';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
-const TZ = process.env.TZ_TIME;
+import moment from "moment";
 
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
     try {
@@ -18,15 +10,18 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
 
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
-        const dateTime = dayjs(data.date).tz(TZ);
-        const scheduleDate = dayjs(data.date).tz(TZ).toDate();
+        const momentDate = moment(data.date);
 
-        console.log(scheduleDate)
+        console.log(momentDate.toDate())
+
+        // const dateTime = dayjs(data.date);
+        // const scheduleDate = dayjs(data.date).toDate();
+
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
                 date: {
-                    gte: dateTime.startOf("hour").toDate(),
-                    lte: dateTime.endOf("hour").toDate(),
+                    gte: momentDate.startOf("hour").toDate(),
+                    lte: momentDate.endOf("hour").toDate(),
                 },
                 status: true
             },
@@ -78,8 +73,10 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
-        const dateTime = dayjs(data.date).tz(TZ);
-        const scheduleDate = dayjs(data.date).tz(TZ).toDate();
+        // const dateTime = dayjs(data.date);
+        // const scheduleDate = dayjs(data.date).toDate();
+
+        const momentDate = moment(data.date);
 
         const ageIsNegative = (Number(data.age) <= 0);
         const weightIsNegative = (Number(data.weight) <= 0);
@@ -92,7 +89,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
         if (ageIsNegative) throw new Error("A idade precisa ser um valor válido!");
         if (weightIsNegative) throw new Error("O peso precisa ser um valor válido!");
 
-        if (dateTime.isSame(dayjs(schedule.date))) {
+        if (momentDate.isSame(moment(schedule.date))) {
             await prisma.schedules.update({
                 where: { id: id },
                 data: {
@@ -113,8 +110,8 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
             const alreadyExists = await prisma.schedules.findFirst({
                 where: {
                     date: {
-                        gte: dateTime.startOf("hour").toDate(),
-                        lte: dateTime.endOf("hour").toDate(),
+                        gte: momentDate.startOf("hour").toDate(),
+                        lte: momentDate.endOf("hour").toDate(),
                     },
                     status: true
                 },
@@ -132,8 +129,8 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                     breed: data.breed,
                     weight: data.weight,
                     reference_image_id: referenceImageId,
-                    date: scheduleDate,
-                    canceled_date: new Date(data.canceled_date),
+                    date: new Date(data.date).toISOString(),
+                    canceled_date: new Date(data.canceled_date).toISOString(),
                     status: data.status,
                     client: data.client,
                     specie: data.specie,

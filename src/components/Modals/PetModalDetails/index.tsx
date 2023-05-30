@@ -12,6 +12,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { catsBreedsReferences, dogsBreedsReferences } from '@/services/api'
 import { PetFetchProps, ScheduleFormProps } from '@/components/Forms/ScheduleForm/types'
 import { deletingScheduleFormToDatabase, updatingScheduleFormToDatabase } from '@/services/schedules'
+import moment from 'moment'
 
 const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
     const { t } = useTranslation()
@@ -251,7 +252,8 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                             <S.Span>Data:</S.Span>
                                             <S.Input {...field}
                                                 type="datetime-local"
-                                                value={dayjs(field.value).format('YYYY-MM-DDTHH:mm')} />
+                                                value={moment(field.value).format('YYYY-MM-DDTHH:mm')} />
+                                            {/* value={dayjs(field.value).format('YYYY-MM-DDTHH:mm')} /> */}
                                             <S.InputAlert>{errors.date?.message}</S.InputAlert>
                                         </S.Label>
                                     )} />
@@ -274,6 +276,8 @@ const PetModalDetails = ({ setPetModalOpen, petProps }: PetModalProps) => {
                                             hour: 'numeric',
                                             minute: 'numeric'
                                         })}h
+
+                                   - {moment(petProps.date).utc().format('HH:mm:ss')}h
                                 </S.Text>
                             </S.Info>
                         </S.Description>

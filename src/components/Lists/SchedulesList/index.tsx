@@ -31,7 +31,7 @@ const ScheduleList = ({ ...props }: ScheduleFormProps) => {
                   minute: 'numeric'
                 })}h</S.Time>
 
-              <S.Time>-{moment(props.date).utc().format('HH:mm:ss')}h</S.Time>
+              <S.Time>- {moment(props.date).utc().format('HH:mm:ss')}h</S.Time>
             </S.ContentListRight>
           </S.List>
         </S.ContentList>
