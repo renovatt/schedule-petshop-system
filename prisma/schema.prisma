@@ -44,8 +44,8 @@ model Schedules {
   client             Boolean
   specie             Boolean
   status             Boolean
-  date               DateTime
-  canceled_date      DateTime
+  date               String
+  canceled_date      String
   created_at         DateTime @default(now())
 
   user   User?   @relation(fields: [userId], references: [id])

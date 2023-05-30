@@ -28,6 +28,7 @@ export const sendingScheduleFormToDatabase = async (data: ScheduleFormProps, tok
             },
             body: JSON.stringify(data)
         })
+
         const json = await response.json();
         if (response.ok) {
             return { response: json }
@@ -49,6 +50,7 @@ export const updatingScheduleFormToDatabase = async (id: string, data: ScheduleF
             },
             body: JSON.stringify(data)
         })
+
         const json = await response.json()
         if (response.ok) {
             return { response: json }

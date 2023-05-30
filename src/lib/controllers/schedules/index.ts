@@ -1,6 +1,5 @@
 import prisma from "../../prisma";
 import { ScheduleFormProps } from "@/components/Forms/ScheduleForm/types";
-import dayjs from "dayjs";
 import moment from "moment";
 
 export async function createSchedule(data: ScheduleFormProps, userId: string | undefined) {
@@ -10,16 +9,14 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
 
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
-        const momentDate = moment(data.date);
-        const momentDate2 = moment(data.date).utc();
-
-        console.log(momentDate2.toDate());
+        const t = new Date(data.date);
+        const momentDate = moment(t);
 
         const alreadyExists = await prisma.schedules.findFirst({
             where: {
                 date: {
-                    gte: momentDate.startOf("hour").toDate(),
-                    lte: momentDate.endOf("hour").toDate(),
+                    gte: momentDate.startOf("hour").toDate().toISOString(),
+                    lte: momentDate.endOf("hour").toDate().toISOString(),
                 },
                 status: true
             },
@@ -38,7 +35,7 @@ export async function createSchedule(data: ScheduleFormProps, userId: string | u
                 breed: data.breed,
                 weight: data.weight,
                 reference_image_id: referenceImageId,
-                date: momentDate2.toDate(),
+                date: data.date,
                 canceled_date: new Date(data.date).toISOString(),
                 status: data.client,
                 client: data.client,
@@ -71,13 +68,13 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
     try {
         const referenceImageId = data.reference_image_id ? data.reference_image_id : "";
 
-        const momentDate = moment(data.date);
-        const momentDate2 = moment(data.date).utc();
+        const t = new Date(data.date);
+        const momentDate = moment(t);
 
         const ageIsNegative = (Number(data.age) <= 0);
         const weightIsNegative = (Number(data.weight) <= 0);
 
-        const schedule = await prisma.schedules.findUnique({
+        let schedule = await prisma.schedules.findUnique({
             where: { id: id },
         });
 
@@ -86,7 +83,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
         if (weightIsNegative) throw new Error("O peso precisa ser um valor válido!");
 
         if (momentDate.isSame(moment(schedule.date))) {
-            await prisma.schedules.update({
+            schedule = await prisma.schedules.update({
                 where: { id: id },
                 data: {
                     tutor: data.tutor,
@@ -96,7 +93,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                     breed: data.breed,
                     weight: data.weight,
                     reference_image_id: referenceImageId,
-                    canceled_date: new Date(data.canceled_date),
+                    canceled_date: data.canceled_date,
                     status: data.status,
                     client: data.client,
                     specie: data.specie,
@@ -106,8 +103,8 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
             const alreadyExists = await prisma.schedules.findFirst({
                 where: {
                     date: {
-                        gte: momentDate.startOf("hour").toDate(),
-                        lte: momentDate.endOf("hour").toDate(),
+                        gte: momentDate.startOf("hour").toISOString(),
+                        lte: momentDate.endOf("hour").toISOString(),
                     },
                     status: true
                 },
@@ -115,7 +112,7 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
 
             if (alreadyExists) throw new Error("Já existe um agendamento para esse dia e horário.");
 
-            await prisma.schedules.update({
+            schedule = await prisma.schedules.update({
                 where: { id: id },
                 data: {
                     tutor: data.tutor,
@@ -125,8 +122,8 @@ export async function updateSchedule(id: string, data: ScheduleFormProps) {
                     breed: data.breed,
                     weight: data.weight,
                     reference_image_id: referenceImageId,
-                    date: momentDate2.toDate(),
-                    canceled_date: new Date(data.canceled_date).toISOString(),
+                    date: data.date,
+                    canceled_date: data.canceled_date,
                     status: data.status,
                     client: data.client,
                     specie: data.specie,

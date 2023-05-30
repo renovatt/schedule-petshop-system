@@ -9,9 +9,9 @@ export type ScheduleFormProps = {
     age: string,
     weight: string
     sex: string,
-    date: Date,
+    date: string,
     created_at: Date
-    canceled_date: Date,
+    canceled_date: string,
     specie: boolean,
     status: boolean,
     client: boolean,
