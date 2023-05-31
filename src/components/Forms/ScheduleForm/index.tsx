@@ -32,7 +32,7 @@ const ScheduleForm = () => {
         } else if (error) {
             toast.error(error.toString())
         }
-        // reset();
+        reset();
         setClientCheckBox(!isClient);
         loadSchedules()
     }
