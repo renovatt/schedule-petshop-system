@@ -53,13 +53,13 @@ const ScheduleForm = () => {
         loadBreedsReferences("dog")
         setValue("reference_image_id", selectedReferenceImageId);
         setValue("specie", specie)
-    }, [selectedReferenceImageId])
+    }, [selectedReferenceImageId, setValue, specie])
 
     React.useEffect(() => {
         loadBreedsReferences("cat")
         setValue("reference_image_id", selectedReferenceImageId);
         setValue("specie", specie)
-    }, [selectedReferenceImageId])
+    }, [selectedReferenceImageId, setValue, specie])
 
     return (
         <>

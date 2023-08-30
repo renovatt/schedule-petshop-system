@@ -10,12 +10,13 @@ export const dogsBreedsReferences = async () => {
             throw new Error(`Request failed with status ${response.status}`);
         }
         const data = await response.json()
+
         const petReferences = data.map((item: PetFetchProps) => ({
             id: item.id,
             name: item.name,
-            image: item.image.url,
             reference_image_id: item.reference_image_id
         }))
+
         return { response: petReferences }
     } catch (error) {
         return { error }
